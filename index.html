@@ -3,34 +3,36 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>婴幼儿发展追踪 v2.6.1（零依赖SVG折线图）</title>
+<title>婴幼儿发展追踪与家庭指导系统</title>
 <style>
 :root{
-  --bg:#ffffff; --fg:#1f2937; --muted:#6b7280; --card:#f8fafc; --accent:#2563eb;
-  --chip:#e5e7eb; --chip-active:#dbeafe; --line:#e5e7eb; --link:#2563eb;
+  --bg:#ffffff; --fg:#1f2937; --muted:#6b7280; --card:#f8fafc; --accent:#2563eb; --line:#e5e7eb;
+  --good:#16a34a; --warn:#f59e0b; --bad:#ef4444; --chip:#e5e7eb; --chip-active:#dbeafe;
+  --danger:#dc2626; --danger-bg:#fef2f2; --danger-line:#fecaca;
 }
 :root[data-theme="dark"]{
-  --bg:#0b1220; --fg:#e5e7eb; --muted:#9ca3af; --card:#141b2e; --accent:#60a5fa;
-  --chip:#1f2937; --chip-active:#0b3569; --line:#1f2937; --link:#93c5fd;
+  --bg:#0b1220; --fg:#e5e7eb; --muted:#9ca3af; --card:#141b2e; --accent:#60a5fa; --line:#1f2937;
+  --good:#22c55e; --warn:#fbbf24; --bad:#f87171; --chip:#1f2937; --chip-active:#0b3569;
+  --danger-bg:#2a0d12; --danger-line:#7f1d1d;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.5}
-.container{max-width:1200px;margin:0 auto;padding:20px}
-.toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:10}
-.toolbar-left,.toolbar-right{display:flex;gap:8px;align-items:center}
+.container{max-width:1200px;margin:0 auto;padding:16px}
+.toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:10}
 .btn{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--fg);padding:8px 12px;border-radius:999px;cursor:pointer}
 .btn:hover{border-color:var(--accent)}
 .select,.input{border:1px solid var(--line);padding:8px 12px;border-radius:10px;background:var(--bg);color:var(--fg)}
 .input.num{width:68px;text-align:center}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
 .tab{padding:10px 14px;border-radius:999px;border:1px solid var(--line);cursor:pointer;background:var(--chip);color:var(--fg)}
 .tab.active{background:var(--chip-active);border-color:var(--accent)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-@media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px}
+@media (max-width:1000px){.grid-4{grid-template-columns:1fr 1fr}.grid-3,.grid-2{grid-template-columns:1fr}}
 h1{font-size:22px;margin:6px 0 2px}
-h2{font-size:18px;margin:12px 0 8px}
+h2{font-size:18px;margin:10px 0 6px}
 hr{border:none;border-top:1px solid var(--line);margin:12px 0}
 .table{width:100%;border-collapse:collapse;font-size:14px}
 .table th,.table td{border-top:1px solid var(--line);padding:8px;vertical-align:top}
@@ -39,39 +41,73 @@ hr{border:none;border-top:1px solid var(--line);margin:12px 0}
 .chip{border:1px solid var(--line);background:var(--chip);padding:8px 12px;border-radius:999px;cursor:pointer}
 .chip.active{background:var(--chip-active);border-color:var(--accent)}
 .muted{color:var(--muted)}
-.footer{margin:24px 0 40px;color:var(--muted);text-align:center}
-a{color:var(--link);text-decoration:none}
-a:hover{text-decoration:underline}
 .small{font-size:12px}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--line);font-size:12px}
+.badge.good{color:var(--good);border-color:var(--good)}
+.badge.warn{color:var(--warn);border-color:var(--warn)}
+.badge.bad{color:var(--bad);border-color:var(--bad)}
 .chart-wrap{height:320px}
 .small-chart{height:220px}
 svg{width:100%;height:100%}
-/* 打印仅保留内容区 */
+.footer{margin:20px 0 40px;color:var(--muted);text-align:center}
+/* 首页卡片 */
+.home-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:900px){.home-cards{grid-template-columns:1fr}}
+.home-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.home-card h3{margin:0}
+/* 急救指南 & 共餐指导 */
+.guide-steps{counter-reset:step; list-style:none; padding-left:0; margin:8px 0 0}
+.guide-steps li{position:relative; padding-left:44px; margin:10px 0}
+.guide-steps li:before{
+  counter-increment:step; content:counter(step);
+  position:absolute; left:0; top:2px; width:28px; height:28px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  border:2px solid var(--accent); color:var(--accent); font-weight:700
+}
+.guide-bullets{margin:8px 0 0; padding-left:18px}
+.alert-bar{margin-top:16px; padding:14px 16px; border:1px solid var(--danger-line); background:var(--danger-bg); color:var(--danger); border-radius:12px}
+/* 共餐互动 */
+.feed-row{display:flex;align-items:center;gap:12px;margin-top:8px}
+.feed-svg{width:100px;height:100px;flex-shrink:0}
+.feed-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:10px}
+.feed-tip{margin-top:6px;font-size:13px;color:var(--muted)}
+.toggle-btn{cursor:pointer;border:none;background:var(--accent);color:#fff;padding:6px 10px;border-radius:8px;font-size:13px}
+/* 表情贴纸区 */
+.stickers{display:flex;gap:12px;margin-top:8px}
+.sticker{font-size:42px;line-height:1;cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#fff0}
+.sticker.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--chip-active) inset}
+/* 打印优化 */
 @media print{
-  .toolbar,.tabs{display:none !important}
-  body{background:#fff;color:#000}
-  .card{border:none}
+  .toolbar,.tabs,#home{display:none !important}
+  .card{border:none;break-inside:avoid}
 }
 </style>
 </head>
 <body>
   <div class="container">
     <div class="toolbar">
-      <div class="toolbar-left">
+      <div style="display:flex;gap:8px;align-items:center">
         <button class="btn" id="themeBtn">🌗 主题</button>
-        <button class="btn" id="printBtn">🖨 打印</button>
+        <button class="btn" id="printBtn">🖨 打印/导出PDF</button>
         <button class="btn" id="resetBtn">🗑 重置</button>
       </div>
-      <div class="toolbar-right small">
-        <span>婴幼儿发展追踪 v2.6.1 · 零依赖SVG</span>
-      </div>
+      <div class="small">婴幼儿发展追踪与家庭指导系统 · 单文件 · 零依赖</div>
     </div>
+
+    <!-- 首页卡片导航 -->
+    <section class="card" id="home">
+      <h1>请选择模块</h1>
+      <div class="home-cards" id="homeCards"></div>
+    </section>
 
     <div class="tabs" id="tabs"></div>
 
-    <!-- 指标曲线（按月） -->
+    <!-- 0 指标曲线（按月） -->
     <section class="card" id="tab-0" hidden>
-      <h1>指标曲线（按月）</h1>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h1>指标曲线（按月）</h1>
+        <a href="javascript:void(0)" class="small" onclick="goHome()">← 返回首页</a>
+      </div>
       <div class="grid-3">
         <div>
           <h2>选择维度</h2>
@@ -80,6 +116,7 @@ svg{width:100%;height:100%}
         <div>
           <h2>选择月龄</h2>
           <select class="select" id="ageSelect"></select>
+          <p class="small muted">可选：6/12/18/24/30/36 月。</p>
         </div>
         <div>
           <h2>标准线</h2>
@@ -89,7 +126,6 @@ svg{width:100%;height:100%}
           </div>
         </div>
       </div>
-
       <div class="grid-2" style="margin-top:12px">
         <div class="card">
           <h2>指标打分</h2>
@@ -111,17 +147,23 @@ svg{width:100%;height:100%}
       </div>
     </section>
 
-    <!-- 能力曲线（6–36月） -->
+    <!-- 1 能力曲线 -->
     <section class="card" id="tab-1" hidden>
-      <h1>能力曲线（6–36 月）</h1>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h1>能力曲线（6–36 月）</h1>
+        <a href="javascript:void(0)" class="small" onclick="goHome()">← 返回首页</a>
+      </div>
       <p class="muted small">规则：同一维度每个已录入月龄的指标<strong>均值×10</strong>（四舍五入），未录入则断点。带状为参考线 ±10。</p>
       <div id="smallCharts" class="grid-2"></div>
     </section>
 
-    <!-- 家庭环境评估 -->
+    <!-- 2 家庭环境 -->
     <section class="card" id="tab-2" hidden>
-      <h1>家庭环境评估</h1>
-      <p class="muted small">每项 1–5 分；点击“计算评分”生成平均分、等级与建议。评分类别：需加强/基本达标/良好/优秀。</p>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h1>家庭环境评估</h1>
+        <a href="javascript:void(0)" class="small" onclick="goHome()">← 返回首页</a>
+      </div>
+      <p class="muted small">每项 1–5 分；点击“计算评分”生成平均分、等级与建议。</p>
       <table class="table">
         <thead><tr><th style="width:18%">条目</th><th>标准值描述</th><th style="width:160px">评分（1–5）</th></tr></thead>
         <tbody id="homeRows"></tbody>
@@ -134,83 +176,181 @@ svg{width:100%;height:100%}
       <div id="homeResult" class="card" style="margin-top:12px"></div>
     </section>
 
-    <!-- 导入导出 -->
+    <!-- 3 导入导出 -->
     <section class="card" id="tab-3" hidden>
-      <h1>导入导出 / 持久化</h1>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h1>导入导出 / 持久化</h1>
+        <a href="javascript:void(0)" class="small" onclick="goHome()">← 返回首页</a>
+      </div>
       <div class="grid-2">
         <div>
           <h2>导出 JSON</h2>
-          <button class="btn" id="exportBtn">下载 devtracker-v2_6_1-data.json</button>
+          <button class="btn" id="exportBtn">下载 devtracker-data.json</button>
           <pre id="jsonPreview" class="card small" style="white-space:pre-wrap;margin-top:8px;max-height:300px;overflow:auto"></pre>
         </div>
         <div>
           <h2>导入 JSON</h2>
           <input type="file" id="importFile" accept=".json" class="input" />
-          <p class="muted small">选择由本工具导出的同版本 JSON 覆盖本地数据。</p>
+          <p class="muted small">选择由本工具导出的 JSON 覆盖本地数据。</p>
         </div>
       </div>
     </section>
 
-    <div class="footer small">© 2025 DevTracker v2.6.1 · 单文件 · 零依赖 · SVG 折线图</div>
+    <!-- 4 数据统计仪表板 -->
+    <section class="card" id="tab-4" hidden>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h1>数据统计仪表板</h1>
+        <a href="javascript:void(0)" class="small" onclick="goHome()">← 返回首页</a>
+      </div>
+      <p class="muted small">展示每个维度在 6–36 月的平均分（0–100）、标准差和增长速率（线性回归斜率，分/每6个月）。</p>
+      <div id="statsTableWrap" class="card"></div>
+      <div id="sparks" class="grid-4" style="margin-top:12px"></div>
+    </section>
+
+    <!-- 5 急救指南 -->
+    <section class="card" id="tab-5" hidden>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h1>海姆利克急救指南</h1>
+        <a href="javascript:void(0)" class="small" onclick="goHome()">← 返回首页</a>
+      </div>
+      <div class="card" style="background:var(--bg)">
+        <h2>2岁宝宝气道梗阻急救步骤</h2>
+        <ol class="guide-steps">
+          <li><strong>让宝宝坐立或站立</strong>（或斜坐），施救者站在宝宝身后。</li>
+          <li><strong>双臂环抱宝宝腹部</strong>，让其身体微倾。</li>
+          <li><strong>一手握拳</strong>，将拇指顶住宝宝肚脐上方两横指处。</li>
+          <li><strong>另一手抓住握拳手</strong>，快速向内上方挤压宝宝腹部，类似“向上提”的动作。</li>
+          <li><strong>重复快速挤压 5 次</strong>，直到异物排出或宝宝失去意识。</li>
+        </ol>
+      </div>
+      <div class="card" style="background:var(--bg)">
+        <h2>婴幼儿气道梗阻预防指南</h2>
+        <ul class="guide-bullets">
+          <li>不要给 3 岁以下儿童喂食坚果、硬糖、爆米花等容易噎食物。</li>
+          <li>将食物切成小块，保持软烂、方便宝宝吞咽。</li>
+          <li>进食时保持坐姿，<strong>不要在跑动、大笑或哭闹时进食</strong>。</li>
+          <li>避免让宝宝玩耍<strong>小于 4 厘米</strong>的小玩具或小物品，并检查易脱落小零件。</li>
+          <li>不要把硬币、纽扣等<strong>小物件</strong>放入口中；哭闹时勿强行喂食。</li>
+        </ul>
+      </div>
+      <div class="alert-bar">
+        <strong>紧急情况请立即拨打急救电话：120</strong><br>
+        在等待专业救援时，持续实施急救措施，并注意自身安全。
+      </div>
+    </section>
+
+    <!-- 6 亲子共餐指导互动 -->
+    <section class="card" id="tab-6" hidden>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h1>亲子共餐指导互动页</h1>
+        <a href="javascript:void(0)" class="small" onclick="goHome()">← 返回首页</a>
+      </div>
+      <div class="feed-card">
+        <h2>🍽 喂饭姿势演示</h2>
+        <div class="feed-row">
+          <svg class="feed-svg" viewBox="0 0 120 120" aria-label="喂饭姿势SVG">
+            <rect x="5" y="70" width="110" height="35" rx="6" fill="#e5e7eb"/>
+            <circle cx="35" cy="55" r="16" fill="#93c5fd"/>
+            <rect x="50" y="45" width="55" height="20" rx="4" fill="#2563eb"/>
+            <circle cx="95" cy="55" r="10" fill="#facc15"/>
+            <line x1="60" y1="55" x2="85" y2="55" stroke="#fff" stroke-width="2"/>
+          </svg>
+          <div>
+            <p>与宝宝<strong>面对面</strong>，距离约 <strong>30–40 厘米</strong>；宝宝坐稳安全座椅并系好固定带。</p>
+            <p class="feed-tip">避免站立喂饭、追喂或边玩边喂；保持平和语气与稳定节奏。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feed-card">
+        <h2>🗣 共餐口令提示（轻音效）</h2>
+        <button class="toggle-btn" id="cmdBtn">▶ 播放“张嘴—咬一口—真棒！”节奏</button>
+        <ul class="guide-bullets" style="margin-top:6px">
+          <li>张嘴 —— <strong>咬一口</strong> —— 真棒！</li>
+          <li>吞咽 —— <strong>擦嘴巴</strong> —— 微笑表扬。</li>
+          <li>喝水 —— <strong>放勺子</strong> —— 拍拍手！</li>
+        </ul>
+        <p class="feed-tip">提示：为保证离线可用，我们使用浏览器 WebAudio 合成短促“哔”音替代真人语音。</p>
+      </div>
+
+      <div class="feed-card">
+        <h2>⚠️ 风险提醒</h2>
+        <p>若出现呛咳：<strong>立即停止喂食</strong>，让宝宝前倾拍背 3–5 次。</p>
+        <p>如持续咳嗽或脸色发青，<strong>执行海姆利克法并呼叫120</strong>。</p>
+        <p class="feed-tip">共餐时保持耐心，用语言引导而非强迫进食。</p>
+      </div>
+
+      <div class="feed-card">
+        <h2>😋 宝宝表情贴纸区</h2>
+        <div class="stickers" id="stickers">
+          <div class="sticker active" data-state="happy" title="开心">😋</div>
+          <div class="sticker" data-state="resist" title="抗拒">😣</div>
+          <div class="sticker" data-state="satisfied" title="满足">😌</div>
+        </div>
+        <p id="stickerText" class="feed-tip">当前状态：开心 —— 继续保持轻松互动与正向反馈。</p>
+      </div>
+    </section>
+
+    <div class="footer small">© 2025 婴幼儿发展追踪与家庭指导系统 · 单文件 · 零依赖 · SVG 折线图</div>
   </div>
 
 <script>
-// ====== 数据与状态 ======
+/* ========== 常量与初始化 ========== */
 const DOMAINS=['认知能力','数学逻辑','语言能力','大动作能力','精细动作能力','艺术表现','自理能力','交往能力'];
 const AGE_LIST=[6,12,18,24,30,36];
-const LS_KEY='devtracker_v2_6_1';
 const REF_BAND=10;
+const STORE_KEY='devtracker_final';
 
-// 指标文本（示例集）
+/* 指标文本（每维度每月龄约5条） */
 const INDICATOR_TEXT={
-  '认知能力':{6:['目光追随移动物体','注视时长≥3秒','寻找部分遮挡的玩具','分辨熟人/陌生人表情','对新奇刺激转头定位'],
+ '认知能力':{6:['目光追随移动物体','注视时长≥3秒','寻找部分遮挡的玩具','分辨熟人/陌生人表情','对新奇刺激转头定位'],
  12:['物体永久性初显','两步因果探索（拍/推）','模仿简单动作','注意力转移','探索式敲打/摇晃'],
  18:['三步因果探索','功能性使用物品','简易分类配对','指认熟悉物体','尝试解锁/打开'],
  24:['两步规则完成','按颜色或形状分类','简单拼搭','记住2步指令','独立探索顺序'],
  30:['简单问题求解','3类以上分类','拼图3–4块','因果推断增强','情境中回忆'],
  36:['多步骤规则','数量守恒初显','6块拼图','简单角色扮演规划','延迟满足']},
-  '数学逻辑':{6:['注视数量差异','追视数量变化','对节奏有反应','对重复产生期待','短时记忆2秒'],
+ '数学逻辑':{6:['注视数量差异','追视数量变化','对节奏有反应','对重复产生期待','短时记忆2秒'],
  12:['理解“更多/更少”','拍手按节奏','配对相同物体','按大小排两级','对“一个/两个”敏感'],
  18:['口头点数1-3','按大小排序3级','简单图形配对','完成2步拼插','比较多少'],
  24:['点数到5','按类聚合3组','简单模式ABAB','匹配数字1-3','比较长短高低'],
  30:['点数到7','延续模式AAB','3维分类','理解0概念初显','简单加一'],
  36:['点数到10','复杂模式ABC','比较差值','图形组成','简单减一']},
-  '语言能力':{6:['对名字有反应','咿呀发声','转头寻找声音','高兴时笑声','模仿音节'],
+ '语言能力':{6:['对名字有反应','咿呀发声','转头寻找声音','高兴时笑声','模仿音节'],
  12:['会说1-3个词','理解“不要”','指物命名','手势表达','听懂熟悉指令'],
  18:['会说10+词','两词短语','命名常见物','理解“给我”','模仿新词'],
  24:['三词句','提问“这是什么”','理解方位词','讲述简单需要','跟读短句'],
  30:['四词句','讲述经历片段','理解复合指令','基本时态意识','复述故事要点'],
- 36:['连贯表达','使用因果连词','理解简单疑问句','情绪言语表达','讲述完整经历']},
-  '大动作能力':{6:['抬头稳定','翻身','俯卧支撑','坐姿辅助','抓握支撑'],
+ 36:['连贯表达','使用因果连词','理解复杂疑问','情绪言语表达','讲述完整经历']},
+ '大动作能力':{6:['抬头稳定','翻身','俯卧支撑','坐姿辅助','抓握支撑'],
  12:['独站片刻','扶物走','蹲起','攀爬低台阶','抛掷大球'],
  18:['独走稳','后退数步','助跑踢球','跨小障碍','搬运小物'],
  24:['双脚起跳','上下台阶扶栏','接滚来的球','平衡木迈步','短距离跑'],
  30:['单脚站1-2秒','双脚跳前进','上楼交替步','踢球更准','转身跑停'],
  36:['单脚跳','下楼交替步','抛接轻球','30秒平衡','原地连续跳']},
-  '精细动作能力':{6:['抓握摇铃','双手传物','敲打桌面','撮握尝试','注视手部'],
+ '精细动作能力':{6:['抓握摇铃','双手传物','敲打桌面','撮握尝试','注视手部'],
  12:['拇食指捏','翻书页','把积木放盒','涂鸦痕迹','插棒大孔'],
  18:['堆2-3块','画直线痕迹','穿大孔绳','翻书多页','拨动开关'],
  24:['堆5块','画圆圈痕迹','转动旋钮','撕纸条','拼插形状块'],
  30:['剪纸直线','画十字痕迹','扣大扣子','拧瓶盖','夹取小物'],
  36:['描画简单形','穿珠子','剪纸曲线','画人头足','使用勺叉准']},
-  '艺术表现':{6:['对音乐微笑','随节奏摆动','注视色彩','模仿音高','拍手应和'],
+ '艺术表现':{6:['对音乐微笑','随节奏摆动','注视色彩','模仿音高','拍手应和'],
  12:['随音乐律动','选择喜欢乐器','叠放彩块','模仿表情','自由涂鸦'],
  18:['节奏律动准确','用色块配色','唱简短旋律','角色模仿','用线条表达'],
  24:['跟唱儿歌','颜色搭配2-3色','模仿画形','节奏道具使用','角色扮演'],
  30:['自主歌唱','绘画基本形状','节奏变换','搭建主题作品','讲述作品'],
  36:['创编旋律','主题绘画完整','节奏指挥','舞蹈组合','戏剧性表达']},
-  '自理能力':{6:['配合喂养','握奶瓶','对穿衣有反应','拍背入睡','规律排便初显'],
+ '自理能力':{6:['配合喂养','握奶瓶','对穿衣有反应','拍背入睡','规律排便初显'],
  12:['用杯喝水','帮忙伸手脚','尝试用勺','指示纸尿裤湿了','入睡规律'],
  18:['脱简单衣物','独立用勺部分成功','洗手配合','示意如厕','穿鞋尝试'],
  24:['基本用勺','穿脱部分衣物','协助刷牙','如厕训练中','收拾玩具'],
  30:['独立用勺/叉','穿脱简单衣物','简单刷牙漱口','洗手流程','整理个人物品'],
  36:['独立进餐','穿脱衣裤鞋袜','独立如厕','简单家务','安全自护意识']},
-  '交往能力':{6:['注视人脸','对笑容回应','对抱起有反应','跟随成人目光','基本分离焦虑'],
+ '交往能力':{6:['注视人脸','对笑容回应','对抱起有反应','跟随成人目光','基本分离焦虑'],
  12:['陌生情境回避','与成人互动游戏','与同伴平行游戏','分享兴趣','社会性微笑'],
  18:['与同伴有互动','轮流等待初显','表达情绪需求','模仿同伴','安慰他人尝试'],
  24:['合作游戏','遵守简单规则','分享轮流','表达同理','与同伴协同'],
  30:['小组合作','冲突协商','遵守家庭规则','角色协作','表达礼貌'],
- 36:['同伴协作任务','规则游戏','解决冲突','领导/跟随角色','理解社会规范']}
+ 36:['同伴协作任务','规则游戏','解决冲突','领导或跟随角色','理解社会规范']}
 };
 
 const REF_DEFAULT={
@@ -224,22 +364,72 @@ const REF_DEFAULT={
   '交往能力':[34,50,62,74,82,90]
 };
 
-let indicatorScores = loadLS()?.indicatorScores || initScores();
-let homeScores = loadLS()?.homeScores || Array(12).fill(3); // 默认居中3分
+/* 状态 */
+let indicatorScores = loadScores() || initScores();
 let curDomain = DOMAINS[0];
 let curAge = AGE_LIST[0];
 
-// ====== DOM 初始化 ======
-const tabDefs=['指标曲线（按月）','能力曲线（6–36月）','家庭环境','导入导出'];
+/* 顶部控件 */
+document.getElementById('themeBtn').onclick=()=>{
+  const root=document.documentElement; const now=root.getAttribute('data-theme')||'light';
+  root.setAttribute('data-theme', now==='light'?'dark':'light');
+  saveScores(false);
+};
+document.getElementById('printBtn').onclick=()=>window.print();
+document.getElementById('resetBtn').onclick=()=>{
+  if(confirm('确认清空所有数据？此操作不可恢复。')){
+    localStorage.removeItem(STORE_KEY);
+    indicatorScores=initScores(); curDomain=DOMAINS[0]; curAge=AGE_LIST[0];
+    renderAll();
+  }
+};
+
+/* 首页卡片 */
+const modules=[
+  ['指标曲线（按月）','录入月龄指标并生成当月折线图，直观观察成长趋势。'],
+  ['能力曲线（6–36月）','8 个维度的小图展示 6→36 月龄能力变化。'],
+  ['家庭环境评估','12 个条目快速评估环境质量并生成建议。'],
+  ['数据统计仪表板','统计均值、标准差与增长速率。'],
+  ['急救指南','海姆利克操作与预防要点，紧急拨打 120。'],
+  ['亲子共餐指导','喂饭姿势、口令节奏与风险提醒，含表情互动。']
+];
+const homeCards=document.getElementById('homeCards');
+modules.forEach((m,i)=>{
+  const div=document.createElement('div');
+  div.className='home-card';
+  div.innerHTML=`<h3>${m[0]}</h3><p class="muted">${m[1]}</p><div><button class="btn">进入模块</button></div>`;
+  div.querySelector('button').onclick=()=>switchTab(i);
+  homeCards.appendChild(div);
+});
+
+/* 选项卡 */
+
+const tabIdMap=[0,1,2,4,5,6]; // 映射可见模块 -> 实际 section ID（跳过导入导出:3）
+
+const tabDefs=modules.map(m=>m[0]);
 const tabsEl=document.getElementById('tabs');
 tabDefs.forEach((t,i)=>{
-  const b=document.createElement('button');
-  b.className='tab'+(i===0?' active':'');
-  b.textContent=t; b.onclick=()=>switchTab(i);
+  const b=document.createElement('button'); b.className='tab'; b.textContent=t; b.onclick=()=>switchTab(i);
   tabsEl.appendChild(b);
 });
-document.getElementById('tab-0').hidden=false;
+function goHome(){
+  document.getElementById('home').hidden=false;
+  for(let i=0;i<tabDefs.length;i++){ document.getElementById('tab-'+tabIdMap[i]).hidden=true; tabsEl.children[i].classList.remove('active'); }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function switchTab(idx){
+  const tabId = tabIdMap[idx];
+  document.getElementById('home').hidden=true;
+  for(let i=0;i<tabDefs.length;i++){
+    document.getElementById('tab-'+tabIdMap[i]).hidden = i!==idx;
+    tabsEl.children[i].classList.toggle('active', i===idx);
+  }
+  if(tabId===1){ renderSmallCharts(true); }
+  if(tabId===4){ renderStats(); }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
+/* 指标页：维度与月龄控件 */
 const chipsEl=document.getElementById('domainChips');
 DOMAINS.forEach((d,i)=>{
   const c=document.createElement('button');
@@ -255,21 +445,7 @@ document.getElementById('fillDemo').onclick=demoFill;
 document.getElementById('clearThis').onclick=clearThisMonth;
 document.getElementById('stdLine').onchange=renderMonthlyChart;
 
-// Toolbar
-document.getElementById('themeBtn').onclick=toggleTheme;
-document.getElementById('printBtn').onclick=()=>window.print();
-document.getElementById('resetBtn').onclick=()=>{
-  if(confirm('确认清空所有评分与本地存储？')){
-    localStorage.removeItem(LS_KEY);
-    indicatorScores = initScores();
-    homeScores = Array(12).fill(3);
-    updateIndicatorsTable(); renderMonthlyChart(); renderSmallCharts(true);
-    buildHomeTable(); document.getElementById('homeResult').innerHTML='';
-    toast('已重置');
-  }
-};
-
-// 家庭环境（12项+建议）
+/* 家庭环境数据 */
 const HOME_ITEMS=[
   ['作息','固定作息、稳定昼夜节律','1=无规律; 3=基本规律; 5=稳定规律'],
   ['安全','用电/家具/边角/门窗防护完善','1=隐患多; 3=部分防护; 5=防护完善'],
@@ -284,219 +460,9 @@ const HOME_ITEMS=[
   ['社会互动','有高质量同伴/成人互动','1=很少; 3=偶尔; 5=经常'],
   ['家长压力','家长压力可调节','1=高压; 3=可控; 5=良好调节']
 ];
-const HOME_SUGG={
-  '需加强':'建议建立作息/安全清单，增加互动与规律性；优先修补明显短板。',
-  '基本达标':'保持关键环节，针对弱项设立每周微目标逐步改善。',
-  '良好':'继续巩固现有做法，可引入更高质量互动与方案。',
-  '优秀':'维持并作为家庭范例，拓展到更多生活/学习情境。'
-};
-function buildHomeTable(){
-  const body=document.getElementById('homeRows');
-  body.innerHTML='';
-  HOME_ITEMS.forEach((it,idx)=>{
-    const tr=document.createElement('tr');
-    tr.innerHTML = `<td><strong>${it[0]}</strong></td>
-      <td class="small">${it[1]}<br><span class="muted">${it[2]}</span></td>
-      <td><select class="select" data-home="${idx}">${[1,2,3,4,5].map(v=>`<option value="${v}" ${homeScores[idx]===v?'selected':''}>${v}</option>`).join('')}</select></td>`;
-    body.appendChild(tr);
-  });
-}
-document.getElementById('homeClear').onclick=()=>{
-  homeScores = Array(12).fill(3);
-  buildHomeTable();
-  document.getElementById('homeResult').innerHTML='';
-  saveLS();
-};
-document.getElementById('homeSave').onclick=()=>{
-  document.querySelectorAll('[data-home]').forEach(s=>{ homeScores[parseInt(s.dataset.home)] = parseInt(s.value); });
-  saveLS(true);
-};
-document.getElementById('homeCalc').onclick=()=>{
-  document.querySelectorAll('[data-home]').forEach(s=>{ homeScores[parseInt(s.dataset.home)] = parseInt(s.value); });
-  const vals=[...homeScores];
-  const avg=(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(2);
-  const levels=vals.map(v=> v<=2?'需加强':(v===3?'基本达标':(v===4?'良好':'优秀')) );
-  const list=HOME_ITEMS.map((it,i)=>`<li><strong>${it[0]}</strong>：${levels[i]} · <span class="muted">${HOME_SUGG[levels[i]]}</span></li>`).join('');
-  document.getElementById('homeResult').innerHTML = `<h2>结果</h2>
-    <p>平均分：<strong>${avg}</strong></p><ul>${list}</ul>`;
-  saveLS();
-};
+let homeScores = Array(12).fill(3);
 
-// 导入导出
-document.getElementById('exportBtn').onclick=()=>{
-  const data = { version:'v2.6.1', indicatorScores, homeScores };
-  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'devtracker-v2_6_1-data.json';
-  a.click();
-};
-document.getElementById('importFile').addEventListener('change', (e)=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    try{
-      const obj = JSON.parse(reader.result);
-      if(obj && (obj.indicatorScores || obj.homeScores)){
-        if(obj.indicatorScores) indicatorScores = obj.indicatorScores;
-        if(obj.homeScores) homeScores = obj.homeScores;
-        saveLS();
-        updateIndicatorsTable();
-        renderMonthlyChart();
-        renderSmallCharts(true);
-        buildHomeTable();
-        document.getElementById('homeResult').innerHTML='';
-        toast('导入成功');
-      }else{
-        alert('JSON 结构不正确');
-      }
-    }catch(err){ alert('解析失败：'+err.message); }
-  };
-  reader.readAsText(file,'utf-8');
-});
-
-// 初始化默认视图
-setDomain(curDomain);
-setAge(curAge);
-updateIndicatorsTable();
-buildHomeTable();
-renderMonthlyChart();
-renderSmallCharts(true);
-
-// ====== 工具函数与渲染 ======
-function initScores(){
-  const o={};
-  DOMAINS.forEach(d=>{
-    o[d]={};
-    AGE_LIST.forEach(a=>{
-      const n = (INDICATOR_TEXT[d] && INDICATOR_TEXT[d][a]) ? INDICATOR_TEXT[d][a].length : 0;
-      o[d][a] = Array(n).fill(null);
-    });
-  });
-  return o;
-}
-function setDomain(d){
-  curDomain=d;
-  [...document.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active', c.textContent===d));
-  updateIndicatorsTable();
-  renderMonthlyChart();
-}
-function setAge(a){
-  curAge=a;
-  document.getElementById('ageSelect').value = String(a);
-  updateIndicatorsTable();
-  renderMonthlyChart();
-}
-function updateIndicatorsTable(){
-  const tbody=document.getElementById('indicatorRows');
-  tbody.innerHTML='';
-  const texts = INDICATOR_TEXT[curDomain]?.[curAge] || [];
-  const scores = indicatorScores[curDomain]?.[curAge] || [];
-  texts.forEach((t,idx)=>{
-    const tr=document.createElement('tr');
-    tr.innerHTML = `<td>${t}</td>
-      <td><input class="input num" type="number" min="1" max="10" step="1" value="${scores[idx]??''}" data-idx="${idx}" /></td>`;
-    tbody.appendChild(tr);
-  });
-  tbody.querySelectorAll('input').forEach(inp=>{
-    inp.onchange = ()=>{
-      const i=parseInt(inp.dataset.idx);
-      const v=inp.value===''?null:Math.max(1,Math.min(10,parseInt(inp.value)));
-      inp.value = v===null?'':String(v);
-      indicatorScores[curDomain][curAge][i]=v;
-      saveLS(true);
-      renderMonthlyChart();
-      renderSmallCharts(true);
-    };
-  });
-}
-function renderMonthlyChart(){
-  const wrap=document.getElementById('monthlyChart');
-  wrap.innerHTML='';
-  const labels=(INDICATOR_TEXT[curDomain]?.[curAge]||[]).map((_,i)=>'指标'+(i+1));
-  const real=indicatorScores[curDomain]?.[curAge]||[];
-  const stdv=parseInt(document.getElementById('stdLine').value||'8');
-  const std=labels.map(()=>stdv);
-
-  const W=720, H=300, x0=50, y0=10, w=W-70, h=230;
-  const svg=createSVG(W,H);
-  renderGrid(svg, x0,y0,w,h, 0,10,2);
-  renderXAxis(svg, x0,y0,w,h, labels);
-
-  // 标准线（灰虚线）
-  const stdPts=toPoints(std, x0,y0,w,h, 0,10);
-  const stdD=segmentedPath(stdPts);
-  drawPath(svg, stdD, '#9ca3af', 2, '6,6');
-
-  // 实际值
-  const realPts=toPoints(real, x0,y0,w,h, 0,10);
-  const realD=segmentedPath(realPts);
-  drawPath(svg, realD, 'currentColor', 2);
-  drawPoints(svg, realPts, 3);
-
-  wrap.appendChild(svg);
-}
-function avg10(arr){
-  const vals = arr.filter(v=>typeof v==='number');
-  if(!vals.length) return null;
-  const avg = vals.reduce((a,b)=>a+b,0)/vals.length;
-  return Math.round(avg*10);
-}
-function buildDomainSeries(domain){
-  return AGE_LIST.map(a=> avg10(indicatorScores[domain]?.[a]||[]) );
-}
-function smallChartOptions(){ return {}; } // 占位，SVG方案无需此项
-
-function renderSmallChart(dom, container){
-  const base=REF_DEFAULT[dom] || [40,55,65,75,82,88];
-  const ub=base.map(v=>v+REF_BAND);
-  const lb=base.map(v=>v-REF_BAND);
-  const real=buildDomainSeries(dom);
-  const labels=AGE_LIST.map(a=>a+'月');
-
-  const W=720, H=260, x0=50, y0=10, w=W-70, h=190;
-  const svg=createSVG(W,H);
-  renderGrid(svg, x0,y0,w,h, 0,100,20);
-  renderXAxis(svg, x0,y0,w,h, labels);
-
-  const ubPts=toPoints(ub, x0,y0,w,h, 0,100);
-  const basePts=toPoints(base, x0,y0,w,h, 0,100);
-  const lbPts=toPoints(lb, x0,y0,w,h, 0,100);
-  const realPts=toPoints(real, x0,y0,w,h, 0,100);
-
-  drawPath(svg, linePath(ubPts), 'currentColor', 1, '6,6');
-  drawPath(svg, linePath(basePts), 'currentColor', 2, '2,6');
-  drawPath(svg, linePath(lbPts), 'currentColor', 1, '6,6');
-  drawPath(svg, segmentedPath(realPts), 'currentColor', 2);
-  drawPoints(svg, realPts, 3);
-
-  container.appendChild(svg);
-}
-function renderSmallCharts(force=false){
-  const wrap=document.getElementById('smallCharts');
-  if(force) wrap.innerHTML='';
-  if(!wrap.children.length){
-    DOMAINS.forEach(dom=>{
-      const card=document.createElement('div'); card.className='card';
-      card.innerHTML = `<h2>${dom}</h2><div class="small-chart"></div>`;
-      wrap.appendChild(card);
-    });
-  }
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{
-      if(en.isIntersecting){
-        const title=en.target.querySelector('h2').textContent;
-        const panel=en.target.querySelector('.small-chart');
-        if(!panel.dataset.rendered){ renderSmallChart(title, panel); panel.dataset.rendered='1'; }
-        io.unobserve(en.target);
-      }
-    });
-  },{root:null, threshold:.2});
-  wrap.querySelectorAll('.card').forEach(c=>io.observe(c));
-}
-
-// ====== SVG工具 ======
+/* ========== SVG 绘图工具 ========== */
 function createSVG(w,h){ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.setAttribute('viewBox',`0 0 ${w} ${h}`); svg.setAttribute('role','img'); return svg; }
 function linePath(points){ return points.map((p,i)=> (i?'L':'M')+p[0].toFixed(2)+','+p[1].toFixed(2)).join(' '); }
 function segmentedPath(points){ let d='', seg=[]; points.forEach(p=>{ if(p===null){ if(seg.length>1){ d+=(d?' ':'')+linePath(seg);} seg=[];} else{ seg.push(p);} }); if(seg.length>1){ d+=(d?' ':'')+linePath(seg);} return d; }
@@ -555,60 +521,256 @@ function drawPoints(svg, points, radius){
     svg.appendChild(c);
   });
 }
+function avg10(arr){ const vals=arr.filter(v=>typeof v==='number'); if(!vals.length) return null; const avg=vals.reduce((a,b)=>a+b,0)/vals.length; return Math.round(avg*10); }
+function buildDomainSeries(domain){ return AGE_LIST.map(a=>avg10(indicatorScores[domain]?.[a]||[])); }
 
-// ====== 其它 ======
+/* ========== 月度图渲染与表 ========== */
+function renderMonthlyChart(){
+  const wrap=document.getElementById('monthlyChart');
+  wrap.innerHTML='';
+  const labels=(INDICATOR_TEXT[curDomain]?.[curAge]||[]).map((_,i)=>'指标'+(i+1));
+  const real=indicatorScores[curDomain]?.[curAge]||[];
+  const stdv=parseInt(document.getElementById('stdLine').value||'8');
+  const std=labels.map(()=>stdv);
+
+  const W=720, H=300, x0=50, y0=10, w=W-70, h=230;
+  const svg=createSVG(W,H);
+  renderGrid(svg, x0,y0,w,h, 0,10,2);
+  renderXAxis(svg, x0,y0,w,h, labels);
+
+  // 标准线（灰虚线）
+  const stdPts=toPoints(std, x0,y0,w,h, 0,10);
+  const stdD=segmentedPath(stdPts);
+  drawPath(svg, stdD, '#9ca3af', 2, '6,6');
+
+  // 实际值
+  const realPts=toPoints(real, x0,y0,w,h, 0,10);
+  const realD=segmentedPath(realPts);
+  drawPath(svg, realD, 'currentColor', 2);
+  drawPoints(svg, realPts, 3);
+
+  wrap.appendChild(svg);
+}
+
+function setDomain(d){
+  curDomain=d;
+  [...document.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active', c.textContent===d));
+  updateIndicatorsTable(); renderMonthlyChart();
+}
+function setAge(a){ curAge=a; document.getElementById('ageSelect').value=String(a); updateIndicatorsTable(); renderMonthlyChart(); }
+function updateIndicatorsTable(){
+  const tbody=document.getElementById('indicatorRows'); tbody.innerHTML='';
+  const texts=INDICATOR_TEXT[curDomain]?.[curAge]||[];
+  const scores=indicatorScores[curDomain]?.[curAge]||[];
+  texts.forEach((t,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${t}</td><td><input class="input num" type="number" min="1" max="10" step="1" value="${scores[i]??''}" data-idx="${i}" /></td>`;
+    tbody.appendChild(tr);
+  });
+  tbody.querySelectorAll('input').forEach(inp=>{
+    inp.onchange=()=>{
+      const i=parseInt(inp.dataset.idx);
+      const v=inp.value===''?null:Math.max(1,Math.min(10,parseInt(inp.value)));
+      inp.value=v===null?'':String(v);
+      indicatorScores[curDomain][curAge][i]=v;
+      saveScores(true); renderMonthlyChart(); renderSmallCharts(true);
+    };
+  });
+}
 function demoFill(){
-  const arr = indicatorScores[curDomain][curAge];
-  for(let i=0;i<arr.length;i++){
-    arr[i] = Math.floor(6+Math.random()*5); // 6-10
-  }
-  saveLS(true);
-  updateIndicatorsTable();
-  renderMonthlyChart();
-  renderSmallCharts(true);
+  const arr=indicatorScores[curDomain][curAge];
+  for(let i=0;i<arr.length;i++){ arr[i]=Math.floor(6+Math.random()*5); }
+  saveScores(true); updateIndicatorsTable(); renderMonthlyChart(); renderSmallCharts(true);
 }
 function clearThisMonth(){
-  const arr = indicatorScores[curDomain][curAge];
+  const arr=indicatorScores[curDomain][curAge];
   for(let i=0;i<arr.length;i++){ arr[i]=null; }
-  saveLS(true);
-  updateIndicatorsTable();
-  renderMonthlyChart();
-  renderSmallCharts(true);
+  saveScores(true); updateIndicatorsTable(); renderMonthlyChart(); renderSmallCharts(true);
 }
-function toggleTheme(){
-  const root=document.documentElement; const cur=root.getAttribute('data-theme')||'light';
-  const next=cur==='light'?'dark':'light';
-  root.setAttribute('data-theme', next);
-  saveLS(false, next);
-  renderMonthlyChart();
-  renderSmallCharts(true);
+
+/* ========== 小图与仪表板 ========== */
+function renderSmallChart(dom, container){
+  const base=REF_DEFAULT[dom]||[40,55,65,75,82,88];
+  const ub=base.map(v=>v+REF_BAND);
+  const lb=base.map(v=>v-REF_BAND);
+  const real=buildDomainSeries(dom);
+  const labels=AGE_LIST.map(a=>a+'月');
+
+  const W=720, H=260, x0=50, y0=10, w=W-70, h=190;
+  const svg=createSVG(W,H);
+  renderGrid(svg, x0,y0,w,h, 0,100,20);
+  renderXAxis(svg, x0,y0,w,h, labels);
+
+  const ubPts=toPoints(ub, x0,y0,w,h, 0,100);
+  const basePts=toPoints(base, x0,y0,w,h, 0,100);
+  const lbPts=toPoints(lb, x0,y0,w,h, 0,100);
+  const realPts=toPoints(real, x0,y0,w,h, 0,100);
+
+  drawPath(svg, linePath(ubPts), 'currentColor', 1, '6,6');
+  drawPath(svg, linePath(basePts), 'currentColor', 2, '2,6');
+  drawPath(svg, linePath(lbPts), 'currentColor', 1, '6,6');
+  drawPath(svg, segmentedPath(realPts), 'currentColor', 2);
+  drawPoints(svg, realPts, 3);
+
+  container.appendChild(svg);
 }
-function saveLS(hint=false, theme){
-  const data = { indicatorScores, homeScores, theme: theme || document.documentElement.getAttribute('data-theme') };
-  localStorage.setItem(LS_KEY, JSON.stringify(data));
-  if(hint) toast('已保存');
-  document.getElementById('jsonPreview').textContent = JSON.stringify({version:'v2.6.1',indicatorScores,homeScores}, null, 2);
+function renderSmallCharts(force=false){
+  const wrap=document.getElementById('smallCharts');
+  if(force) wrap.innerHTML='';
+  if(!wrap.children.length){
+    DOMAINS.forEach(dom=>{
+      const card=document.createElement('div'); card.className='card';
+      card.innerHTML=`<h2>${dom}</h2><div class="small-chart"></div>`;
+      wrap.appendChild(card);
+    });
+  }
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const title=en.target.querySelector('h2').textContent;
+        const panel=en.target.querySelector('.small-chart');
+        if(!panel.dataset.rendered){ renderSmallChart(title, panel); panel.dataset.rendered='1'; }
+        io.unobserve(en.target);
+      }
+    });
+  },{root:null, threshold:.2});
+  wrap.querySelectorAll('.card').forEach(c=>io.observe(c));
 }
-function loadLS(){
-  try{
-    const raw = localStorage.getItem(LS_KEY);
-    if(!raw) return null;
-    const obj = JSON.parse(raw);
-    if(obj.theme){ document.documentElement.setAttribute('data-theme', obj.theme); }
-    return obj;
-  }catch(e){ return null; }
+
+/* 仪表板 */
+function mean(arr){ const v=arr.filter(x=>typeof x==='number'); if(!v.length) return null; return v.reduce((a,b)=>a+b,0)/v.length; }
+function stddev(arr){ const v=arr.filter(x=>typeof x==='number'); if(v.length<2) return 0; const m=mean(v); return Math.sqrt(v.reduce((s,x)=>s+Math.pow(x-m,2),0)/(v.length-1)); }
+function linreg(x,y){ const xs=[], ys=[]; for(let i=0;i<y.length;i++){ if(typeof y[i]==='number'){ xs.push(x[i]); ys.push(y[i]); } } if(xs.length<2) return 0; const n=xs.length, sx=xs.reduce((a,b)=>a+b,0), sy=ys.reduce((a,b)=>a+b,0); const sxx=xs.reduce((a,b)=>a+b*b,0), sxy=xs.reduce((a,b,i)=>a+b*ys[i],0); return (n*sxy - sx*sy)/(n*sxx - sx*sx); }
+function renderStats(){
+  const wrap=document.getElementById('statsTableWrap'); wrap.innerHTML='';
+  const table=document.createElement('table'); table.className='table';
+  const thead=`<thead><tr><th>维度</th><th>均值(0–100)</th><th>标准差</th><th>增长速率(每6月)</th><th>状态</th></tr></thead>`;
+  let tbody='<tbody>';
+  const sparks=document.getElementById('sparks'); sparks.innerHTML='';
+  DOMAINS.forEach(dom=>{
+    const ser = AGE_LIST.map(a=>avg10(indicatorScores[dom]?.[a]||[]));
+    const m = mean(ser); const s = stddev(ser); const slope = linreg([0,1,2,3,4,5], ser.map(v=>v??NaN));
+    const st = (m==null)?'—':(m>=75?'good':(m>=55?'warn':'bad'));
+    const badge=`<span class="badge ${st}">${st==='good'?'良好':(st==='warn'?'需关注':'需提升')}</span>`;
+    tbody += `<tr><td>${dom}</td><td>${m==null?'—':m.toFixed(1)}</td><td>${s? s.toFixed(1):'0.0'}</td><td>${slope? slope.toFixed(2):'0.00'}</td><td>${badge}</td></tr>`;
+    // sparkline
+    const svg = createSVG(300,70);
+    const x0=30,y0=10,w=250,h=40;
+    renderGrid(svg,x0,y0,w,h,0,100,50);
+    const pts=toPoints(ser, x0,y0,w,h,0,100);
+    drawPath(svg, segmentedPath(pts), 'currentColor', 2);
+    drawPoints(svg, pts, 2.5);
+    const card=document.createElement('div'); card.className='card';
+    card.innerHTML=`<h2>${dom}</h2>`; card.appendChild(svg);
+    sparks.appendChild(card);
+  });
+  tbody+='</tbody>';
+  table.innerHTML=thead+tbody; wrap.appendChild(table);
 }
-function toast(msg){
-  const el=document.getElementById('saveHint');
-  el.textContent=msg;
-  setTimeout(()=>{el.textContent='';},1200);
+
+/* 家庭环境 */
+function buildHomeTable(){
+  const body=document.getElementById('homeRows'); body.innerHTML='';
+  HOME_ITEMS.forEach((it,idx)=>{
+    const tr=document.createElement('tr');
+    const cur = homeScores[idx]??3;
+    tr.innerHTML=`<td><strong>${it[0]}</strong></td>
+      <td class="small">${it[1]}<br><span class="muted">${it[2]}</span></td>
+      <td><select class="select" data-home="${idx}">${[1,2,3,4,5].map(v=>`<option value="${v}" ${cur===v?'selected':''}>${v}</option>`).join('')}</select></td>`;
+    body.appendChild(tr);
+  });
 }
-function switchTab(idx){
-  [...document.querySelectorAll('.tab')].forEach((t,i)=>t.classList.toggle('active', i===idx));
-  for(let i=0;i<4;i++){ document.getElementById('tab-'+i).hidden = i!==idx; }
-  if(idx===1){ renderSmallCharts(true); }
-  if(idx===3){ document.getElementById('jsonPreview').textContent = JSON.stringify({version:'v2.6.1',indicatorScores,homeScores}, null, 2); }
+document.getElementById('homeClear').onclick=()=>{
+  homeScores = Array(12).fill(3);
+  buildHomeTable();
+  document.getElementById('homeResult').innerHTML='';
+  saveScores();
+};
+document.getElementById('homeSave').onclick=()=>{
+  document.querySelectorAll('[data-home]').forEach(s=> homeScores[parseInt(s.dataset.home)] = parseInt(s.value) );
+  saveScores(true);
+};
+document.getElementById('homeCalc').onclick=()=>{
+  document.querySelectorAll('[data-home]').forEach(s=> homeScores[parseInt(s.dataset.home)] = parseInt(s.value) );
+  const vals=[...homeScores];
+  const avg=(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(2);
+  const level = avg>=4.5?'优秀':(avg>=3.5?'良好':(avg>=2.5?'基本达标':'需加强'));
+  const sug = level==='优秀'?'维持并拓展高质量互动场景。':(level==='良好'?'巩固现有做法，针对弱项设立每周微目标。':(level==='基本达标'?'重点加强亲子阅读与语言互动。':'优先优化作息、安全与回应性三项基础保障。'));
+  const list=HOME_ITEMS.map((it,i)=>`<li><strong>${it[0]}</strong>：当前评分 ${homeScores[i]}</li>`).join('');
+  document.getElementById('homeResult').innerHTML=`<h2>结果</h2><p>平均分：<strong>${avg}</strong>（${level}）</p><ul>${list}</ul><p class="small muted">建议：${sug}</p>`;
+  saveScores();
+};
+
+/* 存储 */
+function initScores(){
+  const o={};
+  DOMAINS.forEach(d=>{
+    o[d]={};
+    AGE_LIST.forEach(a=>{
+      const n=(INDICATOR_TEXT[d]&&INDICATOR_TEXT[d][a])?INDICATOR_TEXT[d][a].length:0;
+      o[d][a]=Array(n).fill(null);
+    });
+  });
+  return o;
 }
+function loadScores(){
+  try{ const raw=localStorage.getItem(STORE_KEY); if(!raw) return null; const obj=JSON.parse(raw); if(obj.homeScores) homeScores=obj.homeScores; return obj.indicatorScores; }catch(e){ return null; }
+}
+function saveScores(hint){
+  const data={indicatorScores, homeScores};
+  localStorage.setItem(STORE_KEY, JSON.stringify(data));
+  if(hint){ const el=document.getElementById('saveHint'); if(el){ el.textContent='已保存'; setTimeout(()=>{el.textContent='';},1000); } }
+  // 刷新 JSON 预览
+  const pre=document.getElementById('jsonPreview');
+  if(pre) pre.textContent = JSON.stringify(data, null, 2);
+}
+
+/* 共餐口令：WebAudio 简易节奏 */
+(function(){
+  const btn=document.getElementById('cmdBtn');
+  if(!btn) return;
+  btn.onclick=()=>{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    function beep(t0, dur=.15, freq=880){
+      const o=ctx.createOscillator(); const g=ctx.createGain();
+      o.type='sine'; o.frequency.value=freq;
+      o.connect(g); g.connect(ctx.destination);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(0.2, t0+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0+dur);
+      o.start(t0); o.stop(t0+dur+0.02);
+    }
+    const t=ctx.currentTime+0.05;
+    // “张嘴—咬一口—真棒！” 3拍：高-中-高
+    beep(t+0.00, 0.14, 980);
+    beep(t+0.45, 0.16, 660);
+    beep(t+0.90, 0.18, 980);
+  };
+})();
+
+/* 表情贴纸 */
+(function(){
+  const box=document.getElementById('stickers'); const text=document.getElementById('stickerText');
+  if(!box||!text) return;
+  box.addEventListener('click', (e)=>{
+    const t=e.target.closest('.sticker'); if(!t) return;
+    box.querySelectorAll('.sticker').forEach(s=>s.classList.remove('active'));
+    t.classList.add('active');
+    const state=t.dataset.state;
+    if(state==='happy') text.textContent='当前状态：开心 —— 继续保持轻松互动与正向反馈。';
+    else if(state==='resist') text.textContent='当前状态：抗拒 —— 放慢节奏，提供选择权与情绪安抚。';
+    else text.textContent='当前状态：满足 —— 暂停喂食，鼓励自主表达“我吃饱了”。';
+  });
+})();
+
+/* 渲染入口 */
+function renderAll(){
+  // 初始化指示器
+  setDomain(curDomain); setAge(curAge);
+  updateIndicatorsTable(); renderMonthlyChart(); buildHomeTable();
+}
+renderAll();
+goHome();
 </script>
 </body>
 </html>
