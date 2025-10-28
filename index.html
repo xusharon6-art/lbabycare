@@ -90,6 +90,13 @@ svg{width:100%;height:100%}
         <button class="btn" id="themeBtn">🌗 主题</button>
         <button class="btn" id="printBtn">🖨 打印/导出PDF</button>
         <button class="btn" id="resetBtn">🗑 重置</button>
+      
+<button class="btn" id="authOpenBtn">👤 登录/注册</button>
+<button class="btn" id="signOutBtn" style="display:none">🚪 退出</button>
+<button class="btn" id="cloudSaveBtn" style="display:none">☁ 云保存</button>
+<button class="btn" id="cloudLoadBtn" style="display:none">☁ 云读取</button>
+<span id="whoami" class="small muted"></span>
+
       </div>
       <div class="small">婴幼儿发展追踪与家庭指导系统 · 单文件 · 零依赖</div>
     </div>
@@ -772,5 +779,118 @@ function renderAll(){
 renderAll();
 goHome();
 </script>
+
+<dialog id="authDlg" style="border:1px solid var(--line);border-radius:12px;padding:16px;max-width:360px">
+  <h2 style="margin-top:0">登录 / 注册</h2>
+  <div style="display:grid;gap:8px">
+    <input id="emailInp" class="input" placeholder="邮箱" type="email" autocomplete="username" />
+    <input id="passInp" class="input" placeholder="密码（≥6位）" type="password" autocomplete="current-password" />
+    <div style="display:flex;gap:8px;margin-top:4px">
+      <button class="btn" id="doSignIn">登录</button>
+      <button class="btn" id="doSignUp">注册</button>
+      <button class="btn" id="closeDlg" style="margin-left:auto">关闭</button>
+    </div>
+    <p class="small muted">提示：注册成功后会自动创建云端空间（角色默认为 <code>user</code>）。</p>
+  </div>
+</dialog>
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+// === 用你的 Firebase 控制台配置替换下面对象 ===
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// UI refs
+const authOpenBtn = document.getElementById('authOpenBtn');
+const signOutBtn  = document.getElementById('signOutBtn');
+const cloudSaveBtn= document.getElementById('cloudSaveBtn');
+const cloudLoadBtn= document.getElementById('cloudLoadBtn');
+const whoami      = document.getElementById('whoami');
+const dlg   = document.getElementById('authDlg');
+const email = document.getElementById('emailInp');
+const pass  = document.getElementById('passInp');
+const doSignIn = document.getElementById('doSignIn');
+const doSignUp = document.getElementById('doSignUp');
+const closeDlg = document.getElementById('closeDlg');
+
+authOpenBtn.onclick = ()=> dlg.showModal();
+closeDlg.onclick    = ()=> dlg.close();
+
+doSignIn.onclick = async ()=>{
+  try{
+    await signInWithEmailAndPassword(auth, (email.value||'').trim(), pass.value);
+    dlg.close();
+  }catch(e){ alert('登录失败：'+(e.message||e)); }
+};
+
+doSignUp.onclick = async ()=>{
+  try{
+    const res = await createUserWithEmailAndPassword(auth, (email.value||'').trim(), pass.value);
+    await setDoc(doc(db,'users', res.user.uid), { email: res.user.email, role: 'user', createdAt: Date.now() }, { merge:true });
+    await ensureDatasetDoc(res.user.uid);
+    dlg.close();
+  }catch(e){ alert('注册失败：'+(e.message||e)); }
+};
+
+signOutBtn.onclick = ()=> signOut(auth);
+
+onAuthStateChanged(auth, async (user)=>{
+  if(user){
+    whoami.textContent = '已登录：'+user.email;
+    signOutBtn.style.display=''; cloudSaveBtn.style.display=''; cloudLoadBtn.style.display='';
+    authOpenBtn.style.display='none';
+  }else{
+    whoami.textContent='';
+    signOutBtn.style.display='none'; cloudSaveBtn.style.display='none'; cloudLoadBtn.style.display='none';
+    authOpenBtn.style.display='';
+  }
+});
+
+async function cloudSave(){
+  const user = auth.currentUser;
+  if(!user) return alert('请先登录');
+  const payload = { indicatorScores, homeScores, updatedAt: Date.now() };
+  const ref = doc(db, 'users', user.uid, 'datasets', 'main');
+  await setDoc(ref, payload, { merge:true });
+  alert('已保存到云端 ✅');
+}
+async function cloudLoad(){
+  const user = auth.currentUser;
+  if(!user) return alert('请先登录');
+  const ref = doc(db, 'users', user.uid, 'datasets', 'main');
+  const snap = await getDoc(ref);
+  if(!snap.exists()) return alert('云端暂未发现数据');
+  const data = snap.data();
+  if(data.indicatorScores) indicatorScores = data.indicatorScores;
+  if(data.homeScores) homeScores = data.homeScores;
+  if(window.renderAll) renderAll();
+  alert('已从云端读取 ✅');
+}
+cloudSaveBtn.onclick = cloudSave;
+cloudLoadBtn.onclick = cloudLoad;
+
+async function ensureDatasetDoc(uid){
+  const ref = doc(db,'users', uid, 'datasets', 'main');
+  const snap = await getDoc(ref);
+  if(!snap.exists()){
+    await setDoc(ref, { indicatorScores: indicatorScores||{}, homeScores: homeScores||[], updatedAt: Date.now() });
+  }
+}
+</script>
+
 </body>
 </html>
