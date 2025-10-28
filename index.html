@@ -1,135 +1,614 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="DevTracker Pro - 婴幼儿发展曲线与家庭环境评估" />
-  <meta name="author" content="Sharon Xu" />
-  <title>DevTracker Pro · 评估与曲线</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
-  <meta property="og:title" content="DevTracker Pro" />
-  <meta property="og:description" content="婴幼儿发展曲线生成与家庭环境评估" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/images/preview.png" />
-  <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>婴幼儿发展追踪 v2.6.1（零依赖SVG折线图）</title>
+<style>
+:root{
+  --bg:#ffffff; --fg:#1f2937; --muted:#6b7280; --card:#f8fafc; --accent:#2563eb;
+  --chip:#e5e7eb; --chip-active:#dbeafe; --line:#e5e7eb; --link:#2563eb;
+}
+:root[data-theme="dark"]{
+  --bg:#0b1220; --fg:#e5e7eb; --muted:#9ca3af; --card:#141b2e; --accent:#60a5fa;
+  --chip:#1f2937; --chip-active:#0b3569; --line:#1f2937; --link:#93c5fd;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.5}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:10}
+.toolbar-left,.toolbar-right{display:flex;gap:8px;align-items:center}
+.btn{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--fg);padding:8px 12px;border-radius:999px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.select,.input{border:1px solid var(--line);padding:8px 12px;border-radius:10px;background:var(--bg);color:var(--fg)}
+.input.num{width:68px;text-align:center}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.tab{padding:10px 14px;border-radius:999px;border:1px solid var(--line);cursor:pointer;background:var(--chip);color:var(--fg)}
+.tab.active{background:var(--chip-active);border-color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+h1{font-size:22px;margin:6px 0 2px}
+h2{font-size:18px;margin:12px 0 8px}
+hr{border:none;border-top:1px solid var(--line);margin:12px 0}
+.table{width:100%;border-collapse:collapse;font-size:14px}
+.table th,.table td{border-top:1px solid var(--line);padding:8px;vertical-align:top}
+.table th{font-weight:600;text-align:left;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--chip);padding:8px 12px;border-radius:999px;cursor:pointer}
+.chip.active{background:var(--chip-active);border-color:var(--accent)}
+.muted{color:var(--muted)}
+.footer{margin:24px 0 40px;color:var(--muted);text-align:center}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.small{font-size:12px}
+.chart-wrap{height:320px}
+.small-chart{height:220px}
+svg{width:100%;height:100%}
+/* 打印仅保留内容区 */
+@media print{
+  .toolbar,.tabs{display:none !important}
+  body{background:#fff;color:#000}
+  .card{border:none}
+}
+</style>
 </head>
 <body>
-  <header class="header">
-    <h1>DevTracker Pro</h1>
-    <p>婴幼儿发展曲线生成 · 家庭环境评估 · 离线可用</p>
-    <nav class="tabs">
-      <button class="tab active" data-target="#overview">概览</button>
-      <button class="tab" data-target="#growth">发育曲线生成</button>
-      <button class="tab" data-target="#family">家庭环境评估</button>
-      <button class="tab" data-target="#export">数据导出</button>
-    </nav>
-  </header>
-
-  <main>
-    <section id="overview" class="section visible">
-      <h2>项目概览</h2>
-      <p>本工具支持在 6、12、18、24、30、36 月龄关键节点上，录入八个发展维度（认知、语言、大动作、精细动作、艺术、自理、数学、交往）的评估值，自动生成曲线与雷达图；并提供一个简洁的家庭环境评估问卷，输出维度报告与改进建议。</p>
-      <ul class="bullets">
-        <li>📈 自定义标准值 + 个体曲线对比</li>
-        <li>📊 雷达图与折线图双视图</li>
-        <li>🏠 家庭环境 4 维度评估与建议</li>
-        <li>💾 本地存储（localStorage）与 JSON 导入/导出</li>
-      </ul>
-    </section>
-
-    <section id="growth" class="section">
-      <h2>发育曲线生成</h2>
-      <div class="panel">
-        <div class="panel-header">1) 录入评估值（0–100）</div>
-        <div class="grid grid-2">
-          <div>
-            <label>月龄节点（固定）</label>
-            <div class="chips">6 · 12 · 18 · 24 · 30 · 36</div>
-            <p class="muted">说明：右侧表格为八个维度在六个节点的得分；可根据你的实际量表换算为 0–100 量纲。</p>
-          </div>
-          <div class="actions-right">
-            <button id="btn-fill-demo" class="btn secondary">填充示例数据</button>
-            <button id="btn-clear-scores" class="btn danger">清空录入</button>
-          </div>
-        </div>
-        <div id="scores-table"></div>
+  <div class="container">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <button class="btn" id="themeBtn">🌗 主题</button>
+        <button class="btn" id="printBtn">🖨 打印</button>
+        <button class="btn" id="resetBtn">🗑 重置</button>
       </div>
+      <div class="toolbar-right small">
+        <span>婴幼儿发展追踪 v2.6.1 · 零依赖SVG</span>
+      </div>
+    </div>
 
-      <div class="panel">
-        <div class="panel-header">2) 参考标准设置（百分位带）</div>
-        <div class="grid grid-3">
-          <div>
-            <label>选用参考</label>
-            <select id="ref-preset">
-              <option value="default">系统默认（P50）</option>
-              <option value="high">较高参考（P60–P70）</option>
-              <option value="low">较低参考（P30–P40）</option>
-              <option value="custom">自定义</option>
-            </select>
-          </div>
-          <div>
-            <label>上下容差（±）</label>
-            <input id="ref-band" type="number" min="0" max="30" value="10"/>
-          </div>
-          <div class="actions-right">
-            <button id="btn-apply-ref" class="btn">应用参考带</button>
+    <div class="tabs" id="tabs"></div>
+
+    <!-- 指标曲线（按月） -->
+    <section class="card" id="tab-0" hidden>
+      <h1>指标曲线（按月）</h1>
+      <div class="grid-3">
+        <div>
+          <h2>选择维度</h2>
+          <div id="domainChips" class="chips"></div>
+        </div>
+        <div>
+          <h2>选择月龄</h2>
+          <select class="select" id="ageSelect"></select>
+        </div>
+        <div>
+          <h2>标准线</h2>
+          <div style="display:flex;gap:8px;align-items:center">
+            <label class="muted">基准分（0–10）</label>
+            <input id="stdLine" class="input num" type="number" min="0" max="10" step="1" value="8" />
           </div>
         </div>
       </div>
 
-      <div class="panel">
-        <div class="panel-header">3) 可视化</div>
-        <div class="grid grid-2">
-          <div>
-            <canvas id="lineChart" height="220"></canvas>
+      <div class="grid-2" style="margin-top:12px">
+        <div class="card">
+          <h2>指标打分</h2>
+          <table class="table">
+            <thead><tr><th style="width:60%">指标</th><th>分值（1–10）</th></tr></thead>
+            <tbody id="indicatorRows"></tbody>
+          </table>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn" id="fillDemo">示例填充</button>
+            <button class="btn" id="clearThis">清空本月指标</button>
+            <span class="muted small" id="saveHint"></span>
           </div>
-          <div>
-            <canvas id="radarChart" height="220"></canvas>
-          </div>
+        </div>
+        <div class="card">
+          <h2>本月指标曲线</h2>
+          <div class="chart-wrap" id="monthlyChart"></div>
+          <p class="small muted">纵轴固定 0–10；灰色虚线为标准线；空值断开。</p>
         </div>
       </div>
     </section>
 
-    <section id="family" class="section">
-      <h2>家庭环境评估</h2>
-      <p class="muted">简版 16 题（Likert 1–5）：学习资源、互动质量、安全与规律、数字暴露 四维度，每题 1–5 分。</p>
-      <form id="family-form" class="panel">
-        <div id="family-questions"></div>
-        <div class="actions-right">
-          <button type="button" id="btn-family-clear" class="btn danger">清空</button>
-          <button type="submit" class="btn">计算评分</button>
-        </div>
-      </form>
-      <div id="family-result" class="panel" style="display:none;"></div>
+    <!-- 能力曲线（6–36月） -->
+    <section class="card" id="tab-1" hidden>
+      <h1>能力曲线（6–36 月）</h1>
+      <p class="muted small">规则：同一维度每个已录入月龄的指标<strong>均值×10</strong>（四舍五入），未录入则断点。带状为参考线 ±10。</p>
+      <div id="smallCharts" class="grid-2"></div>
     </section>
 
-    <section id="export" class="section">
-      <h2>数据导入 / 导出</h2>
-      <div class="panel">
-        <div class="grid grid-2">
-          <div>
-            <button id="btn-save-local" class="btn">保存到本地浏览器</button>
-            <button id="btn-load-local" class="btn secondary">从本地读取</button>
-          </div>
-          <div class="actions-right">
-            <button id="btn-export-json" class="btn">导出 JSON 文件</button>
-            <label class="btn secondary">
-              导入 JSON
-              <input id="import-json" type="file" accept="application/json" style="display:none;">
-            </label>
-          </div>
+    <!-- 家庭环境评估 -->
+    <section class="card" id="tab-2" hidden>
+      <h1>家庭环境评估</h1>
+      <p class="muted small">每项 1–5 分；点击“计算评分”生成平均分、等级与建议。评分类别：需加强/基本达标/良好/优秀。</p>
+      <table class="table">
+        <thead><tr><th style="width:18%">条目</th><th>标准值描述</th><th style="width:160px">评分（1–5）</th></tr></thead>
+        <tbody id="homeRows"></tbody>
+      </table>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn" id="homeCalc">计算评分</button>
+        <button class="btn" id="homeClear">清空</button>
+        <button class="btn" id="homeSave">保存</button>
+      </div>
+      <div id="homeResult" class="card" style="margin-top:12px"></div>
+    </section>
+
+    <!-- 导入导出 -->
+    <section class="card" id="tab-3" hidden>
+      <h1>导入导出 / 持久化</h1>
+      <div class="grid-2">
+        <div>
+          <h2>导出 JSON</h2>
+          <button class="btn" id="exportBtn">下载 devtracker-v2_6_1-data.json</button>
+          <pre id="jsonPreview" class="card small" style="white-space:pre-wrap;margin-top:8px;max-height:300px;overflow:auto"></pre>
         </div>
-        <pre id="export-preview" class="code"></pre>
+        <div>
+          <h2>导入 JSON</h2>
+          <input type="file" id="importFile" accept=".json" class="input" />
+          <p class="muted small">选择由本工具导出的同版本 JSON 覆盖本地数据。</p>
+        </div>
       </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <p>© 2025 Sharon Xu | DevTracker Pro v2 | GitHub Pages Ready</p>
-  </footer>
+    <div class="footer small">© 2025 DevTracker v2.6.1 · 单文件 · 零依赖 · SVG 折线图</div>
+  </div>
 
-  <script src="js/main.js"></script>
+<script>
+// ====== 数据与状态 ======
+const DOMAINS=['认知能力','数学逻辑','语言能力','大动作能力','精细动作能力','艺术表现','自理能力','交往能力'];
+const AGE_LIST=[6,12,18,24,30,36];
+const LS_KEY='devtracker_v2_6_1';
+const REF_BAND=10;
+
+// 指标文本（示例集）
+const INDICATOR_TEXT={
+  '认知能力':{6:['目光追随移动物体','注视时长≥3秒','寻找部分遮挡的玩具','分辨熟人/陌生人表情','对新奇刺激转头定位'],
+ 12:['物体永久性初显','两步因果探索（拍/推）','模仿简单动作','注意力转移','探索式敲打/摇晃'],
+ 18:['三步因果探索','功能性使用物品','简易分类配对','指认熟悉物体','尝试解锁/打开'],
+ 24:['两步规则完成','按颜色或形状分类','简单拼搭','记住2步指令','独立探索顺序'],
+ 30:['简单问题求解','3类以上分类','拼图3–4块','因果推断增强','情境中回忆'],
+ 36:['多步骤规则','数量守恒初显','6块拼图','简单角色扮演规划','延迟满足']},
+  '数学逻辑':{6:['注视数量差异','追视数量变化','对节奏有反应','对重复产生期待','短时记忆2秒'],
+ 12:['理解“更多/更少”','拍手按节奏','配对相同物体','按大小排两级','对“一个/两个”敏感'],
+ 18:['口头点数1-3','按大小排序3级','简单图形配对','完成2步拼插','比较多少'],
+ 24:['点数到5','按类聚合3组','简单模式ABAB','匹配数字1-3','比较长短高低'],
+ 30:['点数到7','延续模式AAB','3维分类','理解0概念初显','简单加一'],
+ 36:['点数到10','复杂模式ABC','比较差值','图形组成','简单减一']},
+  '语言能力':{6:['对名字有反应','咿呀发声','转头寻找声音','高兴时笑声','模仿音节'],
+ 12:['会说1-3个词','理解“不要”','指物命名','手势表达','听懂熟悉指令'],
+ 18:['会说10+词','两词短语','命名常见物','理解“给我”','模仿新词'],
+ 24:['三词句','提问“这是什么”','理解方位词','讲述简单需要','跟读短句'],
+ 30:['四词句','讲述经历片段','理解复合指令','基本时态意识','复述故事要点'],
+ 36:['连贯表达','使用因果连词','理解简单疑问句','情绪言语表达','讲述完整经历']},
+  '大动作能力':{6:['抬头稳定','翻身','俯卧支撑','坐姿辅助','抓握支撑'],
+ 12:['独站片刻','扶物走','蹲起','攀爬低台阶','抛掷大球'],
+ 18:['独走稳','后退数步','助跑踢球','跨小障碍','搬运小物'],
+ 24:['双脚起跳','上下台阶扶栏','接滚来的球','平衡木迈步','短距离跑'],
+ 30:['单脚站1-2秒','双脚跳前进','上楼交替步','踢球更准','转身跑停'],
+ 36:['单脚跳','下楼交替步','抛接轻球','30秒平衡','原地连续跳']},
+  '精细动作能力':{6:['抓握摇铃','双手传物','敲打桌面','撮握尝试','注视手部'],
+ 12:['拇食指捏','翻书页','把积木放盒','涂鸦痕迹','插棒大孔'],
+ 18:['堆2-3块','画直线痕迹','穿大孔绳','翻书多页','拨动开关'],
+ 24:['堆5块','画圆圈痕迹','转动旋钮','撕纸条','拼插形状块'],
+ 30:['剪纸直线','画十字痕迹','扣大扣子','拧瓶盖','夹取小物'],
+ 36:['描画简单形','穿珠子','剪纸曲线','画人头足','使用勺叉准']},
+  '艺术表现':{6:['对音乐微笑','随节奏摆动','注视色彩','模仿音高','拍手应和'],
+ 12:['随音乐律动','选择喜欢乐器','叠放彩块','模仿表情','自由涂鸦'],
+ 18:['节奏律动准确','用色块配色','唱简短旋律','角色模仿','用线条表达'],
+ 24:['跟唱儿歌','颜色搭配2-3色','模仿画形','节奏道具使用','角色扮演'],
+ 30:['自主歌唱','绘画基本形状','节奏变换','搭建主题作品','讲述作品'],
+ 36:['创编旋律','主题绘画完整','节奏指挥','舞蹈组合','戏剧性表达']},
+  '自理能力':{6:['配合喂养','握奶瓶','对穿衣有反应','拍背入睡','规律排便初显'],
+ 12:['用杯喝水','帮忙伸手脚','尝试用勺','指示纸尿裤湿了','入睡规律'],
+ 18:['脱简单衣物','独立用勺部分成功','洗手配合','示意如厕','穿鞋尝试'],
+ 24:['基本用勺','穿脱部分衣物','协助刷牙','如厕训练中','收拾玩具'],
+ 30:['独立用勺/叉','穿脱简单衣物','简单刷牙漱口','洗手流程','整理个人物品'],
+ 36:['独立进餐','穿脱衣裤鞋袜','独立如厕','简单家务','安全自护意识']},
+  '交往能力':{6:['注视人脸','对笑容回应','对抱起有反应','跟随成人目光','基本分离焦虑'],
+ 12:['陌生情境回避','与成人互动游戏','与同伴平行游戏','分享兴趣','社会性微笑'],
+ 18:['与同伴有互动','轮流等待初显','表达情绪需求','模仿同伴','安慰他人尝试'],
+ 24:['合作游戏','遵守简单规则','分享轮流','表达同理','与同伴协同'],
+ 30:['小组合作','冲突协商','遵守家庭规则','角色协作','表达礼貌'],
+ 36:['同伴协作任务','规则游戏','解决冲突','领导/跟随角色','理解社会规范']}
+};
+
+const REF_DEFAULT={
+  '认知能力':[40,55,65,75,82,88],
+  '数学逻辑':[35,50,60,70,78,85],
+  '语言能力':[30,48,60,72,80,88],
+  '大动作能力':[45,60,70,80,88,92],
+  '精细动作能力':[32,48,60,72,80,88],
+  '艺术表现':[30,45,58,70,78,86],
+  '自理能力':[28,44,58,70,82,90],
+  '交往能力':[34,50,62,74,82,90]
+};
+
+let indicatorScores = loadLS()?.indicatorScores || initScores();
+let homeScores = loadLS()?.homeScores || Array(12).fill(3); // 默认居中3分
+let curDomain = DOMAINS[0];
+let curAge = AGE_LIST[0];
+
+// ====== DOM 初始化 ======
+const tabDefs=['指标曲线（按月）','能力曲线（6–36月）','家庭环境','导入导出'];
+const tabsEl=document.getElementById('tabs');
+tabDefs.forEach((t,i)=>{
+  const b=document.createElement('button');
+  b.className='tab'+(i===0?' active':'');
+  b.textContent=t; b.onclick=()=>switchTab(i);
+  tabsEl.appendChild(b);
+});
+document.getElementById('tab-0').hidden=false;
+
+const chipsEl=document.getElementById('domainChips');
+DOMAINS.forEach((d,i)=>{
+  const c=document.createElement('button');
+  c.className='chip'+(i===0?' active':'');
+  c.textContent=d; c.onclick=()=>setDomain(d);
+  chipsEl.appendChild(c);
+});
+const ageSelect=document.getElementById('ageSelect');
+AGE_LIST.forEach(a=>{ const o=document.createElement('option'); o.value=a; o.textContent=a+' 月'; ageSelect.appendChild(o); });
+ageSelect.onchange=()=>setAge(parseInt(ageSelect.value));
+
+document.getElementById('fillDemo').onclick=demoFill;
+document.getElementById('clearThis').onclick=clearThisMonth;
+document.getElementById('stdLine').onchange=renderMonthlyChart;
+
+// Toolbar
+document.getElementById('themeBtn').onclick=toggleTheme;
+document.getElementById('printBtn').onclick=()=>window.print();
+document.getElementById('resetBtn').onclick=()=>{
+  if(confirm('确认清空所有评分与本地存储？')){
+    localStorage.removeItem(LS_KEY);
+    indicatorScores = initScores();
+    homeScores = Array(12).fill(3);
+    updateIndicatorsTable(); renderMonthlyChart(); renderSmallCharts(true);
+    buildHomeTable(); document.getElementById('homeResult').innerHTML='';
+    toast('已重置');
+  }
+};
+
+// 家庭环境（12项+建议）
+const HOME_ITEMS=[
+  ['作息','固定作息、稳定昼夜节律','1=无规律; 3=基本规律; 5=稳定规律'],
+  ['安全','用电/家具/边角/门窗防护完善','1=隐患多; 3=部分防护; 5=防护完善'],
+  ['回应性','成人对信号及时回应','1=忽视; 3=一般; 5=敏感回应'],
+  ['语言环境','有互动性语言与指令','1=极少互动; 3=一般; 5=丰富互动'],
+  ['亲子阅读','每周有固定亲子阅读','1=无; 3=每周1-2次; 5=每日15min+'],
+  ['游戏材料','适龄安全、开放性材料','1=匮乏; 3=基本够; 5=丰富多样'],
+  ['屏幕暴露','时长与内容可控','1=超2h/日; 3=<1h/日; 5=几乎不用'],
+  ['睡眠环境','安静、光照与温湿适宜','1=差; 3=一般; 5=良好'],
+  ['营养喂养','均衡饮食与规律加餐','1=偏食严重; 3=基本均衡; 5=均衡规律'],
+  ['卫生消毒','良好卫生习惯','1=差; 3=一般; 5=良好'],
+  ['社会互动','有高质量同伴/成人互动','1=很少; 3=偶尔; 5=经常'],
+  ['家长压力','家长压力可调节','1=高压; 3=可控; 5=良好调节']
+];
+const HOME_SUGG={
+  '需加强':'建议建立作息/安全清单，增加互动与规律性；优先修补明显短板。',
+  '基本达标':'保持关键环节，针对弱项设立每周微目标逐步改善。',
+  '良好':'继续巩固现有做法，可引入更高质量互动与方案。',
+  '优秀':'维持并作为家庭范例，拓展到更多生活/学习情境。'
+};
+function buildHomeTable(){
+  const body=document.getElementById('homeRows');
+  body.innerHTML='';
+  HOME_ITEMS.forEach((it,idx)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML = `<td><strong>${it[0]}</strong></td>
+      <td class="small">${it[1]}<br><span class="muted">${it[2]}</span></td>
+      <td><select class="select" data-home="${idx}">${[1,2,3,4,5].map(v=>`<option value="${v}" ${homeScores[idx]===v?'selected':''}>${v}</option>`).join('')}</select></td>`;
+    body.appendChild(tr);
+  });
+}
+document.getElementById('homeClear').onclick=()=>{
+  homeScores = Array(12).fill(3);
+  buildHomeTable();
+  document.getElementById('homeResult').innerHTML='';
+  saveLS();
+};
+document.getElementById('homeSave').onclick=()=>{
+  document.querySelectorAll('[data-home]').forEach(s=>{ homeScores[parseInt(s.dataset.home)] = parseInt(s.value); });
+  saveLS(true);
+};
+document.getElementById('homeCalc').onclick=()=>{
+  document.querySelectorAll('[data-home]').forEach(s=>{ homeScores[parseInt(s.dataset.home)] = parseInt(s.value); });
+  const vals=[...homeScores];
+  const avg=(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(2);
+  const levels=vals.map(v=> v<=2?'需加强':(v===3?'基本达标':(v===4?'良好':'优秀')) );
+  const list=HOME_ITEMS.map((it,i)=>`<li><strong>${it[0]}</strong>：${levels[i]} · <span class="muted">${HOME_SUGG[levels[i]]}</span></li>`).join('');
+  document.getElementById('homeResult').innerHTML = `<h2>结果</h2>
+    <p>平均分：<strong>${avg}</strong></p><ul>${list}</ul>`;
+  saveLS();
+};
+
+// 导入导出
+document.getElementById('exportBtn').onclick=()=>{
+  const data = { version:'v2.6.1', indicatorScores, homeScores };
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'devtracker-v2_6_1-data.json';
+  a.click();
+};
+document.getElementById('importFile').addEventListener('change', (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const obj = JSON.parse(reader.result);
+      if(obj && (obj.indicatorScores || obj.homeScores)){
+        if(obj.indicatorScores) indicatorScores = obj.indicatorScores;
+        if(obj.homeScores) homeScores = obj.homeScores;
+        saveLS();
+        updateIndicatorsTable();
+        renderMonthlyChart();
+        renderSmallCharts(true);
+        buildHomeTable();
+        document.getElementById('homeResult').innerHTML='';
+        toast('导入成功');
+      }else{
+        alert('JSON 结构不正确');
+      }
+    }catch(err){ alert('解析失败：'+err.message); }
+  };
+  reader.readAsText(file,'utf-8');
+});
+
+// 初始化默认视图
+setDomain(curDomain);
+setAge(curAge);
+updateIndicatorsTable();
+buildHomeTable();
+renderMonthlyChart();
+renderSmallCharts(true);
+
+// ====== 工具函数与渲染 ======
+function initScores(){
+  const o={};
+  DOMAINS.forEach(d=>{
+    o[d]={};
+    AGE_LIST.forEach(a=>{
+      const n = (INDICATOR_TEXT[d] && INDICATOR_TEXT[d][a]) ? INDICATOR_TEXT[d][a].length : 0;
+      o[d][a] = Array(n).fill(null);
+    });
+  });
+  return o;
+}
+function setDomain(d){
+  curDomain=d;
+  [...document.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active', c.textContent===d));
+  updateIndicatorsTable();
+  renderMonthlyChart();
+}
+function setAge(a){
+  curAge=a;
+  document.getElementById('ageSelect').value = String(a);
+  updateIndicatorsTable();
+  renderMonthlyChart();
+}
+function updateIndicatorsTable(){
+  const tbody=document.getElementById('indicatorRows');
+  tbody.innerHTML='';
+  const texts = INDICATOR_TEXT[curDomain]?.[curAge] || [];
+  const scores = indicatorScores[curDomain]?.[curAge] || [];
+  texts.forEach((t,idx)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML = `<td>${t}</td>
+      <td><input class="input num" type="number" min="1" max="10" step="1" value="${scores[idx]??''}" data-idx="${idx}" /></td>`;
+    tbody.appendChild(tr);
+  });
+  tbody.querySelectorAll('input').forEach(inp=>{
+    inp.onchange = ()=>{
+      const i=parseInt(inp.dataset.idx);
+      const v=inp.value===''?null:Math.max(1,Math.min(10,parseInt(inp.value)));
+      inp.value = v===null?'':String(v);
+      indicatorScores[curDomain][curAge][i]=v;
+      saveLS(true);
+      renderMonthlyChart();
+      renderSmallCharts(true);
+    };
+  });
+}
+function renderMonthlyChart(){
+  const wrap=document.getElementById('monthlyChart');
+  wrap.innerHTML='';
+  const labels=(INDICATOR_TEXT[curDomain]?.[curAge]||[]).map((_,i)=>'指标'+(i+1));
+  const real=indicatorScores[curDomain]?.[curAge]||[];
+  const stdv=parseInt(document.getElementById('stdLine').value||'8');
+  const std=labels.map(()=>stdv);
+
+  const W=720, H=300, x0=50, y0=10, w=W-70, h=230;
+  const svg=createSVG(W,H);
+  renderGrid(svg, x0,y0,w,h, 0,10,2);
+  renderXAxis(svg, x0,y0,w,h, labels);
+
+  // 标准线（灰虚线）
+  const stdPts=toPoints(std, x0,y0,w,h, 0,10);
+  const stdD=segmentedPath(stdPts);
+  drawPath(svg, stdD, '#9ca3af', 2, '6,6');
+
+  // 实际值
+  const realPts=toPoints(real, x0,y0,w,h, 0,10);
+  const realD=segmentedPath(realPts);
+  drawPath(svg, realD, 'currentColor', 2);
+  drawPoints(svg, realPts, 3);
+
+  wrap.appendChild(svg);
+}
+function avg10(arr){
+  const vals = arr.filter(v=>typeof v==='number');
+  if(!vals.length) return null;
+  const avg = vals.reduce((a,b)=>a+b,0)/vals.length;
+  return Math.round(avg*10);
+}
+function buildDomainSeries(domain){
+  return AGE_LIST.map(a=> avg10(indicatorScores[domain]?.[a]||[]) );
+}
+function smallChartOptions(){ return {}; } // 占位，SVG方案无需此项
+
+function renderSmallChart(dom, container){
+  const base=REF_DEFAULT[dom] || [40,55,65,75,82,88];
+  const ub=base.map(v=>v+REF_BAND);
+  const lb=base.map(v=>v-REF_BAND);
+  const real=buildDomainSeries(dom);
+  const labels=AGE_LIST.map(a=>a+'月');
+
+  const W=720, H=260, x0=50, y0=10, w=W-70, h=190;
+  const svg=createSVG(W,H);
+  renderGrid(svg, x0,y0,w,h, 0,100,20);
+  renderXAxis(svg, x0,y0,w,h, labels);
+
+  const ubPts=toPoints(ub, x0,y0,w,h, 0,100);
+  const basePts=toPoints(base, x0,y0,w,h, 0,100);
+  const lbPts=toPoints(lb, x0,y0,w,h, 0,100);
+  const realPts=toPoints(real, x0,y0,w,h, 0,100);
+
+  drawPath(svg, linePath(ubPts), 'currentColor', 1, '6,6');
+  drawPath(svg, linePath(basePts), 'currentColor', 2, '2,6');
+  drawPath(svg, linePath(lbPts), 'currentColor', 1, '6,6');
+  drawPath(svg, segmentedPath(realPts), 'currentColor', 2);
+  drawPoints(svg, realPts, 3);
+
+  container.appendChild(svg);
+}
+function renderSmallCharts(force=false){
+  const wrap=document.getElementById('smallCharts');
+  if(force) wrap.innerHTML='';
+  if(!wrap.children.length){
+    DOMAINS.forEach(dom=>{
+      const card=document.createElement('div'); card.className='card';
+      card.innerHTML = `<h2>${dom}</h2><div class="small-chart"></div>`;
+      wrap.appendChild(card);
+    });
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const title=en.target.querySelector('h2').textContent;
+        const panel=en.target.querySelector('.small-chart');
+        if(!panel.dataset.rendered){ renderSmallChart(title, panel); panel.dataset.rendered='1'; }
+        io.unobserve(en.target);
+      }
+    });
+  },{root:null, threshold:.2});
+  wrap.querySelectorAll('.card').forEach(c=>io.observe(c));
+}
+
+// ====== SVG工具 ======
+function createSVG(w,h){ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.setAttribute('viewBox',`0 0 ${w} ${h}`); svg.setAttribute('role','img'); return svg; }
+function linePath(points){ return points.map((p,i)=> (i?'L':'M')+p[0].toFixed(2)+','+p[1].toFixed(2)).join(' '); }
+function segmentedPath(points){ let d='', seg=[]; points.forEach(p=>{ if(p===null){ if(seg.length>1){ d+=(d?' ':'')+linePath(seg);} seg=[];} else{ seg.push(p);} }); if(seg.length>1){ d+=(d?' ':'')+linePath(seg);} return d; }
+function renderGrid(svg, x0,y0, w,h, yMin,yMax,yStep){
+  const g=document.createElementNS(svg.namespaceURI,'g');
+  for(let y=yMin; y<=yMax; y+=yStep){
+    const yy = y0 + h - (y - yMin) / (yMax - yMin) * h;
+    const line=document.createElementNS(svg.namespaceURI,'line');
+    line.setAttribute('x1',x0); line.setAttribute('x2',x0+w); line.setAttribute('y1',yy); line.setAttribute('y2',yy);
+    line.setAttribute('stroke','var(--line)'); line.setAttribute('stroke-width','1');
+    g.appendChild(line);
+    const txt=document.createElementNS(svg.namespaceURI,'text');
+    txt.setAttribute('x', x0-6); txt.setAttribute('y', yy+4);
+    txt.setAttribute('text-anchor','end'); txt.setAttribute('font-size','12'); txt.setAttribute('fill','var(--fg)');
+    txt.textContent = y;
+    g.appendChild(txt);
+  }
+  svg.appendChild(g);
+}
+function renderXAxis(svg, x0,y0,w,h, labels){
+  const g=document.createElementNS(svg.namespaceURI,'g');
+  const n=labels.length;
+  for(let i=0;i<n;i++){
+    const xx=x0 + (n===1?0:(i*(w/(n-1))));
+    const txt=document.createElementNS(svg.namespaceURI,'text');
+    txt.setAttribute('x',xx); txt.setAttribute('y', y0+h+16);
+    txt.setAttribute('text-anchor','middle'); txt.setAttribute('font-size','12'); txt.setAttribute('fill','var(--fg)');
+    txt.textContent=labels[i];
+    g.appendChild(txt);
+  }
+  svg.appendChild(g);
+}
+function toPoints(values, x0,y0,w,h, yMin,yMax){
+  const n=values.length; const pts=[];
+  for(let i=0;i<n;i++){
+    const v=values[i];
+    if(v===null || typeof v!=='number'){ pts.push(null); continue; }
+    const x=x0 + (n===1?0:(i*(w/(n-1))));
+    const y=y0 + h - (v - yMin)/(yMax - yMin)*h;
+    pts.push([x,y]);
+  }
+  return pts;
+}
+function drawPath(svg, d, stroke, width, dash){
+  const p=document.createElementNS(svg.namespaceURI,'path');
+  p.setAttribute('d', d); p.setAttribute('fill','none'); p.setAttribute('stroke', stroke); p.setAttribute('stroke-width', width);
+  if(dash) p.setAttribute('stroke-dasharray', dash);
+  svg.appendChild(p);
+}
+function drawPoints(svg, points, radius){
+  points.forEach(p=>{
+    if(!p) return;
+    const c=document.createElementNS(svg.namespaceURI,'circle');
+    c.setAttribute('cx', p[0]); c.setAttribute('cy', p[1]); c.setAttribute('r', radius);
+    c.setAttribute('fill','currentColor');
+    svg.appendChild(c);
+  });
+}
+
+// ====== 其它 ======
+function demoFill(){
+  const arr = indicatorScores[curDomain][curAge];
+  for(let i=0;i<arr.length;i++){
+    arr[i] = Math.floor(6+Math.random()*5); // 6-10
+  }
+  saveLS(true);
+  updateIndicatorsTable();
+  renderMonthlyChart();
+  renderSmallCharts(true);
+}
+function clearThisMonth(){
+  const arr = indicatorScores[curDomain][curAge];
+  for(let i=0;i<arr.length;i++){ arr[i]=null; }
+  saveLS(true);
+  updateIndicatorsTable();
+  renderMonthlyChart();
+  renderSmallCharts(true);
+}
+function toggleTheme(){
+  const root=document.documentElement; const cur=root.getAttribute('data-theme')||'light';
+  const next=cur==='light'?'dark':'light';
+  root.setAttribute('data-theme', next);
+  saveLS(false, next);
+  renderMonthlyChart();
+  renderSmallCharts(true);
+}
+function saveLS(hint=false, theme){
+  const data = { indicatorScores, homeScores, theme: theme || document.documentElement.getAttribute('data-theme') };
+  localStorage.setItem(LS_KEY, JSON.stringify(data));
+  if(hint) toast('已保存');
+  document.getElementById('jsonPreview').textContent = JSON.stringify({version:'v2.6.1',indicatorScores,homeScores}, null, 2);
+}
+function loadLS(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(!raw) return null;
+    const obj = JSON.parse(raw);
+    if(obj.theme){ document.documentElement.setAttribute('data-theme', obj.theme); }
+    return obj;
+  }catch(e){ return null; }
+}
+function toast(msg){
+  const el=document.getElementById('saveHint');
+  el.textContent=msg;
+  setTimeout(()=>{el.textContent='';},1200);
+}
+function switchTab(idx){
+  [...document.querySelectorAll('.tab')].forEach((t,i)=>t.classList.toggle('active', i===idx));
+  for(let i=0;i<4;i++){ document.getElementById('tab-'+i).hidden = i!==idx; }
+  if(idx===1){ renderSmallCharts(true); }
+  if(idx===3){ document.getElementById('jsonPreview').textContent = JSON.stringify({version:'v2.6.1',indicatorScores,homeScores}, null, 2); }
+}
+</script>
 </body>
 </html>
