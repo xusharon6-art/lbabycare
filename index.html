@@ -50,6 +50,23 @@ hr{border:none;border-top:1px solid var(--line);margin:12px 0}
 .small-chart{height:220px}
 svg{width:100%;height:100%}
 .footer{margin:20px 0 40px;color:var(--muted);text-align:center}
+
+/* 首页封面 */
+.home-cover{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:22px;padding:26px;background:linear-gradient(135deg,#fff6ef 0%,#fff1f2 38%,#eef7ff 100%);margin-bottom:18px;min-height:240px}
+.home-cover:before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 420'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop stop-color='%23fff8ef'/%3E%3Cstop offset='1' stop-color='%23eef7ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='420' fill='url(%23g)'/%3E%3Ccircle cx='1040' cy='88' r='42' fill='%23ffd978' fill-opacity='.9'/%3E%3Cpath d='M180 260c46-64 112-96 196-96 72 0 130 18 190 62 34-18 70-27 108-27 78 0 138 36 194 116H180Z' fill='%23f4f9ff'/%3E%3Cpath d='M0 320c86-48 158-58 220-24 38 20 70 24 106 6 72-38 172-38 252 4 58 30 96 28 162-4 90-44 198-22 312 40v78H0Z' fill='%23e8f3ff'/%3E%3Cpath d='M128 250c18-46 58-72 108-72s90 26 108 72H128Z' fill='%23ffd7c7' fill-opacity='.75'/%3E%3Cpath d='M900 280c26-42 64-64 114-64 42 0 78 18 106 54v42H900Z' fill='%23ffe8d2' fill-opacity='.78'/%3E%3Cg fill='none' stroke='%23ffb36b' stroke-width='8' stroke-linecap='round'%3E%3Cpath d='M430 142c18-18 42-30 70-30 27 0 52 10 70 28'/%3E%3Cpath d='M440 162c14-14 34-24 58-24 22 0 42 8 58 22' stroke='%23ffcc8a'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='.88'%3E%3Cellipse cx='206' cy='88' rx='56' ry='22'/%3E%3Cellipse cx='250' cy='82' rx='28' ry='18'/%3E%3Cellipse cx='970' cy='140' rx='66' ry='24'/%3E%3Cellipse cx='1018' cy='134' rx='34' ry='20'/%3E%3C/g%3E%3C/svg%3E");background-size:cover;background-position:center;opacity:.95}
+.home-cover > *{position:relative;z-index:1}
+.home-cover-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:18px;align-items:end}
+.cover-eyebrow{display:inline-block;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid rgba(37,99,235,.18);color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.08em}
+.cover-title{font-size:30px;line-height:1.25;margin:12px 0 8px}
+.cover-desc{max-width:620px;font-size:15px;color:#495366;margin:0 0 14px}
+.cover-badges{display:flex;flex-wrap:wrap;gap:8px}
+.cover-badge{padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid rgba(31,41,55,.08);font-size:13px;backdrop-filter: blur(3px)}
+.cover-panel{background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.88);box-shadow:0 12px 32px rgba(15,23,42,.06);border-radius:18px;padding:16px}
+.cover-panel h3{margin:0 0 8px;font-size:17px}
+.cover-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;font-size:13px;color:#465061}
+.cover-list div{display:flex;gap:6px;align-items:flex-start}
+@media (max-width:900px){.home-cover-grid{grid-template-columns:1fr}.cover-title{font-size:24px}.cover-list{grid-template-columns:1fr}}
+
 /* 首页卡片 */
 .home-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media (max-width:900px){.home-cards{grid-template-columns:1fr}}
@@ -76,6 +93,171 @@ svg{width:100%;height:100%}
 .stickers{display:flex;gap:12px;margin-top:8px}
 .sticker{font-size:42px;line-height:1;cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#fff0}
 .sticker.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--chip-active) inset}
+
+/* ========== 模块：婴幼儿屏幕使用与家庭指导 ========== */
+.project-card{grid-column:1/-1;border:2px solid var(--accent);background:linear-gradient(135deg,var(--card),var(--chip-active));position:relative;overflow:hidden}
+.project-card:before{content:"家庭指导";position:absolute;right:14px;top:12px;border:1px solid var(--accent);color:var(--accent);padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;background:rgba(255,255,255,.9)}
+.project-card h3{font-size:20px;padding-right:86px}
+.project-hero{border:1px solid var(--line);border-radius:18px;padding:18px;background:linear-gradient(135deg,var(--chip-active),var(--card));margin-bottom:14px}
+.project-hero h1{font-size:26px;margin:0 0 6px}
+.project-hero .eyebrow{font-size:12px;letter-spacing:.12em;color:var(--accent);font-weight:800}
+.stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.step-pill{border:1px solid var(--line);border-radius:14px;padding:10px;background:var(--bg);font-size:13px}
+.step-pill strong{display:block;color:var(--accent);margin-bottom:2px}
+.option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:900px){.option-grid{grid-template-columns:1fr 1fr}.stepper{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.option-grid{grid-template-columns:1fr}.stepper{grid-template-columns:1fr}}
+.option-card{border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--bg);cursor:pointer;text-align:left;color:var(--fg)}
+.option-card:hover,.option-card.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--chip-active) inset}
+.option-card .icon{font-size:24px;display:block;margin-bottom:4px}
+.option-card .title{font-weight:750;display:block}
+.option-card .desc{font-size:12px;color:var(--muted);display:block;margin-top:3px}
+.project-stage{display:none}
+.project-stage.active{display:block}
+.project-summary{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+.summary-chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 10px;font-size:12px}
+.strategy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:1000px){.strategy-grid{grid-template-columns:1fr}}
+.strategy-card{border:1px solid var(--line);border-radius:16px;padding:14px;background:var(--bg);display:flex;flex-direction:column;gap:8px}
+.strategy-card h3{margin:0;font-size:17px}
+.strategy-tags{display:flex;flex-wrap:wrap;gap:6px}
+.strategy-tag{border:1px solid var(--line);border-radius:999px;padding:2px 8px;font-size:11px;color:var(--muted)}
+.strategy-meta{font-size:13px}
+.strategy-detail{border-top:1px dashed var(--line);padding-top:8px;font-size:13px}
+.strategy-detail strong{display:block;margin-top:6px}
+.response-box{border-left:4px solid var(--accent);padding:10px 12px;background:var(--chip-active);border-radius:10px;margin-top:10px}
+.feedback-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+@media (max-width:900px){.feedback-row{grid-template-columns:1fr 1fr}}
+.feedback-btn{border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:12px;padding:10px;cursor:pointer}
+.feedback-btn:hover{border-color:var(--accent)}
+.history-item{border-top:1px solid var(--line);padding:9px 0;font-size:13px}
+.community-bars{display:grid;gap:9px;margin-top:10px}
+.community-row{display:grid;grid-template-columns:90px 1fr 42px;gap:8px;align-items:center}
+.community-track{height:12px;background:var(--line);border-radius:999px;overflow:hidden}
+.community-fill{height:100%;background:var(--accent);border-radius:999px}
+.notice{padding:10px 12px;border:1px solid var(--line);background:var(--bg);border-radius:12px;font-size:13px}
+.notice.warn{border-color:var(--warn)}
+.project-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.project-nav .btn.active{border-color:var(--accent);background:var(--chip-active)}
+
+
+.project-topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.project-topbar-right{display:flex;gap:8px;flex-wrap:wrap}
+.step-pill.editable{cursor:pointer}
+.step-pill.editable:hover,.step-pill.editable.active{border-color:var(--accent);background:var(--chip-active);box-shadow:0 0 0 2px var(--chip-active) inset}
+.reason-box{border:1px solid var(--line);background:linear-gradient(135deg,var(--card),var(--bg));border-radius:14px;padding:12px;margin-bottom:12px;font-size:14px}
+.reason-box strong{color:var(--accent)}
+.strategy-toolbar{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.empty-line{font-size:13px;color:var(--muted);padding:12px 0}
+
+
+/* ========== 视觉精进 v3 ========== */
+:root{
+  --bg:#fffdfb; --fg:#263238; --muted:#6f7781; --card:#ffffff; --accent:#4f7ea8; --line:#e8e3dd;
+  --good:#4f8f72; --warn:#c58a3a; --bad:#c96b64; --chip:#f5f1ec; --chip-active:#eaf3f8;
+  --soft-peach:#fff2e7; --soft-rose:#fff0f1; --soft-blue:#eef6fb; --soft-sage:#eef6ef; --soft-lilac:#f5f1fb;
+  --shadow:0 12px 34px rgba(75,62,51,.07);
+}
+:root[data-theme="dark"]{
+  --bg:#111719; --fg:#e9eff1; --muted:#a8b0b4; --card:#172024; --accent:#8fb9d8; --line:#2a363b;
+  --chip:#202b30; --chip-active:#243b49; --soft-peach:#2a211c; --soft-rose:#2a2022; --soft-blue:#1b2a33; --soft-sage:#1d2b23; --soft-lilac:#262230;
+  --shadow:none;
+}
+body{background:linear-gradient(180deg,var(--bg),#fffaf6 48%,var(--bg));}
+:root[data-theme="dark"] body{background:var(--bg)}
+.container{max-width:1240px;padding:18px}
+.toolbar{backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 90%,transparent);border-bottom:1px solid color-mix(in srgb,var(--line) 65%,transparent)}
+.btn{font-weight:600;transition:.18s ease;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,126,168,.10)}
+.card{box-shadow:0 1px 0 rgba(0,0,0,.02)}
+
+.home-cover{min-height:300px;padding:34px;border:none;box-shadow:var(--shadow);background:linear-gradient(135deg,#fff8ef 0%,#fff1ee 38%,#f3f8fb 100%)}
+.home-cover:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-72px;bottom:-94px;background:rgba(123,170,207,.12)}
+.home-cover-grid{grid-template-columns:1.42fr .88fr;align-items:center;gap:28px}
+.cover-eyebrow{background:rgba(255,255,255,.84);border-color:rgba(79,126,168,.15);color:#5d7f9d;padding:6px 12px}
+.cover-title{font-size:34px;letter-spacing:.02em;color:#3c4b54;margin-top:14px}
+.cover-desc{font-size:15.5px;line-height:1.8;color:#68727c;max-width:690px}
+.cover-badge{background:rgba(255,255,255,.82);border-color:rgba(114,96,83,.09);padding:7px 12px}
+.cover-panel{padding:18px 18px 16px;background:rgba(255,255,255,.76);border-color:rgba(255,255,255,.9);box-shadow:0 18px 40px rgba(97,76,61,.08)}
+.cover-art{height:132px;border-radius:15px;background:linear-gradient(160deg,#fff8f0,#f6fbff);overflow:hidden;margin-bottom:13px;border:1px solid rgba(79,126,168,.08)}
+.cover-art svg{display:block;width:100%;height:100%}
+.cover-panel h3{font-size:15px;color:#596771;margin-bottom:9px}
+.cover-list{font-size:12.5px;gap:7px 11px}
+.cover-list div{padding:5px 7px;border-radius:9px;background:rgba(255,255,255,.55)}
+
+#home>h1{font-size:20px;margin:22px 0 12px;color:#46545d}
+.home-cards{grid-template-columns:repeat(3,1fr);gap:14px}
+.home-card{position:relative;min-height:178px;border:none;border-radius:18px;padding:18px 18px 16px;background:#fff;box-shadow:0 7px 24px rgba(78,63,52,.055);transition:.2s ease;overflow:hidden}
+.home-card:after{content:"";position:absolute;width:74px;height:74px;border-radius:50%;right:-24px;bottom:-26px;background:var(--card-tint,#edf5fa);opacity:.82}
+.home-card:hover{transform:translateY(-3px);box-shadow:0 13px 30px rgba(78,63,52,.09)}
+.home-card .module-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.home-card .module-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--icon-bg,#eef6fb);font-size:22px}
+.home-card .module-index{font-size:11px;color:#90979d;font-weight:800;letter-spacing:.12em}
+.home-card h3{font-size:17px;color:#3f4d56;margin-top:4px}
+.home-card p{font-size:13px;line-height:1.65;margin:0;flex:1}
+.home-card .btn{align-self:flex-start;background:#fff;border-color:#e9e1da;padding:7px 12px}
+.home-card:nth-child(1){--icon-bg:#eef6fb;--card-tint:#e8f4fb}
+.home-card:nth-child(2){--icon-bg:#f4effb;--card-tint:#f2ecfb}
+.home-card:nth-child(3){--icon-bg:#eef6ef;--card-tint:#e8f2e9}
+.home-card:nth-child(4){--icon-bg:#fff4e8;--card-tint:#ffeedc}
+.home-card:nth-child(5){--icon-bg:#fff0f1;--card-tint:#ffe8eb}
+.home-card:nth-child(6){--icon-bg:#fff7df;--card-tint:#fff0c8}
+.project-card{grid-column:auto;border:none;background:linear-gradient(155deg,#f2f8fc,#fff7ef);box-shadow:0 10px 28px rgba(79,126,168,.10)}
+.project-card:before{content:"家庭指导";right:15px;top:15px;border:none;background:#e8f2f7;color:#4f7896;padding:4px 9px}
+.project-card h3{font-size:17px;padding-right:76px}
+.home-card:nth-child(7){--icon-bg:#eaf4f7;--card-tint:#e2f0f3}
+@media(max-width:980px){.home-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.home-cards{grid-template-columns:1fr}.home-cover{padding:24px}.cover-title{font-size:27px}}
+
+#tab-7{border:none;background:linear-gradient(180deg,#fff 0%,#fffdfb 100%);box-shadow:var(--shadow);padding:22px}
+.project-topbar{padding:3px 2px 12px;border-bottom:1px solid var(--line)}
+.project-topbar h1{font-size:24px;color:#3f4c55}
+.project-topbar-right .btn{background:#fff}
+.project-hero{position:relative;overflow:hidden;border:none;border-radius:20px;padding:22px;background:linear-gradient(135deg,#edf6fb,#fff7ef);box-shadow:0 7px 22px rgba(73,108,131,.06)}
+.project-hero:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-46px;top:-72px;background:rgba(246,181,116,.13)}
+.project-hero h1{font-size:25px;color:#40525e}
+.project-hero p{color:#66747e;max-width:760px;line-height:1.75}
+.project-nav{padding:6px;border-radius:14px;background:#f7f4f0;display:inline-flex;margin-bottom:14px}
+.project-nav .btn{border:none;background:transparent;box-shadow:none}
+.project-nav .btn.active{background:#fff;border:none;box-shadow:0 3px 10px rgba(81,68,57,.07)}
+.stepper{gap:10px;margin:16px 0}
+.step-pill{position:relative;border:none;background:#f8f6f3;border-radius:15px;padding:12px 13px 12px 44px;min-height:64px;box-shadow:inset 0 0 0 1px rgba(93,104,111,.08)}
+.step-pill:before{position:absolute;left:12px;top:13px;width:25px;height:25px;border-radius:9px;background:#fff;color:#6f8797;display:grid;place-items:center;font-size:12px;font-weight:800;box-shadow:0 2px 8px rgba(81,91,98,.06)}
+.step-pill:nth-child(1):before{content:"1"}.step-pill:nth-child(2):before{content:"2"}.step-pill:nth-child(3):before{content:"3"}.step-pill:nth-child(4):before{content:"4"}
+.step-pill strong{color:#5b7588;font-size:12px}
+.step-pill.editable:hover,.step-pill.editable.active{background:#eef6fa;box-shadow:inset 0 0 0 1px #b9d0df;transform:translateY(-1px)}
+.project-stage.card{border:none;background:#faf8f5!important;padding:18px;border-radius:18px}
+.project-stage h2{font-size:19px;color:#42535d}
+.option-grid{gap:12px}
+.option-card{border:none;background:#fff;border-radius:16px;padding:14px;min-height:105px;box-shadow:0 4px 14px rgba(88,73,63,.055);transition:.18s ease}
+.option-card:hover,.option-card.active{border:none;box-shadow:0 8px 22px rgba(79,126,168,.12), inset 0 0 0 1.5px #9fc0d5;transform:translateY(-2px)}
+.option-card .icon{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#f3f7fa;font-size:21px;margin-bottom:9px}
+.option-card .title{font-size:15px;color:#42515a}
+.option-card .desc{font-size:12.5px;line-height:1.5;margin-top:5px}
+.project-summary{margin:10px 0 13px}
+.summary-chip{border:none;background:#f3f6f7;color:#53636d;padding:7px 11px}
+.response-box{border:none;border-left:4px solid #7ba4bf;background:#eef6fa;border-radius:12px;padding:12px 14px;color:#455760}
+.reason-box{border:none;background:#fff7ed;border-radius:14px;padding:13px 14px;color:#655c53;box-shadow:inset 0 0 0 1px rgba(209,164,110,.16)}
+.reason-box:before{content:"为什么这样推荐";display:block;font-size:12px;font-weight:800;color:#b07e45;margin-bottom:4px}
+.strategy-toolbar{margin-top:14px}
+.strategy-card{position:relative;border:none;border-radius:18px;background:#fff;padding:16px;box-shadow:0 7px 22px rgba(84,69,59,.06);transition:.18s ease}
+.strategy-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(84,69,59,.09)}
+.strategy-card .badge{border:none;background:#edf5f9;color:#547990;font-weight:700;padding:4px 8px}
+.strategy-card h3{font-size:18px;color:#3e4d56;margin-top:2px}
+.strategy-tag{border:none;background:#f5f2ee;color:#6b7073;padding:4px 8px}
+.strategy-meta{background:#faf8f5;padding:9px 10px;border-radius:10px;color:#5f676b}
+.strategy-detail{border-top:1px dashed #e9e2dc;padding-top:10px;line-height:1.65;color:#5f686d}
+.strategy-detail strong{color:#465760;font-size:12px;margin-top:8px;margin-bottom:2px}
+.chooseStrategy{background:#f4f8fa;border-color:#d9e6ee;color:#496b80}
+.feedback-row{gap:10px}
+.feedback-btn{border:none;background:#f8f6f3;border-radius:14px;min-height:58px;font-weight:600;transition:.18s ease}
+.feedback-btn:hover{background:#eef6fa;transform:translateY(-1px)}
+.notice{border:none;background:#f7f5f2;border-radius:12px}
+.notice.warn{background:#fff6ea;color:#7c6042;box-shadow:inset 0 0 0 1px rgba(197,138,58,.18)}
+.community-track{background:#eee8e2}
+.community-fill{background:linear-gradient(90deg,#79a6c3,#e8b77e)}
+
 /* 打印优化 */
 @media print{
   .toolbar,.tabs,#home{display:none !important}
@@ -103,6 +285,58 @@ svg{width:100%;height:100%}
 
     <!-- 首页卡片导航 -->
     <section class="card" id="home">
+      <div class="home-cover">
+        <div class="home-cover-grid">
+          <div>
+            <span class="cover-eyebrow">七大服务模块</span>
+            <h1 class="cover-title">婴幼儿发展追踪与家庭指导系统</h1>
+            <p class="cover-desc">围绕儿童发展、家庭环境、家长指导和生活支持，整合七个常用模块。既能做基础评估，也能为家庭提供更贴近日常生活的指导建议。</p>
+            <div class="cover-badges">
+              <span class="cover-badge">指标曲线</span>
+              <span class="cover-badge">能力曲线</span>
+              <span class="cover-badge">家庭环境评估</span>
+              <span class="cover-badge">数据统计仪表板</span>
+              <span class="cover-badge">急救指南</span>
+              <span class="cover-badge">亲子共餐指导</span>
+              <span class="cover-badge">屏幕使用与家庭指导</span>
+            </div>
+          </div>
+          <div class="cover-panel">
+            <div class="cover-art" aria-hidden="true">
+              <svg viewBox="0 0 360 132" xmlns="http://www.w3.org/2000/svg">
+                <rect width="360" height="132" rx="18" fill="#fffaf5"/>
+                <circle cx="297" cy="28" r="18" fill="#ffd996"/>
+                <path d="M0 104c56-18 102-15 145 2 42 17 88 15 136-4 28-11 54-8 79 3v27H0z" fill="#e9f3f6"/>
+                <rect x="252" y="73" width="56" height="8" rx="4" fill="#d7b493"/>
+                <rect x="258" y="81" width="5" height="30" rx="2" fill="#cba57f"/>
+                <rect x="297" y="81" width="5" height="30" rx="2" fill="#cba57f"/>
+                <path d="M270 66c5-16 18-26 32-26 13 0 24 8 31 21" fill="none" stroke="#7ea58c" stroke-width="7" stroke-linecap="round"/>
+                <circle cx="133" cy="47" r="19" fill="#f2c7a6"/>
+                <path d="M108 66c11-14 21-20 29-20 13 0 26 10 39 30l-13 33H102z" fill="#e6a88c"/>
+                <circle cx="196" cy="70" r="13" fill="#f4c9a6"/>
+                <path d="M179 84c8-12 15-16 22-16 10 0 18 7 25 23l-8 18h-41z" fill="#7ea8c4"/>
+                <path d="M146 79c13 2 25 7 36 15" fill="none" stroke="#7c6a5a" stroke-width="5" stroke-linecap="round"/>
+                <rect x="161" y="93" width="18" height="16" rx="4" fill="#f1c56d"/>
+                <rect x="182" y="86" width="18" height="23" rx="4" fill="#d89177"/>
+                <rect x="204" y="96" width="18" height="13" rx="4" fill="#8bb39a"/>
+                <path d="M78 109h171" stroke="#c9d8df" stroke-width="3" stroke-linecap="round"/>
+                <path d="M45 79h24v30H45z" fill="#d4e7da"/>
+                <path d="M49 79c2-18 8-28 15-28 8 0 13 12 14 28" fill="#88ad8f"/>
+              </svg>
+            </div>
+            <h3>系统首页</h3>
+            <div class="cover-list">
+              <div><span>①</span><span>指标曲线（按月）</span></div>
+              <div><span>②</span><span>能力曲线（6—36月）</span></div>
+              <div><span>③</span><span>家庭环境评估</span></div>
+              <div><span>④</span><span>数据统计仪表板</span></div>
+              <div><span>⑤</span><span>急救指南</span></div>
+              <div><span>⑥</span><span>亲子共餐指导</span></div>
+              <div><span>⑦</span><span>婴幼儿屏幕使用与家庭指导</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <h1>请选择模块</h1>
       <div class="home-cards" id="homeCards"></div>
     </section>
@@ -298,6 +532,130 @@ svg{width:100%;height:100%}
       </div>
     </section>
 
+
+    <!-- 7 婴幼儿屏幕使用与家庭指导 -->
+    <section class="card" id="tab-7" hidden>
+      <div class="project-topbar">
+        <div>
+          <div class="eyebrow" style="color:var(--accent);font-size:12px;font-weight:800">家庭指导</div>
+          <h1>婴幼儿屏幕使用与家庭指导</h1>
+          <p class="muted" style="margin:2px 0 0">从真实生活场景出发，帮助家庭找到更适合当下的回应办法</p>
+        </div>
+        <div class="project-topbar-right">
+          <button class="btn" id="projectBackBtn">← 上一步</button>
+          <button class="btn" id="projectResetBtn">重新开始</button>
+          <a href="javascript:void(0)" class="small" onclick="goHome()">← 返回首页</a>
+        </div>
+      </div>
+
+      <div class="project-hero" style="margin-top:14px">
+        <div class="eyebrow">FAMILY GUIDANCE</div>
+        <h1>先从当下这一个场景开始</h1>
+        <p style="margin:0">先看看孩子多大、您现在能陪多久、孩子目前是什么状态，再从常见情境里找到一个现在就能试的办法。需要时，可以随时返回上一步修改选择。</p>
+      </div>
+
+      <div class="project-nav">
+        <button class="btn active" data-pnav="guide">现在怎么做</button>
+        <button class="btn" data-pnav="history">我的实践记录</button>
+        <button class="btn" data-pnav="community">社区现场调查</button>
+      </div>
+
+      <div id="project-guide" class="project-pane">
+        <div class="stepper">
+          <div class="step-pill editable" data-stage="age"><strong>01 年龄</strong><span id="sumAge">未选择</span></div>
+          <div class="step-pill editable" data-stage="time"><strong>02 可陪时间</strong><span id="sumTime">未选择</span></div>
+          <div class="step-pill editable" data-stage="state"><strong>03 当前状态</strong><span id="sumState">未选择</span></div>
+          <div class="step-pill editable" data-stage="scene"><strong>04 生活场景</strong><span id="sumScene">未选择</span></div>
+        </div>
+
+        <div id="ps-age" class="project-stage active card" style="background:var(--bg)">
+          <h2>孩子现在多大？</h2>
+          <p class="small muted">年龄会影响活动难度、材料大小和成人需要提供的帮助。</p>
+          <div class="option-grid" id="ageOptions"></div>
+        </div>
+
+        <div id="ps-time" class="project-stage card" style="background:var(--bg)">
+          <h2>您现在大概能陪多久？</h2>
+          <p class="small muted">不是陪得越久越好。系统会优先推荐符合您此刻时间条件的办法。</p>
+          <div class="option-grid" id="timeOptions"></div>
+        </div>
+
+        <div id="ps-state" class="project-stage card" style="background:var(--bg)">
+          <h2>孩子现在是什么状态？</h2>
+          <p class="small muted">如果已经明显哭闹或出现安全、身体不适等情况，先处理当下需要，再考虑活动。</p>
+          <div class="option-grid" id="stateOptions"></div>
+        </div>
+
+        <div id="ps-scene" class="project-stage card" style="background:var(--bg)">
+          <h2>现在最接近哪一种情况？</h2>
+          <p class="small muted">不用一次解决所有问题，先从今天最真实的一个场景开始。</p>
+          <div class="option-grid" id="sceneOptions"></div>
+        </div>
+
+        <div id="ps-result" class="project-stage">
+          <div class="project-summary" id="projectSummary"></div>
+          <div id="stateGate"></div>
+          <div class="card" style="background:var(--bg);margin-bottom:12px">
+            <h2 style="margin-top:0">这一次，先怎么回应？</h2>
+            <div id="responseAdvice"></div>
+          </div>
+          <div class="reason-box" id="whyRecommendation"></div>
+          <div class="strategy-toolbar">
+            <div>
+              <h2 style="margin-bottom:2px">现在可以先试这三个办法</h2>
+              <p class="small muted" style="margin-top:0">下面不是固定答案，而是根据年龄、时间、状态和场景筛出的家庭策略。</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn" id="swapStrategies">换一组</button>
+            </div>
+          </div>
+          <div id="strategyResults" class="strategy-grid"></div>
+
+          <div class="card" style="background:var(--bg);margin-top:14px">
+            <h2 style="margin-top:0">试过以后，再看一眼</h2>
+            <p>刚才这样做以后，孩子怎么样了？</p>
+            <div class="feedback-row">
+              <button class="feedback-btn" data-feedback="continue">✅ 已经继续自己的活动</button>
+              <button class="feedback-btn" data-feedback="stuck">🟡 还有一点卡住</button>
+              <button class="feedback-btn" data-feedback="upset">🔴 情绪更明显了</button>
+              <button class="feedback-btn" data-feedback="safety">⚠️ 出现安全或生活需要</button>
+            </div>
+            <div id="feedbackAdvice" class="response-box" style="display:none"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="project-history" class="project-pane" hidden>
+        <div class="card" style="background:var(--bg)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+            <div><h2 style="margin:0">我的实践记录</h2><p class="small muted" style="margin:2px 0 0">记录的是“什么场景—用了什么办法—孩子后来怎么样”，不是给孩子打分。</p></div>
+            <button class="btn" id="clearProjectHistory">清空记录</button>
+          </div>
+          <div id="projectHistoryList"></div>
+        </div>
+      </div>
+
+      <div id="project-community" class="project-pane" hidden>
+        <div class="grid-2">
+          <div class="card" style="background:var(--bg)">
+            <h2 style="margin-top:0">社区现场调查</h2>
+            <p>平时带1—3岁孩子，您最容易在哪个时候把手机递给他？</p>
+            <p class="small muted">请选择一个最符合自己家庭的场景。本机演示版只做匿名计数，不记录姓名。</p>
+            <div class="option-grid" id="communitySceneOptions"></div>
+            <div class="notice" style="margin-top:10px">比赛原型当前采用本机匿名统计。若要让多位家长用各自手机扫码后实时汇总，需要再接入已配置的云端数据库。</div>
+          </div>
+          <div class="card" style="background:var(--bg)">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+              <h2 style="margin:0">本场匿名需求</h2>
+              <button class="btn" id="clearCommunity">清空</button>
+            </div>
+            <div id="communityBars" class="community-bars"></div>
+            <p class="small muted">社区端只看共性需求，用于决定后续公开课和家庭支持主题。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="footer small">© 2025 婴幼儿发展追踪与家庭指导系统 · 单文件 · 零依赖 · SVG 折线图</div>
   </div>
 
@@ -393,27 +751,29 @@ document.getElementById('resetBtn').onclick=()=>{
 
 /* 首页卡片 */
 const modules=[
-  ['指标曲线（按月）','录入月龄指标并生成当月折线图，直观观察成长趋势。'],
-  ['能力曲线（6–36月）','8 个维度的小图展示 6→36 月龄能力变化。'],
-  ['家庭环境评估','12 个条目快速评估环境质量并生成建议。'],
-  ['数据统计仪表板','统计均值、标准差与增长速率。'],
-  ['急救指南','海姆利克操作与预防要点，紧急拨打 120。'],
-  ['亲子共餐指导','喂饭姿势、口令节奏与风险提醒，含表情互动。']
+  ['📈','指标曲线（按月）','录入月龄指标并生成当月折线图，直观观察成长趋势。'],
+  ['🧭','能力曲线（6–36月）','从八个发展维度连续观察6—36月龄能力变化。'],
+  ['🏡','家庭环境评估','从作息、安全、回应、阅读等方面了解家庭支持环境。'],
+  ['📊','数据统计仪表板','汇总关键数据，查看均值、标准差与阶段变化。'],
+  ['🩹','急救指南','快速查看婴幼儿常见紧急情况的操作与预防要点。'],
+  ['🥣','亲子共餐指导','围绕进餐姿势、互动回应、节奏与安全提供家庭指导。'],
+  ['🌿','婴幼儿屏幕使用与家庭指导','根据儿童年龄、家长可陪伴时间、当前状态和生活情境，提供适合家庭实施的回应建议、游戏活动和生活材料。']
 ];
 const homeCards=document.getElementById('homeCards');
 modules.forEach((m,i)=>{
   const div=document.createElement('div');
-  div.className='home-card';
-  div.innerHTML=`<h3>${m[0]}</h3><p class="muted">${m[1]}</p><div><button class="btn">进入模块</button></div>`;
+  div.className='home-card'+(i===6?' project-card':'');
+  const idx=String(i+1).padStart(2,'0');
+  div.innerHTML=`<div class="module-top"><span class="module-icon">${m[0]}</span><span class="module-index">MODULE ${idx}</span></div><h3>${m[1]}</h3><p class="muted">${m[2]}</p><div><button class="btn">${i===6?'开始指导':'进入模块'}</button></div>`;
   div.querySelector('button').onclick=()=>switchTab(i);
   homeCards.appendChild(div);
 });
 
 /* 选项卡 */
 
-const tabIdMap=[0,1,2,4,5,6]; // 映射可见模块 -> 实际 section ID（跳过导入导出:3）
+const tabIdMap=[0,1,2,4,5,6,7]; // 映射可见模块 -> 实际 section ID（跳过导入导出:3）
 
-const tabDefs=modules.map(m=>m[0]);
+const tabDefs=modules.map(m=>m[1]);
 const tabsEl=document.getElementById('tabs');
 tabDefs.forEach((t,i)=>{
   const b=document.createElement('button'); b.className='tab'; b.textContent=t; b.onclick=()=>switchTab(i);
@@ -433,6 +793,7 @@ function switchTab(idx){
   }
   if(tabId===1){ renderSmallCharts(true); }
   if(tabId===4){ renderStats(); }
+  if(tabId===7){ initProjectModule(); }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -769,6 +1130,233 @@ function saveScores(hint){
     else text.textContent='当前状态：满足 —— 暂停喂食，鼓励自主表达“我吃饱了”。';
   });
 })();
+
+
+/* ========== 模块：婴幼儿屏幕使用与家庭指导 ========== */
+const PROJECT_STORE_KEY='lbabycare_screen_support_v3';
+const PROJECT_HISTORY_KEY='lbabycare_screen_history_v3';
+const COMMUNITY_STORE_KEY='lbabycare_community_survey_v3';
+
+const P_AGES=[
+  {id:'12-18', label:'12—18个月', desc:'以感知、装取、简单模仿和共同活动为主', icon:'👶'},
+  {id:'18-24', label:'18—24个月', desc:'可以开始简单分类、配对和生活参与', icon:'🧒'},
+  {id:'24-36', label:'24—36个月', desc:'可增加规则、角色、表达和短时自主活动', icon:'🧩'}
+];
+const P_TIMES=[
+  {id:'1-3', label:'1—3分钟', desc:'我只能先陪他开始一下', icon:'⏱️'},
+  {id:'5', label:'5分钟左右', desc:'我可以一起玩一小会儿', icon:'🕔'},
+  {id:'10+', label:'10分钟以上', desc:'我现在可以比较完整地陪伴', icon:'🕙'}
+];
+const P_STATES=[
+  {id:'calm', label:'平稳、愿意参与', desc:'能观察、操作或自己玩一会儿', icon:'🙂'},
+  {id:'mild', label:'有些烦躁、总来找我', desc:'需要更多连接、确认或一点帮助', icon:'😕'},
+  {id:'cry', label:'已经明显哭闹', desc:'先处理情绪、安全和生活需要', icon:'😢'}
+];
+const P_SCENES=[
+  {id:'busy', label:'成人忙碌', desc:'做饭、收拾、处理事情时总来找我', icon:'🍳'},
+  {id:'emotion', label:'情绪哭闹', desc:'一哭、一急就很容易给手机', icon:'🤗'},
+  {id:'meal', label:'进餐', desc:'不看屏幕就坐不住或不愿吃', icon:'🥣'},
+  {id:'wait', label:'外出等待', desc:'排队、候诊、等车时坐不住', icon:'🚌'},
+  {id:'play', label:'亲子陪伴', desc:'有时间，但不知道怎么陪', icon:'🎨'},
+  {id:'sleep', label:'睡前过渡', desc:'睡前总想看视频或很难安静下来', icon:'🌙'}
+];
+
+// 36个核心家庭策略。年龄、时间、状态只是筛选标签；同一活动在不同年龄下通过“年龄调整”改变难度。
+const STRATEGIES=[{"id":"b1","scene":"busy","title":"颜色回家","type":"分类活动","ages":["18-24","24-36"],"times":["1-3","5","10+"],"states":["calm","mild"],"material":"两个颜色盒＋大尺寸彩色材料","how":"先陪孩子放两三个。可以说：“红色住这里，黄色住这里。这个你来试试。”孩子明白以后，您就回去做自己的事。","ageTip":"18—24个月先分两种颜色就够了；24—36个月可以增加到三种，也可以让孩子自己说颜色。","exit":"看到孩子已经知道“往哪里放”以后，就把手收回来，不需要一直坐在旁边。","back":"如果只是拿给您看，回一句“我看见啦，你放进去好多了”；如果拿不准，再提示一句，不急着替他放。","safety":"不要用豆子、纽扣等小物件。做饭时把活动放在厨房外、成人看得到的位置。"},{"id":"b2","scene":"busy","title":"给袜子找朋友","type":"生活活动","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"2—4双颜色或图案明显的袜子","how":"拿一只袜子问：“它的好朋友在哪里呀？”先和孩子找成一双，剩下的让他自己找。","ageTip":"18—24个月只要能把“差不多一样的”放在一起就很好；24—36个月可以按颜色、图案来配。","exit":"第一双找到以后，如果孩子已经懂了，就不用继续教，让他慢慢找。","back":"孩子拿着袜子来问，可以说：“你再看看，哪一只和它最像？”如果只是展示，就回应一下成果。","safety":"尽量选没有珠子、小扣件等容易脱落装饰的袜子。"},{"id":"b3","scene":"busy","title":"大积木小工程","type":"玩具活动","ages":["12-18","18-24","24-36"],"times":["1-3","5","10+"],"states":["calm","mild"],"material":"适龄大颗粒积木","how":"您先搭两块，边搭边说：“我先搭这里，接下来换你。”孩子接上以后，不必一直给新任务。","ageTip":"12—18个月可以拿、放、敲、叠一两块；18个月以后再慢慢增加“搭高、搭桥、搭房子”。","exit":"孩子开始自己搭了，就让他按照自己的办法来，哪怕搭得和您想的不一样。","back":"孩子回头找您时，先看看是在分享，还是积木真的卡住了，再决定只回应还是帮一下。","safety":"使用不易吞咽、没有破损和尖角的大颗粒材料。"},{"id":"b4","scene":"busy","title":"找一找它住哪里","type":"嵌板活动","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"大抓手嵌板或简单形状盒","how":"先一起放好一块，然后把下一块交给孩子：“这一块你来找找它的家。”","ageTip":"12—18个月主要练习拿出来、放回去；18个月以后再增加形状匹配和转一转、试一试。","exit":"孩子愿意自己试时，成人先别急着伸手，给他一点时间。","back":"如果孩子怎么也放不进去，可以说：“转一转，再看看。”还不行，再短暂帮一下。","safety":"材料要足够大、边缘圆滑，避免可拆下的小零件。"},{"id":"b5","scene":"busy","title":"玩具送回家","type":"生活活动","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"一个收纳篮＋几件熟悉玩具","how":"先拿一个玩具做示范：“小汽车回家啦。”然后把另外两三件交给孩子。","ageTip":"小一点的孩子做“拿起来—放进去”就可以；大一点可以按类别或固定位置整理。","exit":"孩子已经开始自己收时，就让他继续，不要求摆得特别整齐。","back":"孩子来给您看时，回应“我看见你已经送回去两个了”，不要马上检查对不对。","safety":"收纳区保持通畅，不安排孩子搬重物，也不要让孩子为了收玩具进入厨房等危险区域。"},{"id":"b6","scene":"busy","title":"贴一贴，移一移","type":"安静活动","ages":["18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"大尺寸可重复贴纸＋底板","how":"先和孩子贴一两个，可以说：“小动物要回家啦，你想把它放哪里？”接下来让孩子自己贴、自己挪。","ageTip":"18—24个月重点是撕、贴、移动；24—36个月可以加一点简单情节，比如“谁住在哪里”。","exit":"孩子已经在自己安排位置时，成人就少问一点，让他自己决定。","back":"如果只是举给您看，回应一下就好；如果撕不开，再帮他起个小角，剩下的让他自己完成。","safety":"选择大尺寸、无小零件、可以反复粘贴的材料。"},{"id":"e1","scene":"emotion","title":"先抱一抱，慢下来","type":"共同调节","ages":["12-18","18-24","24-36"],"times":["1-3","5","10+"],"states":["mild","cry"],"material":"不需要材料","how":"先靠近孩子。可以蹲下来或者抱一抱，声音放慢：“你现在很难受，我在这里。”先陪他把情绪缓下来，不急着讲道理。","ageTip":"年龄越小，越需要身体靠近和稳定的声音；大一点的孩子可以慢慢加上“生气、难过、着急”这些简单情绪词。","exit":"孩子开始能看您、听您，或者身体慢慢放松时，再减少抱持和说话。","back":"如果情绪又上来了，就先回到陪伴，不用急着再换一个玩具吸引他。","safety":"先排除受伤、疼痛、饥饿、困倦、发热等身体需要。"},{"id":"e2","scene":"emotion","title":"翻翻熟悉的那本书","type":"熟悉活动","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["mild","cry"],"material":"孩子平时熟悉的一本绘本","how":"等孩子稍微缓下来，再拿熟悉的书。孩子翻到哪一页，就从哪一页看，不要求从头讲到尾。","ageTip":"小一点可以只看图、摸一摸、翻一翻；大一点可以说说角色正在做什么。","exit":"孩子不想看了就结束，不需要为了“坚持阅读”把他留在书前。","back":"如果孩子还是明显哭闹，先收起绘本，回到成人陪伴，不把书当成新的“止哭工具”。","safety":"如果哭闹异常、持续很久或伴随不适，要优先处理身体和安全问题。"},{"id":"e3","scene":"emotion","title":"慢慢滚球给你","type":"低刺激互动","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["mild"],"material":"一个柔软的大球","how":"面对面坐近一点，把球慢慢滚给孩子：“到你啦。”孩子愿意就滚回来，不愿意也没关系。","ageTip":"小一点距离短一些，成人多做示范；大一点可以轮流决定滚给谁、从哪里滚。","exit":"孩子节奏稳定下来以后，可以让他自己推、抱或者停一停。","back":"如果孩子不想继续，就结束，不需要用游戏把情绪强行转走。","safety":"活动区要清楚，球不要滚向楼梯、厨房或门口。"},{"id":"e4","scene":"emotion","title":"装进去，再倒出来","type":"重复活动","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["mild"],"material":"大容器＋大尺寸安全物品","how":"先慢慢示范一次：“放进去——倒出来。”让孩子按照自己的节奏重复，成人不用不断加新规则。","ageTip":"12—18个月做简单装取就够了；大一点可以慢慢增加颜色或种类。","exit":"孩子开始一遍一遍自己做时，成人就少说一点，让这个重复节奏帮助他稳定下来。","back":"孩子能继续就不必再教；如果停下来找您，先回应一下，再看需不需要帮助。","safety":"不要用豆子、硬币、珠子等容易吞咽的小物件。"},{"id":"e5","scene":"emotion","title":"随手画一会儿","type":"表达活动","ages":["18-24","24-36"],"times":["5","10+"],"states":["mild"],"material":"大纸＋粗杆可水洗画笔","how":"给孩子一张大纸，您先画一个点或一条线：“你想从哪里开始？”不规定画什么。","ageTip":"18—24个月主要是点、线和自由涂抹；24—36个月可以等孩子愿意时再问“这里是什么”。","exit":"孩子开始自己画了，就不要一直纠正颜色、形状和画法。","back":"孩子拿给您看时，可以说“这里有好多长长的线”，比只说“真棒”更有回应。","safety":"使用无毒可水洗材料，注意笔帽等小件。"},{"id":"e6","scene":"emotion","title":"让熟悉的玩偶陪一会儿","type":"角色安抚","ages":["18-24","24-36"],"times":["5","10+"],"states":["mild"],"material":"孩子熟悉的软玩偶","how":"可以让玩偶坐在旁边，轻声说：“小熊也有点难过，它先坐一会儿。”让孩子自己决定要不要抱、摸或和它说话。","ageTip":"18—24个月以抱、摸和简单模仿为主；24—36个月可以有一两句简单角色对话。","exit":"孩子情绪已经稳定，或者转向别的活动，就自然结束。","back":"不要借玩偶说教，也不要让玩偶替成人批评孩子。","safety":"软玩偶要没有松脱的小眼睛、小扣子等零件。"},{"id":"m1","scene":"meal","title":"这一勺你自己来","type":"自主进餐","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"儿童勺＋稳定小碗","how":"把碗稍微放近一点，让孩子先自己试。勺子不稳时，您可以先帮他把碗扶住，但不用抓着他的手舀。","ageTip":"12—18个月允许洒一点、慢一点；年龄大了以后再慢慢提高舀取和送入口的独立性。","exit":"看到孩子已经能够继续舀，就把帮助撤掉，让他自己完成。","back":"如果总是舀不到，先看看碗的位置、食物是不是太稀或太难舀，再决定要不要短暂帮一下。","safety":"保持稳定坐姿，食物大小和质地要适龄；进食时不要跑动、逗笑。"},{"id":"m2","scene":"meal","title":"先看看，再闻闻","type":"食物探索","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"当餐适龄食物","how":"遇到不熟悉的食物，不急着喂进去。可以先说：“你先看看、闻闻，想摸一摸也可以。”等孩子自己准备好。","ageTip":"小一点重点是安全触碰和味觉体验；大一点可以说说颜色、软硬、味道。","exit":"孩子愿意自己探索时，成人少催一点，不把“吃下去”当成唯一目标。","back":"孩子拒绝时先尊重，过一会儿再提供，不追着喂，也不用屏幕换取一口。","safety":"注意食物温度、质地、切块和过敏风险。"},{"id":"m3","scene":"meal","title":"两样里面你来选","type":"有限选择","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"当餐两种适宜食物或两套餐具选择","how":"只给两个都可以接受的选择：“你想先吃南瓜，还是先吃饭？”选好以后就开始。","ageTip":"18—24个月选项要简单、清楚；24—36个月可以让孩子用短句表达。","exit":"孩子选好了就不再继续增加选择，避免越选越拖。","back":"如果两个都不要，先看看是不是已经饱了、累了或者身体不舒服。","safety":"孩子可以选择顺序，但营养和食物安全仍由成人把关。"},{"id":"m4","scene":"meal","title":"我的餐具我来放","type":"生活参与","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm"],"material":"儿童餐具、围兜","how":"吃饭前让孩子做一件小事，比如把自己的勺子放好、把围兜拿过来。","ageTip":"18—24个月做一件就够了；24—36个月可以完成两三件简单准备。","exit":"准备好以后马上进入进餐，不需要反复检查摆得整不整齐。","back":"漏掉一件时可以提醒：“还差什么呀？”不要一下全部替他做好。","safety":"只让孩子拿轻便、无锐边的儿童餐具。"},{"id":"m5","scene":"meal","title":"吃饭就说吃饭的事","type":"共餐互动","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm"],"material":"正常家庭餐桌即可","how":"把话题留在眼前的食物和孩子正在做的事情上：“这个软软的。”“你自己舀到了。”不用不停讲，也不用拿玩具吸引。","ageTip":"小一点成人多描述、多等待；大一点可以有简单来回对话。","exit":"孩子已经专心吃了，成人就安静一点，让他感受食物和身体。","back":"注意力转开时，先看看是不是已经饱了、坐累了，或者周围太吵。","safety":"不追喂、不强迫，也不建议用玩具或屏幕持续吸引孩子进食。"},{"id":"m6","scene":"meal","title":"问问小肚子吃好了没有","type":"饱腹信号","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"快吃完时可以问：“还想吃，还是吃好了？”同时看看孩子有没有转头、闭嘴、推开、速度变慢。","ageTip":"18—24个月成人主要看动作和表情；24—36个月可以鼓励孩子说“还要”“吃好了”。","exit":"饱腹信号已经很清楚，就结束进餐，不再用屏幕换“最后几口”。","back":"如果突然拒绝，先看身体状态和食物情况，不急着要求继续吃。","safety":"如果长期进食困难、吞咽异常或生长问题明显，建议进一步寻求专业评估。"},{"id":"w1","scene":"wait","title":"一起找一种颜色","type":"无材料游戏","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"坐着等的时候，可以随口说：“我们看看这里哪里有红色？”找到一两个就够了，不用一直找。","ageTip":"18—24个月成人先指给孩子看；24—36个月可以轮流找。","exit":"孩子开始自己四处观察时，就让他安静看一会儿，不需要一直出题。","back":"孩子指给您看时，跟着看、回应一句就好。","safety":"始终留在安全区域，不要为了找东西让孩子离开成人视线。"},{"id":"w2","scene":"wait","title":"听听刚才是什么声音","type":"听觉游戏","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"停下来听一听周围：“刚才有个声音，你听到了吗？”让孩子自己找一找声源。","ageTip":"小一点主要是转头和寻找声音；大一点可以猜“是谁的声音”。","exit":"孩子自己在听、在看时，就不用继续说。","back":"孩子自己发出一个声音，您可以模仿一次，让互动有来有回。","safety":"不要引导孩子靠近车辆、设备或其他危险声源。"},{"id":"w3","scene":"wait","title":"你做一个，我学一个","type":"模仿游戏","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"让孩子先做一个小动作，您跟着学。然后您做一个简单动作，看看孩子愿不愿意跟。","ageTip":"小一点做拍手、挥手；大一点可以加跺脚、摸头、转身等简单动作。","exit":"两三轮就够了，不必为了“打发时间”一直玩下去。","back":"孩子自己发明动作时，先跟着他，不要马上纠正。","safety":"空间小的时候只做手部动作，不跑跳。"},{"id":"w4","scene":"wait","title":"拍一拍小节奏","type":"节奏游戏","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"轻轻拍一个很短的节奏，等孩子回应。也可以反过来，让孩子拍，您来学。","ageTip":"小一点一拍一停就好；大一点可以有两拍、快慢或强弱变化。","exit":"孩子没兴趣就停，不需要要求“拍得一样”。","back":"重点是你来我往，不是节奏对不对。","safety":"公共空间注意音量，不拍打公共设施。"},{"id":"w5","scene":"wait","title":"他看哪里，我们就说哪里","type":"语言互动","ages":["12-18","18-24","24-36"],"times":["1-3","5","10+"],"states":["calm","mild"],"material":"不需要材料","how":"跟着孩子的视线说：“你在看公交车。”“车开走了。”不用连续问“这是什么”。","ageTip":"小一点由成人描述就够了；大一点可以等孩子补一个词或一句话。","exit":"孩子不再回应时，就让他自己观察一会儿。","back":"孩子又指向别处时，再跟过去回应一句，不需要把每一分钟都安排满。","safety":"互动时也要留意周围环境和出行安全。"},{"id":"w6","scene":"wait","title":"手指动一动","type":"安静游戏","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"做几个很小的动作，比如挥手、点手指、张开合拢，让孩子选择跟不跟。","ageTip":"年龄越小动作越简单；大一点可以让孩子当“小老师”，您来学。","exit":"两三轮以后就停下来。等待本身也可以有一段安静时间。","back":"孩子自己观察环境时，不用马上再找新玩法。","safety":"不在公共区域安排追跑、跳跃等需要大空间的活动。"},{"id":"p1","scene":"play","title":"铺张大纸随便画","type":"艺术活动","ages":["18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"大纸＋粗杆可水洗画笔或海绵印章","how":"您先留一个小痕迹：“我画了一条线，接下来你想画哪里？”然后把纸真正交给孩子。","ageTip":"18—24个月以点、线、印为主；24—36个月可以慢慢出现简单主题，但不要求画得像。","exit":"孩子已经有自己的想法时，成人就少示范、少改动。","back":"孩子拿作品给您看时，可以描述“这里有好多蓝色”“这一条很长”，比只说“真棒”更具体。","safety":"使用无毒可水洗材料，注意笔帽和小印章。"},{"id":"p2","scene":"play","title":"家里的小乐队","type":"音乐活动","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm"],"material":"安全沙锤、小鼓或可敲击的大件日用品","how":"先听一种声音，再轮流敲。孩子一改变节奏，成人就跟着回应一次。","ageTip":"小一点先听、摇、敲；大一点可以玩快慢、强弱和“停一下”。","exit":"孩子开始自己探索声音时，就不要一直指挥。","back":"孩子发出一个新节奏时，您学一次，让他发现“我的声音会影响别人”。","safety":"不用玻璃、锐边金属或可能碎裂的物品。"},{"id":"p3","scene":"play","title":"跟着孩子翻绘本","type":"亲子阅读","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"一本适龄绘本","how":"孩子翻到哪里，就从哪里说。看到他盯着一只小狗，就先聊小狗，不必坚持照着文字讲完。","ageTip":"小一点指图、命名就很好；大一点可以让孩子接一句、猜一猜下一步。","exit":"孩子离开了，就结束这一次阅读，不需要把整本书讲完。","back":"孩子指图时先回应他的兴趣，不连续考“这是什么、那是什么”。","safety":"选择圆角、结实、适龄的书本。"},{"id":"p4","scene":"play","title":"跟小动物动一动","type":"动作活动","ages":["18-24","24-36"],"times":["5","10+"],"states":["calm"],"material":"一块安全空地","how":"可以学小兔跳、小熊走、小鸟挥翅。先跟老师一样做，再让孩子自己出一个动作。","ageTip":"18—24个月一次做一个动作；24—36个月可以把两三个动作串起来。","exit":"孩子开始自己想动作时，成人就跟着他，不再一直领。","back":"孩子累了或者不想动，就停下来，不追求连续时长。","safety":"地面要防滑，远离桌角、台阶和易碰撞物。"},{"id":"p5","scene":"play","title":"和娃娃过一天","type":"角色游戏","ages":["24-36"],"times":["10+"],"states":["calm"],"material":"软玩偶＋少量安全生活道具","how":"可以从一个熟悉动作开始：“娃娃要吃饭啦。”接下来让孩子决定它还要做什么。","ageTip":"24—36个月做吃饭、睡觉、洗脸这类简单生活情节就够了，不需要复杂剧本。","exit":"孩子自己安排情节以后，成人跟随，不主导每一步。","back":"孩子邀请您时再加入一个角色，不需要一直参与。","safety":"道具不要使用药品、尖锐物或小零件。"},{"id":"p6","scene":"play","title":"一起搭一下，接下来换你","type":"建构活动","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm"],"material":"大颗粒积木或软积木","how":"您搭一块，孩子搭一块。做两三次以后，可以说：“接下来你想怎么搭？”把决定权交给他。","ageTip":"小一点以堆、推倒为主；大一点可以慢慢出现桥、房子等简单主题。","exit":"孩子有自己的搭法时，不需要把它改成“大人觉得正确”的样子。","back":"积木倒了先等几秒，看孩子会不会自己重来，再决定要不要帮。","safety":"使用适龄大颗粒材料，活动区不要堆放过多杂物。"},{"id":"s1","scene":"sleep","title":"让玩具先回家","type":"睡前仪式","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"一个固定玩具篮","how":"睡前只收两三件就可以：“小汽车回家啦，收好我们就去洗漱。”每天用差不多的话结束白天活动。","ageTip":"18—24个月收一两件；24—36个月可以让孩子自己决定先收哪一件。","exit":"收好以后就进入下一步睡前流程，不再重新开一个游戏。","back":"孩子拖延时可以给两个选择：“先收车还是先收积木？”不要用屏幕交换“快一点”。","safety":"不安排搬重物或追跑式收拾。"},{"id":"s2","scene":"sleep","title":"今晚选一本书","type":"阅读仪式","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"两本熟悉绘本","how":"给孩子两个选择：“今晚想看这本，还是这本？”选好后慢慢看，不需要再加很多刺激内容。","ageTip":"小一点看图、翻页就好；大一点可以聊一两件今天发生的小事。","exit":"一本读完，或者孩子已经困了，就结束。","back":"如果还想继续，可以温和提醒：“今天一本，明天再选。”保持规则稳定。","safety":"睡前环境尽量安静、光线柔和。"},{"id":"s3","scene":"sleep","title":"和房间说晚安","type":"安静仪式","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"熟悉软玩偶或房间里的固定物品","how":"和玩偶、窗帘、灯说一两句“晚安”。把它当成每天固定的结束信号。","ageTip":"18—24个月成人带着说；24—36个月可以让孩子自己决定今天跟谁说晚安。","exit":"说完就进入洗漱、上床或关灯，不再重新兴奋起来。","back":"孩子反复要求时，温和重复固定流程，不临时增加很多项目。","safety":"床上不要放过多影响睡眠安全的物品。"},{"id":"s4","scene":"sleep","title":"看两张今天的照片","type":"安静交流","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm"],"material":"2—3张实体照片或提前选好的静态照片","how":"只看两三张，简单说说“今天我们去了哪里、和谁在一起”。重点是回顾，不是继续刷屏。","ageTip":"18—24个月认人、指一指；24—36个月可以说一句“今天和谁做了什么”。","exit":"看完固定数量就结束，不再往下滑很多照片。","back":"如果孩子还想看更多，可以说“今天看到这里，明天再看”。","safety":"更推荐实体照片；如果用手机，只打开预先选好的静态照片，看完马上退出。"},{"id":"s5","scene":"sleep","title":"轻轻伸一伸","type":"身体放松","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"做两三个很轻的动作，比如伸伸手、抱抱自己、慢慢抬手放下。语速和动作都放慢。","ageTip":"动作越简单越好，不追求标准，也不增加跑跳。","exit":"身体慢下来以后，就直接进入上床流程。","back":"如果孩子越做越兴奋，就马上停，换成更安静的环节。","safety":"不做高难度拉伸、翻滚或剧烈动作。"},{"id":"s6","scene":"sleep","title":"把睡前顺序固定下来","type":"稳定流程","ages":["18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"3—4张简单图片卡","how":"把“收玩具—洗漱—看书—晚安—关灯”排成固定顺序，每晚照着走。孩子知道下一步是什么，会更容易进入状态。","ageTip":"18—24个月由成人指卡；24—36个月可以让孩子自己翻下一张。","exit":"最后一张完成以后就结束活动，不再开启新的刺激内容。","back":"孩子拖延时可以说：“我们看看下一张是什么。”让流程来提醒，而不是一直催。","safety":"如果长期入睡困难、夜醒明显或睡眠问题持续，建议进一步咨询专业人员。"}];
+
+let projectChoice={age:null,time:null,state:null,scene:null,lastStrategy:null,offset:0};
+let currentProjectPool=[];
+let projectInited=false;
+
+function safeText(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function getLabel(list,id){return list.find(x=>x.id===id)?.label||'未选择';}
+function saveProjectChoice(){localStorage.setItem(PROJECT_STORE_KEY, JSON.stringify(projectChoice));}
+function loadProjectChoice(){try{return JSON.parse(localStorage.getItem(PROJECT_STORE_KEY)||'null');}catch(e){return null;}}
+function loadHistory(){try{return JSON.parse(localStorage.getItem(PROJECT_HISTORY_KEY)||'[]');}catch(e){return [];}}
+function saveHistory(h){localStorage.setItem(PROJECT_HISTORY_KEY,JSON.stringify(h.slice(-50)));}
+function loadCommunity(){try{return JSON.parse(localStorage.getItem(COMMUNITY_STORE_KEY)||'{}');}catch(e){return {};}}
+function saveCommunity(x){localStorage.setItem(COMMUNITY_STORE_KEY,JSON.stringify(x));}
+
+function resetProjectSelections(){
+  projectChoice={age:null,time:null,state:null,scene:null,lastStrategy:null,offset:0,currentStage:'age'};
+  currentProjectPool=[]; saveProjectChoice(); updateProjectSummary(); showProjectStage('age');
+  const fb=document.getElementById('feedbackAdvice'); if(fb){fb.style.display='none';fb.textContent='';}
+  const wrap=document.getElementById('strategyResults'); if(wrap) wrap.innerHTML='';
+  const why=document.getElementById('whyRecommendation'); if(why) why.textContent='';
+  initProjectModule(true);
+}
+function projectStageOrder(){return ['age','time','state','scene','result'];}
+function goProjectBack(){
+  const order=projectStageOrder();
+  const cur=projectChoice.currentStage||'age';
+  const idx=order.indexOf(cur);
+  if(idx<=0){showProjectStage('age');return;}
+  const prev=order[idx-1];
+  showProjectStage(prev);
+}
+function jumpToStage(stage){
+  const allow={age:true,time:!!projectChoice.age,state:!!projectChoice.time,scene:!!projectChoice.state,result:!!projectChoice.scene};
+  if(allow[stage]) showProjectStage(stage);
+}
+function getFallback(strategy){
+  if(strategy.material==='不需要材料') return '可以直接从身边环境开始，不需要另外准备材料。';
+  const t=strategy.title;
+  if(/颜色|分类/.test(t)) return '家里没有分类材料时，可以用不同颜色的袜子、大块积木或彩色杯来代替。';
+  if(/袜子/.test(t)) return '没有袜子时，可以换成手帕、小毛巾或颜色明显的软布料来配对。';
+  if(/积木|搭/.test(t)) return '没有积木时，可以换成软积木、纸杯、纸盒或可安全堆放的大件材料。';
+  if(/绘本|照片/.test(t)) return '没有专门材料时，可使用家里现成的熟悉绘本、实体照片或提前准备好的几张打印图片。';
+  if(/乐队|节奏|拍/.test(t)) return '没有乐器时，可以用塑料碗、木勺、纸盒等安全物品发出声音。';
+  if(strategy.scene==='meal') return '优先使用当餐现有食物、儿童餐具和餐桌环境，不需要另外准备新的玩具。';
+  if(strategy.scene==='busy') return '可以优先选择家里现成、容易开始的大件材料，避免临时购买。';
+  return '优先使用家里现成、体积较大且安全的材料，不必专门购买。';
+}
+function strategyBadge(x){
+  if(x.material==='不需要材料') return '随手就能做';
+  if(x.type.includes('生活')||x.type.includes('餐')) return '生活里就能做';
+  if(x.type.includes('玩具')||x.type.includes('嵌板')||x.type.includes('建构')) return '有玩具可以试';
+  if(x.type.includes('共同')||x.type.includes('互动')||x.type.includes('阅读')||x.type.includes('音乐')||x.type.includes('艺术')||x.type.includes('角色')) return '一起玩一会儿';
+  return '现在可以试试';
+}
+function getRecommendationReason(){
+  const age=getLabel(P_AGES,projectChoice.age), tm=getLabel(P_TIMES,projectChoice.time), st=getLabel(P_STATES,projectChoice.state), sc=getLabel(P_SCENES,projectChoice.scene);
+  if(projectChoice.state==='cry') return `您选择的是<strong>${safeText(sc)}</strong>，而且孩子目前已经出现明显哭闹。这个时候不急着安排复杂活动，建议先处理安全、身体需要和情绪，再从熟悉、低刺激的办法里试一个。`;
+  if(projectChoice.state==='mild') return `孩子现在有些烦躁、也会频繁来找您。考虑到您当前可陪伴时间是<strong>${safeText(tm)}</strong>，下面优先给出一些容易开始、可以先陪1—2轮再慢慢退出的办法。`;
+  return `孩子目前状态比较平稳，年龄为<strong>${safeText(age)}</strong>，您当前可投入时间是<strong>${safeText(tm)}</strong>。所以下面优先推荐一些准备简单、容易上手、孩子接住以后可以继续一会儿的办法。`;
+}
+function pickProjectPool(){
+  let list=STRATEGIES.filter(x=>x.scene===projectChoice.scene && x.ages.includes(projectChoice.age) && x.states.includes(projectChoice.state) && x.times.includes(projectChoice.time));
+  if(list.length<6) list=STRATEGIES.filter(x=>x.scene===projectChoice.scene && x.ages.includes(projectChoice.age) && x.states.includes(projectChoice.state));
+  if(projectChoice.state==='cry' && list.length<3){
+    const extra=STRATEGIES.filter(x=>x.scene==='emotion' && x.ages.includes(projectChoice.age) && x.states.includes('cry'));
+    list=[...list,...extra];
+  }
+  const seen=new Set();
+  list=list.filter(x=>!seen.has(x.id)&&seen.add(x.id));
+  return list;
+}
+function swapStrategies(){
+  if(!currentProjectPool.length) return;
+  const pageSize=3;
+  projectChoice.offset=(projectChoice.offset+pageSize) % Math.max(currentProjectPool.length,pageSize);
+  saveProjectChoice();
+  renderProjectRecommendations();
+}
+
+function renderOptionCards(el, items, onPick, selectedId){
+  el.innerHTML='';
+  items.forEach(item=>{
+    const b=document.createElement('button');
+    b.className='option-card'+(selectedId===item.id?' active':'');
+    b.innerHTML=`<span class="icon">${item.icon||''}</span><span class="title">${safeText(item.label)}</span><span class="desc">${safeText(item.desc||'')}</span>`;
+    b.onclick=()=>onPick(item);
+    el.appendChild(b);
+  });
+}
+function showProjectStage(id){
+  document.querySelectorAll('#project-guide .project-stage').forEach(x=>x.classList.remove('active'));
+  const el=document.getElementById('ps-'+id); if(el) el.classList.add('active');
+  document.querySelectorAll('.step-pill.editable').forEach(p=>p.classList.toggle('active',p.dataset.stage===id));
+  projectChoice.currentStage=id; saveProjectChoice();
+}
+function updateProjectSummary(){
+  document.getElementById('sumAge').textContent=getLabel(P_AGES,projectChoice.age);
+  document.getElementById('sumTime').textContent=getLabel(P_TIMES,projectChoice.time);
+  document.getElementById('sumState').textContent=getLabel(P_STATES,projectChoice.state);
+  document.getElementById('sumScene').textContent=getLabel(P_SCENES,projectChoice.scene);
+}
+function initProjectModule(){
+  if(!projectInited){
+    const saved=loadProjectChoice(); if(saved) projectChoice={...projectChoice,...saved};
+    document.getElementById('clearProjectHistory').onclick=()=>{if(confirm('确认清空实践记录？')){localStorage.removeItem(PROJECT_HISTORY_KEY);renderProjectHistory();}};
+    renderOptionCards(document.getElementById('communitySceneOptions'),P_SCENES,(x)=>{const d=loadCommunity();d[x.id]=(d[x.id]||0)+1;saveCommunity(d);renderCommunity();});
+    document.getElementById('clearCommunity').onclick=()=>{if(confirm('确认清空本机匿名统计？')){saveCommunity({});renderCommunity();}};
+    document.getElementById('projectResetBtn').onclick=()=>resetProjectSelections();
+    document.getElementById('projectBackBtn').onclick=()=>goProjectBack();
+    document.getElementById('swapStrategies').onclick=()=>swapStrategies();
+    document.querySelectorAll('.step-pill.editable').forEach(p=>p.onclick=()=>jumpToStage(p.dataset.stage));
+    document.querySelectorAll('[data-pnav]').forEach(b=>b.onclick=()=>switchProjectPane(b.dataset.pnav));
+    document.querySelectorAll('.feedback-btn').forEach(b=>b.onclick=()=>handleFeedback(b.dataset.feedback));
+    projectInited=true;
+  }
+  renderOptionCards(document.getElementById('ageOptions'),P_AGES,(x)=>{projectChoice.age=x.id;projectChoice.offset=0;saveProjectChoice();updateProjectSummary();initProjectModule();showProjectStage('time');},projectChoice.age);
+  renderOptionCards(document.getElementById('timeOptions'),P_TIMES,(x)=>{projectChoice.time=x.id;projectChoice.offset=0;saveProjectChoice();updateProjectSummary();initProjectModule();showProjectStage('state');},projectChoice.time);
+  renderOptionCards(document.getElementById('stateOptions'),P_STATES,(x)=>{projectChoice.state=x.id;projectChoice.offset=0;saveProjectChoice();updateProjectSummary();initProjectModule();showProjectStage('scene');},projectChoice.state);
+  renderOptionCards(document.getElementById('sceneOptions'),P_SCENES,(x)=>{projectChoice.scene=x.id;projectChoice.offset=0;saveProjectChoice();updateProjectSummary();renderProjectRecommendations();showProjectStage('result');initProjectModule();},projectChoice.scene);
+  updateProjectSummary();
+  if(projectChoice.scene){renderProjectRecommendations(); showProjectStage('result');}
+  else if(projectChoice.state) showProjectStage('scene');
+  else if(projectChoice.time) showProjectStage('state');
+  else if(projectChoice.age) showProjectStage('time');
+  else showProjectStage('age');
+  renderProjectHistory(); renderCommunity();
+
+}
+function switchProjectPane(name){
+  document.querySelectorAll('[data-pnav]').forEach(b=>b.classList.toggle('active',b.dataset.pnav===name));
+  ['guide','history','community'].forEach(x=>document.getElementById('project-'+x).hidden=x!==name);
+  if(name==='history')renderProjectHistory(); if(name==='community')renderCommunity();
+}
+function responseAdvice(){
+  const st=projectChoice.state, sc=projectChoice.scene;
+  if(st==='cry') return `<div class="notice warn"><strong>现在先不用急着安排活动。</strong><br>先靠近孩子，看看有没有安全、疼痛、饥饿、困倦等需要，让情绪慢一点。等孩子开始能够看您、听您或接受安抚后，再从下面的低刺激办法里选一个。</div><div class="response-box"><strong>老师建议：</strong>这一刻优先做安全与情绪共调节。回应以后再看孩子能否慢慢恢复，而不是用新活动把哭声压下去。</div>`;
+  if(st==='mild') return `<div class="response-box"><strong>可以先多给一点连接。</strong><br>先回应一句、陪着开始1—2轮；孩子接住以后，再慢慢把动作交还给他。回来找您时，先分一分：是在分享、拿不准，还是确实需要帮助。</div>`;
+  return `<div class="response-box"><strong>先少帮一点。</strong><br>孩子状态平稳时，可以共同开始、确认他会做以后就退开。回头找您，不一定代表“不会”，可能只是想让您看看或确认一下。</div>`;
+}
+function renderProjectRecommendations(){
+  if(!projectChoice.age||!projectChoice.time||!projectChoice.state||!projectChoice.scene)return;
+  document.getElementById('projectSummary').innerHTML=[
+    getLabel(P_AGES,projectChoice.age),getLabel(P_TIMES,projectChoice.time),getLabel(P_STATES,projectChoice.state),getLabel(P_SCENES,projectChoice.scene)
+  ].map(x=>`<span class="summary-chip">${safeText(x)}</span>`).join('');
+  document.getElementById('responseAdvice').innerHTML=responseAdvice();
+  document.getElementById('stateGate').innerHTML=projectChoice.state==='cry'?`<div class="alert-bar"><strong>现在先别急着找新游戏。</strong>先看一看：孩子有没有饿、困、不舒服，或当下环境是否存在安全风险。等情绪开始慢下来，再试熟悉、低刺激的办法。</div>`:'';
+  document.getElementById('whyRecommendation').innerHTML=getRecommendationReason();
+
+  currentProjectPool=pickProjectPool();
+  const wrap=document.getElementById('strategyResults');
+  if(!currentProjectPool.length){
+    wrap.innerHTML='<div class="notice">当前组合没有直接活动建议。先处理安全和情绪需要，再重新选择孩子的状态。</div>';return;
+  }
+  const pageSize=3;
+  if(projectChoice.offset>=currentProjectPool.length) projectChoice.offset=0;
+  const visible=currentProjectPool.slice(projectChoice.offset, projectChoice.offset+pageSize).concat(currentProjectPool.slice(0, Math.max(0, projectChoice.offset+pageSize-currentProjectPool.length)));
+  const list=visible.slice(0,Math.min(pageSize,currentProjectPool.length));
+  document.getElementById('swapStrategies').style.display=currentProjectPool.length>3?'':'none';
+  wrap.innerHTML=list.map((x,i)=>`<article class="strategy-card">
+    <div><span class="badge">${safeText(strategyBadge(x))}</span></div>
+    <h3>${safeText(x.title)}</h3>
+    <div class="strategy-tags"><span class="strategy-tag">${safeText(x.type)}</span><span class="strategy-tag">${safeText(getLabel(P_TIMES,projectChoice.time))}</span><span class="strategy-tag">${x.material==='不需要材料'?'无需材料':'低准备'}</span></div>
+    <div class="strategy-meta"><strong>准备：</strong>${safeText(x.material)}</div>
+    <div class="strategy-detail"><strong>可以这样开始</strong>${safeText(x.how)}<strong>按孩子年龄这样调</strong>${safeText(x.ageTip)}<strong>什么时候把机会交给孩子</strong>${safeText(x.exit)}<strong>孩子又来找您时</strong>${safeText(x.back)}<strong>家里没有这些怎么办</strong>${safeText(getFallback(x))}<strong>安全小提醒</strong>${safeText(x.safety)}</div>
+    <button class="btn chooseStrategy" data-id="${x.id}" style="margin-top:auto">就试这个</button>
+  </article>`).join('');
+  wrap.querySelectorAll('.chooseStrategy').forEach(b=>b.onclick=()=>{projectChoice.lastStrategy=b.dataset.id;saveProjectChoice();wrap.querySelectorAll('.chooseStrategy').forEach(x=>x.textContent=x.dataset.id===b.dataset.id?'✓ 已选择':'就试这个');});
+}
+function handleFeedback(kind){
+  const box=document.getElementById('feedbackAdvice'); box.style.display='block';
+  const msg={
+    continue:'孩子已经能继续了，这一次就到这里。先别再增加帮助，把机会留给他自己。',
+    stuck:'他还有一点卡住。您可以先多给一句提示；如果还是不会，就陪着做一下，等他接上以后再把手收回来。',
+    upset:'先把活动停一停，回到孩子身边。看看是不是累了、委屈了或需要抱一抱；情绪还没缓下来时，不急着再换新游戏。',
+    safety:'先处理安全和身体需要，这一刻活动可以先放下。如果孩子持续不舒服、哭闹异常或出现您拿不准的情况，及时寻求专业帮助。'
+  }[kind];
+  box.textContent=msg;
+  const strategy=STRATEGIES.find(x=>x.id===projectChoice.lastStrategy);
+  const h=loadHistory();
+  h.push({at:new Date().toISOString(),age:projectChoice.age,time:projectChoice.time,state:projectChoice.state,scene:projectChoice.scene,strategy:strategy?.title||'未选择具体活动',feedback:kind});
+  saveHistory(h);renderProjectHistory();
+}
+function renderProjectHistory(){
+  const el=document.getElementById('projectHistoryList'); if(!el)return;
+  const h=loadHistory().slice().reverse();
+  if(!h.length){el.innerHTML='<p class="muted">还没有实践记录。完成一次“回头看”后，会自动留在这里。</p>';return;}
+  const fb={continue:'已经继续',stuck:'还有点卡住',upset:'情绪更明显',safety:'安全/生活需要'};
+  el.innerHTML=h.map(x=>`<div class="history-item"><strong>${safeText(getLabel(P_SCENES,x.scene))}</strong> · ${safeText(x.strategy)}<br><span class="muted">${safeText(getLabel(P_AGES,x.age))}｜${safeText(getLabel(P_TIMES,x.time))}｜${safeText(fb[x.feedback]||x.feedback)}｜${new Date(x.at).toLocaleString()}</span></div>`).join('');
+}
+function renderCommunity(){
+  const el=document.getElementById('communityBars'); if(!el)return;
+  const d=loadCommunity(); const total=P_SCENES.reduce((n,x)=>n+(d[x.id]||0),0); const max=Math.max(1,...P_SCENES.map(x=>d[x.id]||0));
+  el.innerHTML=P_SCENES.map(x=>{const n=d[x.id]||0;const pct=Math.round(n/max*100);return `<div class="community-row"><span>${safeText(x.label)}</span><div class="community-track"><div class="community-fill" style="width:${pct}%"></div></div><strong>${n}</strong></div>`}).join('')+`<p class="small muted">本机累计选择：${total} 次</p>`;
+}
 
 /* 渲染入口 */
 function renderAll(){
