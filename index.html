@@ -96,7 +96,7 @@ svg{width:100%;height:100%}
 
 /* ========== 模块：婴幼儿屏幕使用与家庭指导 ========== */
 .project-card{grid-column:1/-1;border:2px solid var(--accent);background:linear-gradient(135deg,var(--card),var(--chip-active));position:relative;overflow:hidden}
-.project-card:before{content:"家庭指导";position:absolute;right:14px;top:12px;border:1px solid var(--accent);color:var(--accent);padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;background:rgba(255,255,255,.9)}
+.project-card:before{content:"连续支持";position:absolute;right:14px;top:12px;border:1px solid var(--accent);color:var(--accent);padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;background:rgba(255,255,255,.9)}
 .project-card h3{font-size:20px;padding-right:86px}
 .project-hero{border:1px solid var(--line);border-radius:18px;padding:18px;background:linear-gradient(135deg,var(--chip-active),var(--card));margin-bottom:14px}
 .project-hero h1{font-size:26px;margin:0 0 6px}
@@ -258,6 +258,121 @@ body{background:linear-gradient(180deg,var(--bg),#fffaf6 48%,var(--bg));}
 .community-track{background:#eee8e2}
 .community-fill{background:linear-gradient(90deg,#79a6c3,#e8b77e)}
 
+
+/* 托育机构端 */
+.institution-shell{display:grid;gap:14px}
+.institution-hero{border:1px solid #dbeafe;background:linear-gradient(135deg,#f0f8ff,#fffaf5);border-radius:18px;padding:16px}
+.institution-hero h2{margin:0 0 4px}
+.institution-nav{display:flex;gap:8px;flex-wrap:wrap}
+.institution-nav .btn.active{border-color:var(--accent);background:var(--chip-active)}
+.inst-pane{display:block}
+.inst-note{border-left:4px solid var(--accent);background:var(--chip-active);border-radius:10px;padding:10px 12px;font-size:13px}
+.inst-form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.inst-form-grid{grid-template-columns:1fr}}
+.inst-step{border:1px solid var(--line);background:var(--bg);border-radius:16px;padding:14px;margin-top:12px}
+.inst-step-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.inst-step-no{width:30px;height:30px;border-radius:999px;background:var(--accent);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;flex:0 0 auto}
+.inst-step h3{margin:2px 0 0;font-size:16px}
+.inst-choice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media(max-width:900px){.inst-choice-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.inst-choice-grid{grid-template-columns:1fr}}
+.inst-choice{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:12px;padding:10px;cursor:pointer;text-align:left;font-size:13px}
+.inst-choice:hover,.inst-choice.active{border-color:var(--accent);background:var(--chip-active);box-shadow:0 0 0 1px var(--accent) inset}
+.inst-choice .sub{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.inst-multi.active{border-color:var(--accent);background:var(--chip-active)}
+.inst-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.inst-save{background:var(--accent);color:#fff;border-color:var(--accent)}
+.inst-success{border:1px solid #bbf7d0;background:#f0fdf4;color:#166534;border-radius:12px;padding:10px 12px;margin-top:10px;display:none}
+.inst-record{border-top:1px solid var(--line);padding:10px 0;font-size:13px}
+.inst-record:first-child{border-top:none}
+.inst-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+@media(max-width:900px){.inst-metrics{grid-template-columns:1fr 1fr}}
+.metric-card{border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:12px}
+.metric-card .num{font-size:24px;font-weight:800;color:var(--accent);line-height:1.1}
+.metric-card .lab{font-size:12px;color:var(--muted);margin-top:5px}
+.profile-section{border-top:1px dashed var(--line);padding-top:12px;margin-top:12px}
+.profile-bars{display:grid;gap:8px}
+.profile-row{display:grid;grid-template-columns:110px 1fr 36px;gap:8px;align-items:center;font-size:13px}
+.profile-track{height:10px;background:var(--line);border-radius:999px;overflow:hidden}
+.profile-fill{height:100%;background:var(--accent);border-radius:999px}
+.comm-box{white-space:pre-wrap;border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:14px;min-height:150px;line-height:1.75}
+.family-task{border:1px solid #fde68a;background:#fffbeb;border-radius:14px;padding:12px;margin-top:10px}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:900px){.review-grid{grid-template-columns:1fr}}
+.demo-tag{display:inline-block;font-size:11px;border-radius:999px;padding:2px 7px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;margin-left:6px}
+
+
+/* ========== 角色工作台 v5 ========== */
+.toolbar{flex-wrap:wrap;gap:10px}
+.toolbar-left{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.role-switcher{display:flex;align-items:center;gap:5px;padding:5px;background:#f7f4f0;border:1px solid var(--line);border-radius:999px;box-shadow:0 2px 10px rgba(81,68,57,.04)}
+.role-switcher .role-label{font-size:12px;color:var(--muted);font-weight:700;padding:0 4px 0 6px;white-space:nowrap}
+.role-btn{border:none;background:transparent;color:var(--fg);padding:7px 10px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap}
+.role-btn:hover{background:rgba(255,255,255,.72)}
+.role-btn.active{background:#fff;color:#4f7896;box-shadow:0 3px 10px rgba(81,68,57,.08)}
+.role-status{font-size:12px;color:var(--muted);white-space:nowrap}
+@media(max-width:820px){.role-switcher{width:100%;justify-content:center}.toolbar{position:static}.role-status{display:none}}
+
+.role-workspace{margin:18px 0 4px;border:none;border-radius:18px;padding:16px 18px;background:linear-gradient(135deg,#f8fbfd,#fffaf5);box-shadow:0 6px 20px rgba(84,69,59,.05)}
+.role-workspace-head{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}
+.role-workspace-title{display:flex;align-items:center;gap:10px}
+.role-workspace-icon{width:42px;height:42px;border-radius:13px;background:#fff;display:grid;place-items:center;font-size:21px;box-shadow:0 4px 12px rgba(79,126,168,.08)}
+.role-workspace h2{margin:0;font-size:17px;color:#41515b}
+.role-workspace p{margin:3px 0 0;font-size:12.5px;color:var(--muted)}
+.role-actions{display:flex;gap:8px;flex-wrap:wrap}
+.role-actions .btn{background:#fff}
+
+.inst-edit-banner{border:1px solid #cfe1ec;background:#f3f9fc;border-radius:14px;padding:11px 13px;color:#526874;font-size:13px;margin:12px 0}
+.inst-edit-banner strong{color:#3f6f8e}
+.danger-btn{border-color:#f2c8c5!important;color:#b85d57!important;background:#fff8f7!important}
+.inst-record-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.record-actions{display:flex;gap:6px;align-items:center;flex:0 0 auto}
+.record-delete{border:none;background:transparent;color:#b86b64;cursor:pointer;font-size:12px;padding:2px 5px;border-radius:6px}
+.record-delete:hover{background:#fff0ef}
+.inst-empty-hint{border:1px dashed #cddfe9;background:#fbfdfe;border-radius:12px;padding:12px 13px;color:#66757e;font-size:13px}
+
+
+/* v7：角色化入口、补充观察、社区科普与家庭指导资源 */
+.project-role-line{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:#f3f7fa;color:#567286;font-size:12px;font-weight:700;margin-bottom:5px}
+.project-nav:empty{display:none}
+.obs-extra-box{border:1px solid #e4ecef;background:#fbfdfd;border-radius:14px;padding:12px;margin-top:10px}
+.obs-extra-box h4{margin:0 0 6px;font-size:14px;color:#4e606a}
+.obs-textarea{width:100%;min-height:92px;resize:vertical;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg);padding:10px 12px;font:inherit;line-height:1.6}
+.char-count{text-align:right;font-size:11px;color:var(--muted);margin-top:4px}
+.community-shell{display:grid;gap:14px}
+.community-hero{border:1px solid #f0dcc8;background:linear-gradient(135deg,#fff9f2,#f4f9fc);border-radius:18px;padding:16px}
+.community-hero h2{margin:0 0 4px}
+.community-subnav{display:flex;gap:8px;flex-wrap:wrap}
+.community-subnav .btn.active{border-color:#c9925e;background:#fff4e8;color:#7b5b3e}
+.community-pane{display:block}
+.knowledge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:1000px){.knowledge-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.knowledge-grid{grid-template-columns:1fr}}
+.knowledge-card{border:none;background:#fff;border-radius:16px;padding:15px;box-shadow:0 6px 18px rgba(84,69,59,.06);min-height:170px}
+.knowledge-icon{width:42px;height:42px;border-radius:13px;background:#f8f2ea;display:grid;place-items:center;font-size:22px;margin-bottom:9px}
+.knowledge-card h3{margin:0 0 6px;font-size:16px;color:#45565f}
+.knowledge-card p{margin:0;color:#657078;font-size:13px;line-height:1.65}
+.knowledge-foot{margin-top:9px;padding-top:8px;border-top:1px dashed #eee5dd;font-size:11px;color:#8a827b}
+.resource-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:800px){.resource-grid{grid-template-columns:1fr}}
+.resource-card{border:1px solid #e5ecef;background:#fff;border-radius:15px;padding:14px}
+.resource-card h3{margin:0 0 6px;font-size:16px}
+.resource-card p{margin:0 0 8px;font-size:13px;color:var(--muted)}
+
+
+.resource-card{display:flex;flex-direction:column;gap:8px;min-height:190px}
+.resource-card .resource-icon{width:42px;height:42px;border-radius:13px;background:#f3f7fa;display:grid;place-items:center;font-size:22px}
+.resource-card .resource-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.resource-intro{border:1px solid #e8eef1;background:#fbfdfe;border-radius:14px;padding:12px 14px;margin-bottom:12px;color:#5f6d75;font-size:13px;line-height:1.7}
+.resource-detail{border:1px solid #dfe9ed;background:linear-gradient(135deg,#fbfdfd,#fffaf5);border-radius:16px;padding:16px;margin-top:12px}
+.resource-detail h3{margin:0 0 8px;font-size:18px;color:#40545f}
+.resource-detail h4{margin:14px 0 6px;font-size:14px;color:#52636c}
+.resource-detail p{margin:0 0 7px;font-size:13px;line-height:1.75;color:#5f6b72}
+.resource-detail ul{margin:6px 0 0;padding-left:20px;color:#5f6b72;font-size:13px;line-height:1.75}
+.resource-tip{border-left:4px solid #c9925e;background:#fff7ee;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:13px;color:#6c5848}
+.resource-strategies{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.resource-strategy-chip{border:1px solid #dce7eb;background:#fff;border-radius:999px;padding:6px 10px;font-size:12px;color:#53636b}
+
 /* 打印优化 */
 @media print{
   .toolbar,.tabs,#home{display:none !important}
@@ -268,19 +383,23 @@ body{background:linear-gradient(180deg,var(--bg),#fffaf6 48%,var(--bg));}
 <body>
   <div class="container">
     <div class="toolbar">
-      <div style="display:flex;gap:8px;align-items:center">
+      <div class="toolbar-left">
         <button class="btn" id="themeBtn">🌗 主题</button>
         <button class="btn" id="printBtn">🖨 打印/导出PDF</button>
         <button class="btn" id="resetBtn">🗑 重置</button>
-      
-<button class="btn" id="authOpenBtn">👤 登录/注册</button>
-<button class="btn" id="signOutBtn" style="display:none">🚪 退出</button>
-<button class="btn" id="cloudSaveBtn" style="display:none">☁ 云保存</button>
-<button class="btn" id="cloudLoadBtn" style="display:none">☁ 云读取</button>
-<span id="whoami" class="small muted"></span>
-
+        <button class="btn" id="authOpenBtn">👤 登录/注册</button>
+        <button class="btn" id="signOutBtn" style="display:none">🚪 退出</button>
+        <button class="btn" id="cloudSaveBtn" style="display:none">☁ 云保存</button>
+        <button class="btn" id="cloudLoadBtn" style="display:none">☁ 云读取</button>
+        <span id="whoami" class="small muted"></span>
       </div>
-      <div class="small">婴幼儿发展追踪与家庭指导系统 · 单文件 · 零依赖</div>
+      <div class="role-switcher" id="roleSwitcher" aria-label="选择使用角色">
+        <span class="role-label">使用角色</span>
+        <button class="role-btn" data-role="parent">👨‍👩‍👧 家长</button>
+        <button class="role-btn" data-role="institution">🏫 托育机构工作人员</button>
+        <button class="role-btn" data-role="community">🏘️ 社区工作人员</button>
+      </div>
+      <div class="role-status" id="roleStatus">当前：家长</div>
     </div>
 
     <!-- 首页卡片导航 -->
@@ -337,6 +456,7 @@ body{background:linear-gradient(180deg,var(--bg),#fffaf6 48%,var(--bg));}
           </div>
         </div>
       </div>
+      <div class="role-workspace" id="roleWorkspace"></div>
       <h1>请选择模块</h1>
       <div class="home-cards" id="homeCards"></div>
     </section>
@@ -537,9 +657,9 @@ body{background:linear-gradient(180deg,var(--bg),#fffaf6 48%,var(--bg));}
     <section class="card" id="tab-7" hidden>
       <div class="project-topbar">
         <div>
-          <div class="eyebrow" style="color:var(--accent);font-size:12px;font-weight:800">家庭指导</div>
+          <div class="project-role-line">当前身份：<span id="projectRoleLabel">家长</span></div>
           <h1>婴幼儿屏幕使用与家庭指导</h1>
-          <p class="muted" style="margin:2px 0 0">从真实生活场景出发，帮助家庭找到更适合当下的回应办法</p>
+          <p class="muted" id="projectRoleIntro" style="margin:2px 0 0">从家庭真实生活场景出发，获得可以马上尝试的指导建议。</p>
         </div>
         <div class="project-topbar-right">
           <button class="btn" id="projectBackBtn">← 上一步</button>
@@ -549,18 +669,15 @@ body{background:linear-gradient(180deg,var(--bg),#fffaf6 48%,var(--bg));}
       </div>
 
       <div class="project-hero" style="margin-top:14px">
-        <div class="eyebrow">FAMILY GUIDANCE</div>
-        <h1>先从当下这一个场景开始</h1>
-        <p style="margin:0">先看看孩子多大、您现在能陪多久、孩子目前是什么状态，再从常见情境里找到一个现在就能试的办法。需要时，可以随时返回上一步修改选择。</p>
+        <div class="eyebrow">RESPONSIVE CARE SUPPORT</div>
+        <h1 id="projectHeroTitle">从真实生活场景开始</h1>
+        <p id="projectHeroText" style="margin:0">系统会根据当前使用者的角色，进入相应的家庭指导、专业观察或社区支持页面。</p>
       </div>
 
-      <div class="project-nav">
-        <button class="btn active" data-pnav="guide">现在怎么做</button>
-        <button class="btn" data-pnav="history">我的实践记录</button>
-        <button class="btn" data-pnav="community">社区现场调查</button>
-      </div>
+      <div class="project-nav" id="projectNav"></div>
 
       <div id="project-guide" class="project-pane">
+        <div id="familyTaskBanner" class="family-task" style="display:none;margin-bottom:12px"></div>
         <div class="stepper">
           <div class="step-pill editable" data-stage="age"><strong>01 年龄</strong><span id="sumAge">未选择</span></div>
           <div class="step-pill editable" data-stage="time"><strong>02 可陪时间</strong><span id="sumTime">未选择</span></div>
@@ -625,6 +742,155 @@ body{background:linear-gradient(180deg,var(--bg),#fffaf6 48%,var(--bg));}
         </div>
       </div>
 
+
+      <div id="project-institution" class="project-pane" hidden>
+        <div class="institution-shell">
+          <div class="institution-hero">
+            <div class="eyebrow" style="color:var(--accent);font-size:12px;font-weight:800">托育机构端</div>
+            <h2>先照护，后记录；先记事实，不急着下结论</h2>
+            <p class="muted" style="margin:4px 0 0">只在值得留下的节点做一次快速观察。记录“发生了什么—孩子可能需要什么—教师怎么支持—后来怎么样”，用于连续支持，不给儿童贴标签。</p>
+          </div>
+
+          <div class="institution-nav">
+            <button class="btn active" data-inav="observe">＋ 今日观察</button>
+            <button class="btn" data-inav="profile">一童一档</button>
+            <button class="btn" data-inav="communication">家园沟通</button>
+            <button class="btn" data-inav="review">阶段回看</button>
+          </div>
+
+          <div id="inst-observe" class="inst-pane">
+            <div class="card" style="background:var(--bg)">
+              <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap">
+                <div>
+                  <h2 style="margin:0">录入自己的观察</h2>
+                  <p class="small muted" style="margin:4px 0 0">下面的内容都可以直接填写和选择。建议先完成照护，再补录这一次值得留下的观察。</p>
+                </div>
+                <div class="card-actions">
+                  <button class="btn" id="instNewBtn">＋ 新建记录</button>
+                  <button class="btn" id="instDemoBtn">载入演示案例</button>
+                  <button class="btn" id="instClearDemoBtn">清除演示数据</button>
+                </div>
+              </div>
+              <div class="inst-edit-banner"><strong>可以先演示，再录真实记录：</strong>“载入演示案例”只会加入带有“演示”标记的示例，不会锁定表单。演示结束后点“清除演示数据”，即可继续填写自己的儿童姓名、月龄和观察内容。</div>
+
+              <div class="inst-form-grid" style="margin-top:12px">
+                <label>儿童姓名 / 编号
+                  <input class="input" id="instChildName" placeholder="如：小禾（化名）" style="width:100%;margin-top:5px" />
+                </label>
+                <label>月龄
+                  <input class="input" id="instChildAge" type="number" min="12" max="36" placeholder="如：26" style="width:100%;margin-top:5px" />
+                </label>
+                <label>观察时间
+                  <input class="input" id="instObservedAt" type="datetime-local" style="width:100%;margin-top:5px" />
+                </label>
+              </div>
+
+              <div class="inst-step">
+                <div class="inst-step-head"><span class="inst-step-no">1</span><div><h3>发生在哪个生活节点？</h3><div class="small muted">先选场景，不解释原因。</div></div></div>
+                <div class="inst-choice-grid" id="instSceneOptions"></div>
+              </div>
+
+              <div class="inst-step">
+                <div class="inst-step-head"><span class="inst-step-no">2</span><div><h3>您实际看到了什么？</h3><div class="small muted">可多选。只记可观察行为，不写“依赖”“注意力差”等结论。</div></div></div>
+                <div class="inst-choice-grid" id="instBehaviorOptions"></div>
+                <div class="inst-form-grid" style="margin-top:10px">
+                  <label>持续时间（可选）
+                    <input class="input" id="instDuration" placeholder="如：约2分钟" style="width:100%;margin-top:5px" />
+                  </label>
+                  <label style="grid-column:span 2">一句客观补充（可选）
+                    <input class="input" id="instNote" placeholder="如：看到教师平板后主动靠近，并持续注视" style="width:100%;margin-top:5px" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="inst-step">
+                <div class="inst-step-head"><span class="inst-step-no">3</span><div><h3>这一次，孩子更像是为什么来找成人？</h3><div class="small muted">如果暂时看不准，可以选“暂不能判断”。</div></div></div>
+                <div class="inst-choice-grid" id="instSignalOptions"></div>
+              </div>
+
+              <div class="inst-step">
+                <div class="inst-step-head"><span class="inst-step-no">4</span><div><h3>教师给了多少支持？</h3><div class="small muted">记录实际做过的支持，不追求层级越高越好。</div></div></div>
+                <div class="inst-choice-grid" id="instSupportOptions"></div>
+                <h3 style="font-size:14px;margin:14px 0 8px">是否同时调整了环境？（可多选）</h3>
+                <div class="inst-choice-grid" id="instEnvOptions"></div>
+              </div>
+
+              <div class="inst-step">
+                <div class="inst-step-head"><span class="inst-step-no">5</span><div><h3>回应以后，孩子后来怎么样了？</h3><div class="small muted">这一步就是“回看”，决定下一次要不要调整支持。</div></div></div>
+                <div class="inst-choice-grid" id="instResultOptions"></div>
+              </div>
+
+              <div class="inst-step">
+                <div class="inst-step-head"><span class="inst-step-no">6</span><div><h3>还有没有值得留下的观察？（可选）</h3><div class="small muted">结构化选项记不下来的细节，可以在这里补充。仍然尽量写“看到了什么”，少写评价。</div></div></div>
+                <div class="obs-extra-box">
+                  <h4>刚才发生前，有什么特别情况？（可多选）</h4>
+                  <div class="inst-choice-grid" id="instContextOptions"></div>
+                </div>
+                <div class="obs-extra-box">
+                  <h4>孩子还有哪些表现？（可多选）</h4>
+                  <div class="inst-choice-grid" id="instExtraOptions"></div>
+                </div>
+                <div class="obs-extra-box">
+                  <h4>其他观察</h4>
+                  <textarea class="obs-textarea" id="instOtherObservation" maxlength="160" placeholder="如：今天第一次主动把画拿给老师看，没有要求老师帮忙；进餐开始5分钟后注意转向旁边教师平板，移开平板后能够继续自主进食。"></textarea>
+                  <div class="char-count"><span id="instOtherCount">0</span>/160</div>
+                </div>
+              </div>
+
+              <div class="inst-actions">
+                <button class="btn inst-save" id="instSaveBtn">保存到一童一档</button>
+                <button class="btn" id="instClearFormBtn">清空本次填写</button>
+                <span class="small muted">记录的是事件，不是给儿童打分。</span>
+              </div>
+              <div class="inst-success" id="instSaveHint"></div>
+            </div>
+
+            <div class="card" style="background:var(--bg)">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+                <div><h2 style="margin:0">最近记录</h2><p class="small muted" style="margin:3px 0 0">演示记录和真实记录会分别标记；单条记录也可以删除。</p></div>
+                <button class="btn danger-btn" id="instClearAllBtn">清空全部观察记录</button>
+              </div>
+              <div id="instRecentRecords"></div>
+            </div>
+          </div>
+
+          <div id="inst-profile" class="inst-pane" hidden>
+            <div class="card" style="background:var(--bg)">
+              <div style="display:flex;justify-content:space-between;gap:10px;align-items:end;flex-wrap:wrap">
+                <div><h2 style="margin:0">一童一档 · 回应画像</h2><p class="small muted" style="margin:4px 0 0">和原有发展画像并行，重点看“在哪些场景更常需要成人—什么支持通常就够—回应后能否继续”。</p></div>
+                <select class="select" id="instProfileChild"></select>
+              </div>
+              <div id="instProfileContent"></div>
+            </div>
+          </div>
+
+          <div id="inst-communication" class="inst-pane" hidden>
+            <div class="card" style="background:var(--bg)">
+              <div style="display:flex;justify-content:space-between;gap:10px;align-items:end;flex-wrap:wrap">
+                <div><h2 style="margin:0">家园沟通摘要</h2><p class="small muted" style="margin:4px 0 0">把园内专业记录转成家长容易听懂的话，不直接把“一级、二级”这些专业标签丢给家长。</p></div>
+                <select class="select" id="instCommChild"></select>
+              </div>
+              <div class="comm-box" id="instCommText" style="margin-top:12px"></div>
+              <div class="inst-actions">
+                <button class="btn" id="instGenerateCommBtn">重新生成摘要</button>
+                <button class="btn inst-save" id="instSendTaskBtn">同步一条家庭实践任务</button>
+              </div>
+              <div id="instFamilyTask" class="family-task" style="display:none"></div>
+            </div>
+          </div>
+
+          <div id="inst-review" class="inst-pane" hidden>
+            <div class="card" style="background:var(--bg)">
+              <div style="display:flex;justify-content:space-between;gap:10px;align-items:end;flex-wrap:wrap">
+                <div><h2 style="margin:0">阶段回看</h2><p class="small muted" style="margin:4px 0 0">不做风险评分，只比较这段时间里场景、信号、支持和结果有没有变化。</p></div>
+                <select class="select" id="instReviewChild"></select>
+              </div>
+              <div id="instReviewContent" style="margin-top:12px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div id="project-history" class="project-pane" hidden>
         <div class="card" style="background:var(--bg)">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
@@ -636,27 +902,71 @@ body{background:linear-gradient(180deg,var(--bg),#fffaf6 48%,var(--bg));}
       </div>
 
       <div id="project-community" class="project-pane" hidden>
-        <div class="grid-2">
-          <div class="card" style="background:var(--bg)">
-            <h2 style="margin-top:0">社区现场调查</h2>
-            <p>平时带1—3岁孩子，您最容易在哪个时候把手机递给他？</p>
-            <p class="small muted">请选择一个最符合自己家庭的场景。本机演示版只做匿名计数，不记录姓名。</p>
-            <div class="option-grid" id="communitySceneOptions"></div>
-            <div class="notice" style="margin-top:10px">比赛原型当前采用本机匿名统计。若要让多位家长用各自手机扫码后实时汇总，需要再接入已配置的云端数据库。</div>
+        <div class="community-shell">
+          <div class="community-hero">
+            <div class="eyebrow" style="color:#a66f3e;font-size:12px;font-weight:800">社区支持端</div>
+            <h2>先了解家庭真正卡在哪里，再决定讲什么、怎么支持</h2>
+            <p class="muted" style="margin:4px 0 0">社区端用于匿名需求调查、家庭照护科普和家庭指导资源支持。这里不展示儿童个体档案。</p>
           </div>
-          <div class="card" style="background:var(--bg)">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
-              <h2 style="margin:0">本场匿名需求</h2>
-              <button class="btn" id="clearCommunity">清空</button>
+          <div class="community-subnav">
+            <button class="btn active" data-cnav="survey">需求调查</button>
+            <button class="btn" data-cnav="knowledge">科普知识</button>
+            <button class="btn" data-cnav="resources">家庭指导资源</button>
+          </div>
+
+          <div id="comm-survey" class="community-pane">
+            <div class="grid-2">
+              <div class="card" style="background:var(--bg)">
+                <h2 style="margin-top:0">社区现场调查</h2>
+                <p>平时带1—3岁孩子，您最容易在哪个时候把手机递给他？</p>
+                <p class="small muted">请选择一个最符合自己家庭的场景。本机演示版只做匿名计数，不记录姓名。</p>
+                <div class="option-grid" id="communitySceneOptions"></div>
+                <div class="notice" style="margin-top:10px">比赛原型当前采用本机匿名统计。正式多人扫码实时汇总时，需要接入云端数据库。</div>
+              </div>
+              <div class="card" style="background:var(--bg)">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+                  <h2 style="margin:0">本场匿名需求</h2>
+                  <button class="btn" id="clearCommunity">清空</button>
+                </div>
+                <div id="communityBars" class="community-bars"></div>
+                <p class="small muted">社区端只看共性需求，用于决定后续公开课和家庭支持主题。</p>
+              </div>
             </div>
-            <div id="communityBars" class="community-bars"></div>
-            <p class="small muted">社区端只看共性需求，用于决定后续公开课和家庭支持主题。</p>
           </div>
+
+          <div id="comm-knowledge" class="community-pane" hidden>
+            <div class="knowledge-grid">
+              <article class="knowledge-card"><div class="knowledge-icon">📱</div><h3>先别只盯着“看了多久”</h3><p>同样是拿手机，有时是为了安抚，有时是成人正忙，有时是为了让孩子吃饭。先找到屏幕在这一刻替代了什么，办法才更有针对性。</p><div class="knowledge-foot">适合：社区公开课开场</div></article>
+              <article class="knowledge-card"><div class="knowledge-icon">🍳</div><h3>成人忙，不等于必须一直陪</h3><p>先把孩子安排在安全、成人看得到的位置，一起开始一个适合他的活动。孩子会了以后成人可以继续手里的事；孩子回头找时，再给一个短回应。</p><div class="knowledge-foot">适合：成人忙碌场景</div></article>
+              <article class="knowledge-card"><div class="knowledge-icon">🤗</div><h3>哭闹时，先接情绪</h3><p>明显哭闹时先看安全、身体和基本生活需要。先靠近、陪一会儿，让情绪慢下来，再考虑绘本、滚球等熟悉活动，不急着用新东西转移。</p><div class="knowledge-foot">适合：情绪安抚场景</div></article>
+              <article class="knowledge-card"><div class="knowledge-icon">🥣</div><h3>吃饭时，不用玩具代替屏幕</h3><p>把注意重新放回食物、餐具、身体感受和人与人的回应。让孩子自己拿勺、选择先吃什么、表达“还要”或“吃好了”。</p><div class="knowledge-foot">适合：回应性进餐</div></article>
+              <article class="knowledge-card"><div class="knowledge-icon">🚌</div><h3>等待不需要每一分钟都安排满</h3><p>找颜色、听声音、你做我学，都可以只玩一两轮。孩子自己观察一会儿也很好，成人不需要一直出题或不断制造新刺激。</p><div class="knowledge-foot">适合：候诊、排队、等车</div></article>
+              <article class="knowledge-card"><div class="knowledge-icon">🌙</div><h3>睡前更需要稳定，不需要更有趣</h3><p>把收玩具、洗漱、看一本书、说晚安、关灯慢慢固定成顺序。稳定的睡前流程比临时再找一个更吸引人的活动更容易坚持。</p><div class="knowledge-foot">适合：睡前过渡</div></article>
+            </div>
+            <div class="notice" style="margin-top:12px">科普内容用于社区健康教育原型。正式发布前，应结合最新权威指南进行审核和更新。</div>
+          </div>
+
+          <div id="comm-resources" class="community-pane" hidden>
+            <div class="resource-intro">
+              <strong>家庭指导资源</strong><br>
+              围绕1—3岁婴幼儿常见屏幕使用场景，为社区工作人员提供可以直接用于家长指导的简明内容。先选一个场景，再查看家庭指导要点和可推荐的活动。
+            </div>
+            <div class="resource-grid">
+              <div class="resource-card" data-resource-scene="busy"><div class="resource-icon">🍳</div><h3>成人忙碌</h3><p>大人手里有事，孩子总来找，手机很容易在这个时候出现。</p><div class="resource-actions"><button class="btn resource-guide-btn" data-scene="busy">查看家庭指导</button><button class="btn resource-activity-btn" data-scene="busy">查看推荐活动</button></div></div>
+              <div class="resource-card" data-resource-scene="emotion"><div class="resource-icon">🤗</div><h3>情绪哭闹</h3><p>孩子一哭、一急就想用手机安抚，先看看他这一刻真正需要什么。</p><div class="resource-actions"><button class="btn resource-guide-btn" data-scene="emotion">查看家庭指导</button><button class="btn resource-activity-btn" data-scene="emotion">查看推荐活动</button></div></div>
+              <div class="resource-card" data-resource-scene="meal"><div class="resource-icon">🥣</div><h3>进餐</h3><p>不看屏幕就坐不住或不愿吃，重点是把注意带回食物、身体和人的回应。</p><div class="resource-actions"><button class="btn resource-guide-btn" data-scene="meal">查看家庭指导</button><button class="btn resource-activity-btn" data-scene="meal">查看推荐活动</button></div></div>
+              <div class="resource-card" data-resource-scene="wait"><div class="resource-icon">🚌</div><h3>外出等待</h3><p>排队、候诊、等车时容易把手机递给孩子，可以用短互动替代持续刷屏。</p><div class="resource-actions"><button class="btn resource-guide-btn" data-scene="wait">查看家庭指导</button><button class="btn resource-activity-btn" data-scene="wait">查看推荐活动</button></div></div>
+              <div class="resource-card" data-resource-scene="play"><div class="resource-icon">🎨</div><h3>亲子陪伴</h3><p>家长有时间，但不知道陪孩子做什么，可以从绘本、音乐、动作和简单角色游戏开始。</p><div class="resource-actions"><button class="btn resource-guide-btn" data-scene="play">查看家庭指导</button><button class="btn resource-activity-btn" data-scene="play">查看推荐活动</button></div></div>
+              <div class="resource-card" data-resource-scene="sleep"><div class="resource-icon">🌙</div><h3>睡前过渡</h3><p>睡前总想看视频时，重点是建立固定、可预期、慢下来的睡前顺序。</p><div class="resource-actions"><button class="btn resource-guide-btn" data-scene="sleep">查看家庭指导</button><button class="btn resource-activity-btn" data-scene="sleep">查看推荐活动</button></div></div>
+            </div>
+            <div id="communityResourceDetail" class="resource-detail" hidden></div>
+          </div>
+        </div>
         </div>
       </div>
     </section>
 
-    <div class="footer small">© 2025 婴幼儿发展追踪与家庭指导系统 · 单文件 · 零依赖 · SVG 折线图</div>
+    <div class="footer small">© 2026 婴幼儿发展追踪与家庭指导系统 · 单文件 · 零依赖 · SVG 折线图</div>
   </div>
 
 <script>
@@ -749,6 +1059,74 @@ document.getElementById('resetBtn').onclick=()=>{
   }
 };
 
+/* 使用角色 */
+const USER_ROLE_KEY='lbabycare_user_role_v1';
+const ROLE_META={
+  parent:{label:'家长',icon:'👨‍👩‍👧',desc:'从家庭真实生活出发，获得发展、环境、急救、共餐和屏幕使用等指导。',pane:'guide'},
+  institution:{label:'托育机构工作人员',icon:'🏫',desc:'用于园内观察、一童一档、家园沟通和阶段回看，也可继续使用其他评估模块。',pane:'institution'},
+  community:{label:'社区工作人员',icon:'🏘️',desc:'用于社区需求调查、家庭照护科普、匿名需求汇总和社区活动支持。',pane:'community'}
+};
+let currentUserRole=localStorage.getItem(USER_ROLE_KEY)||'parent';
+function roleMeta(){return ROLE_META[currentUserRole]||ROLE_META.parent;}
+function renderProjectRoleChrome(){
+  const label=document.getElementById('projectRoleLabel');if(label)label.textContent=roleMeta().label;
+  const intro=document.getElementById('projectRoleIntro');
+  const title=document.getElementById('projectHeroTitle'), hero=document.getElementById('projectHeroText');
+  const nav=document.getElementById('projectNav');
+  if(currentUserRole==='parent'){
+    if(intro)intro.textContent='从家庭真实生活场景出发，获得可以马上尝试的回应建议、游戏和生活活动。';
+    if(title)title.textContent='从当下这一个场景开始';
+    if(hero)hero.textContent='先看孩子多大、您现在能陪多久、孩子目前是什么状态，再从常见情境里找一个现在就能试的办法。';
+    if(nav){nav.style.display='flex';nav.innerHTML='<button class="btn active" data-pnav="guide">家庭快速指导</button><button class="btn" data-pnav="history">家庭实践记录</button>';}
+  }else if(currentUserRole==='institution'){
+    if(intro)intro.textContent='用于园内关键节点观察、一童一档、家园沟通和阶段回看。';
+    if(title)title.textContent='先照护，后记录；让关键观察留下来';
+    if(hero)hero.textContent='记录真实事件、实际支持和回看结果，为下一次园内支持和家园沟通提供依据。';
+    if(nav){nav.innerHTML='';nav.style.display='none';}
+  }else{
+    if(intro)intro.textContent='用于社区匿名需求调查、家庭照护科普和家庭指导资源支持。';
+    if(title)title.textContent='先听见家庭的真实困难，再提供适合的社区支持';
+    if(hero)hero.textContent='从需求调查进入，结合科普内容和家庭指导资源，帮助社区公开课更贴近家庭真实生活。';
+    if(nav){nav.innerHTML='';nav.style.display='none';}
+  }
+  if(nav)nav.querySelectorAll('[data-pnav]').forEach(b=>b.onclick=()=>switchProjectPane(b.dataset.pnav));
+}function renderRoleUI(){
+  document.querySelectorAll('[data-role]').forEach(b=>b.classList.toggle('active',b.dataset.role===currentUserRole));
+  const status=document.getElementById('roleStatus');if(status)status.textContent='当前：'+roleMeta().label;
+  const el=document.getElementById('roleWorkspace');if(!el)return;
+  const actions=currentUserRole==='parent'
+    ?`<button class="btn" data-role-action="guide">开始家庭指导</button><button class="btn" data-role-action="history">查看家庭实践记录</button>`
+    :currentUserRole==='institution'
+    ?`<button class="btn" data-role-action="observe">＋ 记录一次观察</button><button class="btn" data-role-action="profile">一童一档</button><button class="btn" data-role-action="communication">家园沟通</button><button class="btn" data-role-action="review">阶段回看</button>`
+    :`<button class="btn" data-role-action="community">发起现场调查</button><button class="btn" data-role-action="knowledge">科普知识</button><button class="btn" data-role-action="resources">家庭指导资源</button>`;
+  el.innerHTML=`<div class="role-workspace-head"><div class="role-workspace-title"><div class="role-workspace-icon">${roleMeta().icon}</div><div><h2>${safeText(roleMeta().label)}工作台</h2><p>${safeText(roleMeta().desc)}</p></div></div><div class="role-actions">${actions}</div></div>`;
+  el.querySelectorAll('[data-role-action]').forEach(b=>b.onclick=()=>openRoleAction(b.dataset.roleAction));
+}
+function setUserRole(role,navigate=false){
+  if(!ROLE_META[role])return;
+  currentUserRole=role;localStorage.setItem(USER_ROLE_KEY,role);renderRoleUI();
+  if(navigate && !document.getElementById('tab-7').hidden){applyRoleDefaultToProject();}
+}
+function initRoleSwitcher(){
+  document.querySelectorAll('[data-role]').forEach(b=>b.onclick=()=>setUserRole(b.dataset.role,true));
+  renderRoleUI();
+}
+function applyRoleDefaultToProject(){
+  renderProjectRoleChrome();
+  const pane=roleMeta().pane;
+  switchProjectPane(pane);
+}
+function openRoleAction(action){
+  switchTab(6);
+  if(action==='guide'||action==='history'){switchProjectPane(action);return;}
+  if(action==='community'){switchProjectPane('community');switchCommunityPane('survey');return;}
+  if(action==='knowledge'){switchProjectPane('community');switchCommunityPane('knowledge');return;}
+  if(action==='resources'){switchProjectPane('community');switchCommunityPane('resources');return;}
+  switchProjectPane('institution');
+  initInstitutionModule();
+  switchInstitutionPane(action);
+}
+
 /* 首页卡片 */
 const modules=[
   ['📈','指标曲线（按月）','录入月龄指标并生成当月折线图，直观观察成长趋势。'],
@@ -793,7 +1171,7 @@ function switchTab(idx){
   }
   if(tabId===1){ renderSmallCharts(true); }
   if(tabId===4){ renderStats(); }
-  if(tabId===7){ initProjectModule(); }
+  if(tabId===7){ initProjectModule(); applyRoleDefaultToProject(); }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -1133,9 +1511,11 @@ function saveScores(hint){
 
 
 /* ========== 模块：婴幼儿屏幕使用与家庭指导 ========== */
-const PROJECT_STORE_KEY='lbabycare_screen_support_v3';
-const PROJECT_HISTORY_KEY='lbabycare_screen_history_v3';
-const COMMUNITY_STORE_KEY='lbabycare_community_survey_v3';
+const PROJECT_STORE_KEY='lbabycare_screen_support_v4';
+const PROJECT_HISTORY_KEY='lbabycare_screen_history_v4';
+const COMMUNITY_STORE_KEY='lbabycare_community_survey_v4';
+const INST_RECORDS_KEY='lbabycare_institution_records_v1';
+const INST_TASKS_KEY='lbabycare_family_tasks_v1';
 
 const P_AGES=[
   {id:'12-18', label:'12—18个月', desc:'以感知、装取、简单模仿和共同活动为主', icon:'👶'},
@@ -1164,6 +1544,74 @@ const P_SCENES=[
 // 36个核心家庭策略。年龄、时间、状态只是筛选标签；同一活动在不同年龄下通过“年龄调整”改变难度。
 const STRATEGIES=[{"id":"b1","scene":"busy","title":"颜色回家","type":"分类活动","ages":["18-24","24-36"],"times":["1-3","5","10+"],"states":["calm","mild"],"material":"两个颜色盒＋大尺寸彩色材料","how":"先陪孩子放两三个。可以说：“红色住这里，黄色住这里。这个你来试试。”孩子明白以后，您就回去做自己的事。","ageTip":"18—24个月先分两种颜色就够了；24—36个月可以增加到三种，也可以让孩子自己说颜色。","exit":"看到孩子已经知道“往哪里放”以后，就把手收回来，不需要一直坐在旁边。","back":"如果只是拿给您看，回一句“我看见啦，你放进去好多了”；如果拿不准，再提示一句，不急着替他放。","safety":"不要用豆子、纽扣等小物件。做饭时把活动放在厨房外、成人看得到的位置。"},{"id":"b2","scene":"busy","title":"给袜子找朋友","type":"生活活动","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"2—4双颜色或图案明显的袜子","how":"拿一只袜子问：“它的好朋友在哪里呀？”先和孩子找成一双，剩下的让他自己找。","ageTip":"18—24个月只要能把“差不多一样的”放在一起就很好；24—36个月可以按颜色、图案来配。","exit":"第一双找到以后，如果孩子已经懂了，就不用继续教，让他慢慢找。","back":"孩子拿着袜子来问，可以说：“你再看看，哪一只和它最像？”如果只是展示，就回应一下成果。","safety":"尽量选没有珠子、小扣件等容易脱落装饰的袜子。"},{"id":"b3","scene":"busy","title":"大积木小工程","type":"玩具活动","ages":["12-18","18-24","24-36"],"times":["1-3","5","10+"],"states":["calm","mild"],"material":"适龄大颗粒积木","how":"您先搭两块，边搭边说：“我先搭这里，接下来换你。”孩子接上以后，不必一直给新任务。","ageTip":"12—18个月可以拿、放、敲、叠一两块；18个月以后再慢慢增加“搭高、搭桥、搭房子”。","exit":"孩子开始自己搭了，就让他按照自己的办法来，哪怕搭得和您想的不一样。","back":"孩子回头找您时，先看看是在分享，还是积木真的卡住了，再决定只回应还是帮一下。","safety":"使用不易吞咽、没有破损和尖角的大颗粒材料。"},{"id":"b4","scene":"busy","title":"找一找它住哪里","type":"嵌板活动","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"大抓手嵌板或简单形状盒","how":"先一起放好一块，然后把下一块交给孩子：“这一块你来找找它的家。”","ageTip":"12—18个月主要练习拿出来、放回去；18个月以后再增加形状匹配和转一转、试一试。","exit":"孩子愿意自己试时，成人先别急着伸手，给他一点时间。","back":"如果孩子怎么也放不进去，可以说：“转一转，再看看。”还不行，再短暂帮一下。","safety":"材料要足够大、边缘圆滑，避免可拆下的小零件。"},{"id":"b5","scene":"busy","title":"玩具送回家","type":"生活活动","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"一个收纳篮＋几件熟悉玩具","how":"先拿一个玩具做示范：“小汽车回家啦。”然后把另外两三件交给孩子。","ageTip":"小一点的孩子做“拿起来—放进去”就可以；大一点可以按类别或固定位置整理。","exit":"孩子已经开始自己收时，就让他继续，不要求摆得特别整齐。","back":"孩子来给您看时，回应“我看见你已经送回去两个了”，不要马上检查对不对。","safety":"收纳区保持通畅，不安排孩子搬重物，也不要让孩子为了收玩具进入厨房等危险区域。"},{"id":"b6","scene":"busy","title":"贴一贴，移一移","type":"安静活动","ages":["18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"大尺寸可重复贴纸＋底板","how":"先和孩子贴一两个，可以说：“小动物要回家啦，你想把它放哪里？”接下来让孩子自己贴、自己挪。","ageTip":"18—24个月重点是撕、贴、移动；24—36个月可以加一点简单情节，比如“谁住在哪里”。","exit":"孩子已经在自己安排位置时，成人就少问一点，让他自己决定。","back":"如果只是举给您看，回应一下就好；如果撕不开，再帮他起个小角，剩下的让他自己完成。","safety":"选择大尺寸、无小零件、可以反复粘贴的材料。"},{"id":"e1","scene":"emotion","title":"先抱一抱，慢下来","type":"共同调节","ages":["12-18","18-24","24-36"],"times":["1-3","5","10+"],"states":["mild","cry"],"material":"不需要材料","how":"先靠近孩子。可以蹲下来或者抱一抱，声音放慢：“你现在很难受，我在这里。”先陪他把情绪缓下来，不急着讲道理。","ageTip":"年龄越小，越需要身体靠近和稳定的声音；大一点的孩子可以慢慢加上“生气、难过、着急”这些简单情绪词。","exit":"孩子开始能看您、听您，或者身体慢慢放松时，再减少抱持和说话。","back":"如果情绪又上来了，就先回到陪伴，不用急着再换一个玩具吸引他。","safety":"先排除受伤、疼痛、饥饿、困倦、发热等身体需要。"},{"id":"e2","scene":"emotion","title":"翻翻熟悉的那本书","type":"熟悉活动","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["mild","cry"],"material":"孩子平时熟悉的一本绘本","how":"等孩子稍微缓下来，再拿熟悉的书。孩子翻到哪一页，就从哪一页看，不要求从头讲到尾。","ageTip":"小一点可以只看图、摸一摸、翻一翻；大一点可以说说角色正在做什么。","exit":"孩子不想看了就结束，不需要为了“坚持阅读”把他留在书前。","back":"如果孩子还是明显哭闹，先收起绘本，回到成人陪伴，不把书当成新的“止哭工具”。","safety":"如果哭闹异常、持续很久或伴随不适，要优先处理身体和安全问题。"},{"id":"e3","scene":"emotion","title":"慢慢滚球给你","type":"低刺激互动","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["mild"],"material":"一个柔软的大球","how":"面对面坐近一点，把球慢慢滚给孩子：“到你啦。”孩子愿意就滚回来，不愿意也没关系。","ageTip":"小一点距离短一些，成人多做示范；大一点可以轮流决定滚给谁、从哪里滚。","exit":"孩子节奏稳定下来以后，可以让他自己推、抱或者停一停。","back":"如果孩子不想继续，就结束，不需要用游戏把情绪强行转走。","safety":"活动区要清楚，球不要滚向楼梯、厨房或门口。"},{"id":"e4","scene":"emotion","title":"装进去，再倒出来","type":"重复活动","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["mild"],"material":"大容器＋大尺寸安全物品","how":"先慢慢示范一次：“放进去——倒出来。”让孩子按照自己的节奏重复，成人不用不断加新规则。","ageTip":"12—18个月做简单装取就够了；大一点可以慢慢增加颜色或种类。","exit":"孩子开始一遍一遍自己做时，成人就少说一点，让这个重复节奏帮助他稳定下来。","back":"孩子能继续就不必再教；如果停下来找您，先回应一下，再看需不需要帮助。","safety":"不要用豆子、硬币、珠子等容易吞咽的小物件。"},{"id":"e5","scene":"emotion","title":"随手画一会儿","type":"表达活动","ages":["18-24","24-36"],"times":["5","10+"],"states":["mild"],"material":"大纸＋粗杆可水洗画笔","how":"给孩子一张大纸，您先画一个点或一条线：“你想从哪里开始？”不规定画什么。","ageTip":"18—24个月主要是点、线和自由涂抹；24—36个月可以等孩子愿意时再问“这里是什么”。","exit":"孩子开始自己画了，就不要一直纠正颜色、形状和画法。","back":"孩子拿给您看时，可以说“这里有好多长长的线”，比只说“真棒”更有回应。","safety":"使用无毒可水洗材料，注意笔帽等小件。"},{"id":"e6","scene":"emotion","title":"让熟悉的玩偶陪一会儿","type":"角色安抚","ages":["18-24","24-36"],"times":["5","10+"],"states":["mild"],"material":"孩子熟悉的软玩偶","how":"可以让玩偶坐在旁边，轻声说：“小熊也有点难过，它先坐一会儿。”让孩子自己决定要不要抱、摸或和它说话。","ageTip":"18—24个月以抱、摸和简单模仿为主；24—36个月可以有一两句简单角色对话。","exit":"孩子情绪已经稳定，或者转向别的活动，就自然结束。","back":"不要借玩偶说教，也不要让玩偶替成人批评孩子。","safety":"软玩偶要没有松脱的小眼睛、小扣子等零件。"},{"id":"m1","scene":"meal","title":"这一勺你自己来","type":"自主进餐","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"儿童勺＋稳定小碗","how":"把碗稍微放近一点，让孩子先自己试。勺子不稳时，您可以先帮他把碗扶住，但不用抓着他的手舀。","ageTip":"12—18个月允许洒一点、慢一点；年龄大了以后再慢慢提高舀取和送入口的独立性。","exit":"看到孩子已经能够继续舀，就把帮助撤掉，让他自己完成。","back":"如果总是舀不到，先看看碗的位置、食物是不是太稀或太难舀，再决定要不要短暂帮一下。","safety":"保持稳定坐姿，食物大小和质地要适龄；进食时不要跑动、逗笑。"},{"id":"m2","scene":"meal","title":"先看看，再闻闻","type":"食物探索","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"当餐适龄食物","how":"遇到不熟悉的食物，不急着喂进去。可以先说：“你先看看、闻闻，想摸一摸也可以。”等孩子自己准备好。","ageTip":"小一点重点是安全触碰和味觉体验；大一点可以说说颜色、软硬、味道。","exit":"孩子愿意自己探索时，成人少催一点，不把“吃下去”当成唯一目标。","back":"孩子拒绝时先尊重，过一会儿再提供，不追着喂，也不用屏幕换取一口。","safety":"注意食物温度、质地、切块和过敏风险。"},{"id":"m3","scene":"meal","title":"两样里面你来选","type":"有限选择","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"当餐两种适宜食物或两套餐具选择","how":"只给两个都可以接受的选择：“你想先吃南瓜，还是先吃饭？”选好以后就开始。","ageTip":"18—24个月选项要简单、清楚；24—36个月可以让孩子用短句表达。","exit":"孩子选好了就不再继续增加选择，避免越选越拖。","back":"如果两个都不要，先看看是不是已经饱了、累了或者身体不舒服。","safety":"孩子可以选择顺序，但营养和食物安全仍由成人把关。"},{"id":"m4","scene":"meal","title":"我的餐具我来放","type":"生活参与","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm"],"material":"儿童餐具、围兜","how":"吃饭前让孩子做一件小事，比如把自己的勺子放好、把围兜拿过来。","ageTip":"18—24个月做一件就够了；24—36个月可以完成两三件简单准备。","exit":"准备好以后马上进入进餐，不需要反复检查摆得整不整齐。","back":"漏掉一件时可以提醒：“还差什么呀？”不要一下全部替他做好。","safety":"只让孩子拿轻便、无锐边的儿童餐具。"},{"id":"m5","scene":"meal","title":"吃饭就说吃饭的事","type":"共餐互动","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm"],"material":"正常家庭餐桌即可","how":"把话题留在眼前的食物和孩子正在做的事情上：“这个软软的。”“你自己舀到了。”不用不停讲，也不用拿玩具吸引。","ageTip":"小一点成人多描述、多等待；大一点可以有简单来回对话。","exit":"孩子已经专心吃了，成人就安静一点，让他感受食物和身体。","back":"注意力转开时，先看看是不是已经饱了、坐累了，或者周围太吵。","safety":"不追喂、不强迫，也不建议用玩具或屏幕持续吸引孩子进食。"},{"id":"m6","scene":"meal","title":"问问小肚子吃好了没有","type":"饱腹信号","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"快吃完时可以问：“还想吃，还是吃好了？”同时看看孩子有没有转头、闭嘴、推开、速度变慢。","ageTip":"18—24个月成人主要看动作和表情；24—36个月可以鼓励孩子说“还要”“吃好了”。","exit":"饱腹信号已经很清楚，就结束进餐，不再用屏幕换“最后几口”。","back":"如果突然拒绝，先看身体状态和食物情况，不急着要求继续吃。","safety":"如果长期进食困难、吞咽异常或生长问题明显，建议进一步寻求专业评估。"},{"id":"w1","scene":"wait","title":"一起找一种颜色","type":"无材料游戏","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"坐着等的时候，可以随口说：“我们看看这里哪里有红色？”找到一两个就够了，不用一直找。","ageTip":"18—24个月成人先指给孩子看；24—36个月可以轮流找。","exit":"孩子开始自己四处观察时，就让他安静看一会儿，不需要一直出题。","back":"孩子指给您看时，跟着看、回应一句就好。","safety":"始终留在安全区域，不要为了找东西让孩子离开成人视线。"},{"id":"w2","scene":"wait","title":"听听刚才是什么声音","type":"听觉游戏","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"停下来听一听周围：“刚才有个声音，你听到了吗？”让孩子自己找一找声源。","ageTip":"小一点主要是转头和寻找声音；大一点可以猜“是谁的声音”。","exit":"孩子自己在听、在看时，就不用继续说。","back":"孩子自己发出一个声音，您可以模仿一次，让互动有来有回。","safety":"不要引导孩子靠近车辆、设备或其他危险声源。"},{"id":"w3","scene":"wait","title":"你做一个，我学一个","type":"模仿游戏","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"让孩子先做一个小动作，您跟着学。然后您做一个简单动作，看看孩子愿不愿意跟。","ageTip":"小一点做拍手、挥手；大一点可以加跺脚、摸头、转身等简单动作。","exit":"两三轮就够了，不必为了“打发时间”一直玩下去。","back":"孩子自己发明动作时，先跟着他，不要马上纠正。","safety":"空间小的时候只做手部动作，不跑跳。"},{"id":"w4","scene":"wait","title":"拍一拍小节奏","type":"节奏游戏","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"轻轻拍一个很短的节奏，等孩子回应。也可以反过来，让孩子拍，您来学。","ageTip":"小一点一拍一停就好；大一点可以有两拍、快慢或强弱变化。","exit":"孩子没兴趣就停，不需要要求“拍得一样”。","back":"重点是你来我往，不是节奏对不对。","safety":"公共空间注意音量，不拍打公共设施。"},{"id":"w5","scene":"wait","title":"他看哪里，我们就说哪里","type":"语言互动","ages":["12-18","18-24","24-36"],"times":["1-3","5","10+"],"states":["calm","mild"],"material":"不需要材料","how":"跟着孩子的视线说：“你在看公交车。”“车开走了。”不用连续问“这是什么”。","ageTip":"小一点由成人描述就够了；大一点可以等孩子补一个词或一句话。","exit":"孩子不再回应时，就让他自己观察一会儿。","back":"孩子又指向别处时，再跟过去回应一句，不需要把每一分钟都安排满。","safety":"互动时也要留意周围环境和出行安全。"},{"id":"w6","scene":"wait","title":"手指动一动","type":"安静游戏","ages":["12-18","18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"做几个很小的动作，比如挥手、点手指、张开合拢，让孩子选择跟不跟。","ageTip":"年龄越小动作越简单；大一点可以让孩子当“小老师”，您来学。","exit":"两三轮以后就停下来。等待本身也可以有一段安静时间。","back":"孩子自己观察环境时，不用马上再找新玩法。","safety":"不在公共区域安排追跑、跳跃等需要大空间的活动。"},{"id":"p1","scene":"play","title":"铺张大纸随便画","type":"艺术活动","ages":["18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"大纸＋粗杆可水洗画笔或海绵印章","how":"您先留一个小痕迹：“我画了一条线，接下来你想画哪里？”然后把纸真正交给孩子。","ageTip":"18—24个月以点、线、印为主；24—36个月可以慢慢出现简单主题，但不要求画得像。","exit":"孩子已经有自己的想法时，成人就少示范、少改动。","back":"孩子拿作品给您看时，可以描述“这里有好多蓝色”“这一条很长”，比只说“真棒”更具体。","safety":"使用无毒可水洗材料，注意笔帽和小印章。"},{"id":"p2","scene":"play","title":"家里的小乐队","type":"音乐活动","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm"],"material":"安全沙锤、小鼓或可敲击的大件日用品","how":"先听一种声音，再轮流敲。孩子一改变节奏，成人就跟着回应一次。","ageTip":"小一点先听、摇、敲；大一点可以玩快慢、强弱和“停一下”。","exit":"孩子开始自己探索声音时，就不要一直指挥。","back":"孩子发出一个新节奏时，您学一次，让他发现“我的声音会影响别人”。","safety":"不用玻璃、锐边金属或可能碎裂的物品。"},{"id":"p3","scene":"play","title":"跟着孩子翻绘本","type":"亲子阅读","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"一本适龄绘本","how":"孩子翻到哪里，就从哪里说。看到他盯着一只小狗，就先聊小狗，不必坚持照着文字讲完。","ageTip":"小一点指图、命名就很好；大一点可以让孩子接一句、猜一猜下一步。","exit":"孩子离开了，就结束这一次阅读，不需要把整本书讲完。","back":"孩子指图时先回应他的兴趣，不连续考“这是什么、那是什么”。","safety":"选择圆角、结实、适龄的书本。"},{"id":"p4","scene":"play","title":"跟小动物动一动","type":"动作活动","ages":["18-24","24-36"],"times":["5","10+"],"states":["calm"],"material":"一块安全空地","how":"可以学小兔跳、小熊走、小鸟挥翅。先跟老师一样做，再让孩子自己出一个动作。","ageTip":"18—24个月一次做一个动作；24—36个月可以把两三个动作串起来。","exit":"孩子开始自己想动作时，成人就跟着他，不再一直领。","back":"孩子累了或者不想动，就停下来，不追求连续时长。","safety":"地面要防滑，远离桌角、台阶和易碰撞物。"},{"id":"p5","scene":"play","title":"和娃娃过一天","type":"角色游戏","ages":["24-36"],"times":["10+"],"states":["calm"],"material":"软玩偶＋少量安全生活道具","how":"可以从一个熟悉动作开始：“娃娃要吃饭啦。”接下来让孩子决定它还要做什么。","ageTip":"24—36个月做吃饭、睡觉、洗脸这类简单生活情节就够了，不需要复杂剧本。","exit":"孩子自己安排情节以后，成人跟随，不主导每一步。","back":"孩子邀请您时再加入一个角色，不需要一直参与。","safety":"道具不要使用药品、尖锐物或小零件。"},{"id":"p6","scene":"play","title":"一起搭一下，接下来换你","type":"建构活动","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm"],"material":"大颗粒积木或软积木","how":"您搭一块，孩子搭一块。做两三次以后，可以说：“接下来你想怎么搭？”把决定权交给他。","ageTip":"小一点以堆、推倒为主；大一点可以慢慢出现桥、房子等简单主题。","exit":"孩子有自己的搭法时，不需要把它改成“大人觉得正确”的样子。","back":"积木倒了先等几秒，看孩子会不会自己重来，再决定要不要帮。","safety":"使用适龄大颗粒材料，活动区不要堆放过多杂物。"},{"id":"s1","scene":"sleep","title":"让玩具先回家","type":"睡前仪式","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"一个固定玩具篮","how":"睡前只收两三件就可以：“小汽车回家啦，收好我们就去洗漱。”每天用差不多的话结束白天活动。","ageTip":"18—24个月收一两件；24—36个月可以让孩子自己决定先收哪一件。","exit":"收好以后就进入下一步睡前流程，不再重新开一个游戏。","back":"孩子拖延时可以给两个选择：“先收车还是先收积木？”不要用屏幕交换“快一点”。","safety":"不安排搬重物或追跑式收拾。"},{"id":"s2","scene":"sleep","title":"今晚选一本书","type":"阅读仪式","ages":["12-18","18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"两本熟悉绘本","how":"给孩子两个选择：“今晚想看这本，还是这本？”选好后慢慢看，不需要再加很多刺激内容。","ageTip":"小一点看图、翻页就好；大一点可以聊一两件今天发生的小事。","exit":"一本读完，或者孩子已经困了，就结束。","back":"如果还想继续，可以温和提醒：“今天一本，明天再选。”保持规则稳定。","safety":"睡前环境尽量安静、光线柔和。"},{"id":"s3","scene":"sleep","title":"和房间说晚安","type":"安静仪式","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"熟悉软玩偶或房间里的固定物品","how":"和玩偶、窗帘、灯说一两句“晚安”。把它当成每天固定的结束信号。","ageTip":"18—24个月成人带着说；24—36个月可以让孩子自己决定今天跟谁说晚安。","exit":"说完就进入洗漱、上床或关灯，不再重新兴奋起来。","back":"孩子反复要求时，温和重复固定流程，不临时增加很多项目。","safety":"床上不要放过多影响睡眠安全的物品。"},{"id":"s4","scene":"sleep","title":"看两张今天的照片","type":"安静交流","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm"],"material":"2—3张实体照片或提前选好的静态照片","how":"只看两三张，简单说说“今天我们去了哪里、和谁在一起”。重点是回顾，不是继续刷屏。","ageTip":"18—24个月认人、指一指；24—36个月可以说一句“今天和谁做了什么”。","exit":"看完固定数量就结束，不再往下滑很多照片。","back":"如果孩子还想看更多，可以说“今天看到这里，明天再看”。","safety":"更推荐实体照片；如果用手机，只打开预先选好的静态照片，看完马上退出。"},{"id":"s5","scene":"sleep","title":"轻轻伸一伸","type":"身体放松","ages":["18-24","24-36"],"times":["1-3","5"],"states":["calm","mild"],"material":"不需要材料","how":"做两三个很轻的动作，比如伸伸手、抱抱自己、慢慢抬手放下。语速和动作都放慢。","ageTip":"动作越简单越好，不追求标准，也不增加跑跳。","exit":"身体慢下来以后，就直接进入上床流程。","back":"如果孩子越做越兴奋，就马上停，换成更安静的环节。","safety":"不做高难度拉伸、翻滚或剧烈动作。"},{"id":"s6","scene":"sleep","title":"把睡前顺序固定下来","type":"稳定流程","ages":["18-24","24-36"],"times":["5","10+"],"states":["calm","mild"],"material":"3—4张简单图片卡","how":"把“收玩具—洗漱—看书—晚安—关灯”排成固定顺序，每晚照着走。孩子知道下一步是什么，会更容易进入状态。","ageTip":"18—24个月由成人指卡；24—36个月可以让孩子自己翻下一张。","exit":"最后一张完成以后就结束活动，不再开启新的刺激内容。","back":"孩子拖延时可以说：“我们看看下一张是什么。”让流程来提醒，而不是一直催。","safety":"如果长期入睡困难、夜醒明显或睡眠问题持续，建议进一步咨询专业人员。"}];
 
+
+const INST_SCENES=[
+  {id:'arrival',label:'晨间入园',desc:'分离、入园转换'},
+  {id:'group',label:'集体活动',desc:'绘本、音乐、集体参与'},
+  {id:'freeplay',label:'自主游戏',desc:'自由探索与同伴活动'},
+  {id:'artread',label:'绘本 / 艺术',desc:'阅读、绘画、桌面活动'},
+  {id:'meal',label:'进餐',desc:'自主进食与共餐'},
+  {id:'care',label:'盥洗 / 照护',desc:'洗手、如厕、穿脱'},
+  {id:'transition',label:'活动转换 / 等待',desc:'收拾、排队、等待'},
+  {id:'outdoor',label:'户外活动',desc:'运动与户外探索'}
+];
+const INST_BEHAVIORS=[
+  {id:'leave',label:'离开原活动',desc:'从正在参与的活动中离开'},
+  {id:'seekAdult',label:'主动寻找成人',desc:'靠近、回头、呼唤成人'},
+  {id:'show',label:'拿给成人看 / 指给成人看',desc:'分享物品或成果'},
+  {id:'pause',label:'操作停住或反复尝试',desc:'出现犹豫、卡住'},
+  {id:'cry',label:'哭闹 / 明显受挫',desc:'情绪强度上升'},
+  {id:'refuse',label:'拒绝继续',desc:'推开、转身、明确拒绝'},
+  {id:'screen',label:'注意明显转向屏幕',desc:'主动靠近或持续注视设备'},
+  {id:'reengage',label:'提示后重新投入',desc:'得到支持后继续活动'}
+];
+const INST_SIGNALS=[
+  {id:'share',label:'分享',desc:'想让成人看看自己的发现或成果'},
+  {id:'confirm',label:'确认',desc:'大体会做，但想确认“这样可以吗”'},
+  {id:'help',label:'求助',desc:'确实遇到困难，需要一点帮助'},
+  {id:'emotion',label:'情绪',desc:'受挫、分离、等待或冲突'},
+  {id:'life',label:'生活需要',desc:'饿、困、不适、如厕等'},
+  {id:'unknown',label:'暂不能判断',desc:'先保留观察，不急着下结论'}
+];
+const INST_SUPPORTS=[
+  {id:'L1',label:'一级 · 关系确认',desc:'眼神、回应、描述孩子正在做什么'},
+  {id:'L2',label:'二级 · 语言支架',desc:'给一点提示，不替孩子完成'},
+  {id:'L3',label:'三级 · 共同启动',desc:'一起开始一下，接住后退出'},
+  {id:'L4',label:'四级 · 安全 / 情绪介入',desc:'靠近、保护、稳定、处理基本需要'}
+];
+const INST_ENVS=[
+  {id:'closer',label:'移近材料',desc:'让孩子更容易操作'},
+  {id:'reduce',label:'减少干扰',desc:'降低无关刺激'},
+  {id:'seat',label:'调整位置',desc:'座位、站位或活动区域'},
+  {id:'easier',label:'降低难度',desc:'任务分小一点'},
+  {id:'choice',label:'提供选择',desc:'给两个可接受选择'},
+  {id:'boundary',label:'增加安全边界',desc:'先处理环境风险'}
+];
+const INST_RESULTS=[
+  {id:'reengage',label:'重新投入原活动',desc:'支持后继续原来的参与'},
+  {id:'switch',label:'转入另一项合适活动',desc:'调整后进入新的适宜活动'},
+  {id:'needsMore',label:'仍需成人继续支持',desc:'当前支持还不够'},
+  {id:'escalate',label:'情绪 / 安全需要升级',desc:'需要继续处理或进一步观察'}
+];
+const INST_CONTEXTS=[
+  {id:'start',label:'活动刚开始',desc:'刚进入新的活动'},
+  {id:'transition',label:'正在转换活动',desc:'从一项活动转到下一项'},
+  {id:'peer',label:'同伴加入或靠近',desc:'互动对象发生变化'},
+  {id:'adultLeave',label:'成人暂时离开',desc:'教师注意转向其他儿童'},
+  {id:'screenPresent',label:'环境中出现屏幕',desc:'平板、手机或显示设备出现'},
+  {id:'noiseChange',label:'环境刺激变化',desc:'声音、人群或空间发生变化'}
+];
+const INST_EXTRA_OBS=[
+  {id:'talk',label:'主动说话 / 发声',desc:'主动表达或呼唤'},
+  {id:'point',label:'指给成人看',desc:'主动分享关注点'},
+  {id:'imitate',label:'模仿动作 / 声音',desc:'跟随成人或同伴'},
+  {id:'wait',label:'能够短暂等待',desc:'未立即要求成人介入'},
+  {id:'avoid',label:'回避 / 转身',desc:'暂时不愿继续互动'},
+  {id:'retry',label:'自己再次尝试',desc:'未马上求助，继续操作'}
+];
+let instDraft={scene:null,behaviors:[],signal:null,support:null,envs:[],result:null,contexts:[],extraObs:[]};
+let institutionInited=false;
+
 let projectChoice={age:null,time:null,state:null,scene:null,lastStrategy:null,offset:0};
 let currentProjectPool=[];
 let projectInited=false;
@@ -1176,6 +1624,23 @@ function loadHistory(){try{return JSON.parse(localStorage.getItem(PROJECT_HISTOR
 function saveHistory(h){localStorage.setItem(PROJECT_HISTORY_KEY,JSON.stringify(h.slice(-50)));}
 function loadCommunity(){try{return JSON.parse(localStorage.getItem(COMMUNITY_STORE_KEY)||'{}');}catch(e){return {};}}
 function saveCommunity(x){localStorage.setItem(COMMUNITY_STORE_KEY,JSON.stringify(x));}
+
+function loadInstRecords(){try{return JSON.parse(localStorage.getItem(INST_RECORDS_KEY)||'[]');}catch(e){return [];}}
+function saveInstRecords(arr){localStorage.setItem(INST_RECORDS_KEY,JSON.stringify(arr.slice(-200)));}
+function loadInstTasks(){try{return JSON.parse(localStorage.getItem(INST_TASKS_KEY)||'[]');}catch(e){return [];}}
+function saveInstTasks(arr){localStorage.setItem(INST_TASKS_KEY,JSON.stringify(arr.slice(-100)));}
+function renderFamilyTaskBanner(){
+  const el=document.getElementById('familyTaskBanner');if(!el)return;
+  const tasks=loadInstTasks();
+  if(!tasks.length){el.style.display='none';el.innerHTML='';return;}
+  const t=tasks[tasks.length-1];
+  el.style.display='block';
+  el.innerHTML=`<strong>来自托育机构的家庭实践建议</strong>${t.child?` · ${safeText(t.child)}`:''}<br>${safeText(t.text)}<br><span class="small muted">这是一条连续服务任务，不需要照搬园内活动；请结合家庭真实情境尝试。</span>`;
+}
+function fmtDateTime(v){if(!v)return '';try{return new Date(v).toLocaleString();}catch(e){return v;}}
+function countBy(arr,key){const o={};arr.forEach(x=>{const v=typeof key==='function'?key(x):x[key]; if(v!=null&&v!=='')o[v]=(o[v]||0)+1;});return o;}
+function topKey(o){const es=Object.entries(o);if(!es.length)return null;es.sort((a,b)=>b[1]-a[1]);return es[0][0];}
+function labelOf(list,id){return list.find(x=>x.id===id)?.label||id||'未记录';}
 
 function resetProjectSelections(){
   projectChoice={age:null,time:null,state:null,scene:null,lastStrategy:null,offset:0,currentStage:'age'};
@@ -1264,6 +1729,244 @@ function updateProjectSummary(){
   document.getElementById('sumState').textContent=getLabel(P_STATES,projectChoice.state);
   document.getElementById('sumScene').textContent=getLabel(P_SCENES,projectChoice.scene);
 }
+
+function renderInstChoices(el,items,type){
+  if(!el)return;
+  el.innerHTML=items.map(item=>{
+    let active=false;
+    if(type==='scene')active=instDraft.scene===item.id;
+    if(type==='signal')active=instDraft.signal===item.id;
+    if(type==='support')active=instDraft.support===item.id;
+    if(type==='result')active=instDraft.result===item.id;
+    if(type==='behavior')active=instDraft.behaviors.includes(item.id);
+    if(type==='env')active=instDraft.envs.includes(item.id);
+    if(type==='context')active=instDraft.contexts.includes(item.id);
+    if(type==='extra')active=instDraft.extraObs.includes(item.id);
+    return `<button type="button" class="inst-choice ${['behavior','env','context','extra'].includes(type)?'inst-multi ':''}${active?'active':''}" data-kind="${type}" data-id="${item.id}"><strong>${safeText(item.label)}</strong><span class="sub">${safeText(item.desc||'')}</span></button>`;
+  }).join('');
+  el.querySelectorAll('.inst-choice').forEach(b=>b.onclick=()=>{
+    const id=b.dataset.id, kind=b.dataset.kind;
+    if(kind==='behavior'){
+      instDraft.behaviors=instDraft.behaviors.includes(id)?instDraft.behaviors.filter(x=>x!==id):[...instDraft.behaviors,id];
+    }else if(kind==='env'){
+      instDraft.envs=instDraft.envs.includes(id)?instDraft.envs.filter(x=>x!==id):[...instDraft.envs,id];
+    }else if(kind==='context'){
+      instDraft.contexts=instDraft.contexts.includes(id)?instDraft.contexts.filter(x=>x!==id):[...instDraft.contexts,id];
+    }else if(kind==='extra'){
+      instDraft.extraObs=instDraft.extraObs.includes(id)?instDraft.extraObs.filter(x=>x!==id):[...instDraft.extraObs,id];
+    }else instDraft[kind]=id;
+    renderInstitutionForm();
+  });
+}
+function renderInstitutionForm(){
+  renderInstChoices(document.getElementById('instSceneOptions'),INST_SCENES,'scene');
+  renderInstChoices(document.getElementById('instBehaviorOptions'),INST_BEHAVIORS,'behavior');
+  renderInstChoices(document.getElementById('instSignalOptions'),INST_SIGNALS,'signal');
+  renderInstChoices(document.getElementById('instSupportOptions'),INST_SUPPORTS,'support');
+  renderInstChoices(document.getElementById('instEnvOptions'),INST_ENVS,'env');
+  renderInstChoices(document.getElementById('instResultOptions'),INST_RESULTS,'result');
+  renderInstChoices(document.getElementById('instContextOptions'),INST_CONTEXTS,'context');
+  renderInstChoices(document.getElementById('instExtraOptions'),INST_EXTRA_OBS,'extra');
+}
+function clearInstForm(){
+  instDraft={scene:null,behaviors:[],signal:null,support:null,envs:[],result:null,contexts:[],extraObs:[]};
+  ['instChildName','instChildAge','instDuration','instNote','instOtherObservation'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  const cnt=document.getElementById('instOtherCount');if(cnt)cnt.textContent='0';
+  const dt=document.getElementById('instObservedAt');if(dt)dt.value=new Date().toISOString().slice(0,16);
+  const hint=document.getElementById('instSaveHint');if(hint){hint.style.display='none';hint.textContent='';}
+  renderInstitutionForm();
+}
+function validateInstRecord(){
+  const child=(document.getElementById('instChildName').value||'').trim();
+  const age=parseInt(document.getElementById('instChildAge').value||'0',10);
+  if(!child)return '请先填写儿童姓名或编号。';
+  if(!age||age<12||age>36)return '请填写12—36个月之间的月龄。';
+  if(!instDraft.scene)return '请选择发生的生活节点。';
+  if(!instDraft.behaviors.length)return '请至少选择一个实际观察到的行为。';
+  if(!instDraft.signal)return '请选择本次信号判断；如果不确定，可以选“暂不能判断”。';
+  if(!instDraft.support)return '请选择本次实际使用的支持层级。';
+  if(!instDraft.result)return '请选择回应后的结果。';
+  return '';
+}
+function saveInstRecord(){
+  const err=validateInstRecord();if(err){alert(err);return;}
+  const rec={
+    id:'r'+Date.now(),
+    child:(document.getElementById('instChildName').value||'').trim(),
+    age:parseInt(document.getElementById('instChildAge').value,10),
+    at:document.getElementById('instObservedAt').value||new Date().toISOString(),
+    scene:instDraft.scene,
+    behaviors:[...instDraft.behaviors],
+    duration:(document.getElementById('instDuration').value||'').trim(),
+    note:(document.getElementById('instNote').value||'').trim(),
+    signal:instDraft.signal,
+    support:instDraft.support,
+    envs:[...instDraft.envs],
+    result:instDraft.result,
+    contexts:[...instDraft.contexts],
+    extraObs:[...instDraft.extraObs],
+    otherObservation:(document.getElementById('instOtherObservation')?.value||'').trim(),
+    demo:false
+  };
+  const arr=loadInstRecords();arr.push(rec);saveInstRecords(arr);
+  const hint=document.getElementById('instSaveHint');hint.style.display='block';hint.innerHTML=`已保存：<strong>${safeText(rec.child)}</strong> · ${safeText(labelOf(INST_SCENES,rec.scene))} · ${safeText(labelOf(INST_SUPPORTS,rec.support))} → ${safeText(labelOf(INST_RESULTS,rec.result))}`;
+  renderInstitutionRecent();refreshInstitutionChildren();
+}
+function renderInstitutionRecent(){
+  const el=document.getElementById('instRecentRecords');if(!el)return;
+  const rows=loadInstRecords().slice().reverse().slice(0,8);
+  if(!rows.length){el.innerHTML='<div class="inst-empty-hint"><strong>这里还没有记录。</strong><br>可以直接在上方填写自己的儿童观察；如果想先看看系统效果，也可以载入演示案例。</div>';return;}
+  el.innerHTML=rows.map(r=>{const extra=[...(r.contexts||[]).map(x=>labelOf(INST_CONTEXTS,x)),...(r.extraObs||[]).map(x=>labelOf(INST_EXTRA_OBS,x))].join('、');const detail=(r.otherObservation||r.note||'');return `<div class="inst-record"><div class="inst-record-head"><div><strong>${safeText(r.child)}</strong>${r.demo?'<span class="demo-tag">演示</span>':''} · ${safeText(labelOf(INST_SCENES,r.scene))}<br><span class="muted">看到：${safeText(r.behaviors.map(x=>labelOf(INST_BEHAVIORS,x)).join('、'))} ｜ 判断：${safeText(labelOf(INST_SIGNALS,r.signal))} ｜ 支持：${safeText(labelOf(INST_SUPPORTS,r.support))} ｜ 结果：${safeText(labelOf(INST_RESULTS,r.result))} ｜ ${safeText(fmtDateTime(r.at))}</span>${extra||detail?`<br><span class="muted">补充：${safeText([extra,detail].filter(Boolean).join('；'))}</span>`:''}</div><div class="record-actions"><button class="record-delete" data-delete-record="${safeText(r.id)}">删除</button></div></div></div>`}).join('');
+  el.querySelectorAll('[data-delete-record]').forEach(b=>b.onclick=()=>deleteInstitutionRecord(b.dataset.deleteRecord));
+}
+function loadInstitutionDemo(){
+  const existing=loadInstRecords();
+  if(existing.some(x=>x.demo&&x.child==='小禾（演示）')){alert('演示案例已经存在。');return;}
+  const base=Date.now()-5*24*3600*1000;
+  const demo=[
+    {scene:'artread',behaviors:['leave','seekAdult','screen'],signal:'confirm',support:'L2',envs:['reduce'],result:'reengage',note:'绘本活动中离开座位，看到教师平板后主动靠近；教师收起设备并用一句提示邀请回到绘本。'},
+    {scene:'transition',behaviors:['seekAdult','pause'],signal:'confirm',support:'L1',envs:['choice'],result:'reengage',note:'收玩具后等待洗手时多次回头寻找教师，得到简短确认后继续等待。'},
+    {scene:'meal',behaviors:['refuse','seekAdult'],signal:'help',support:'L2',envs:['closer'],result:'reengage',note:'自主舀取时停住并看向教师，教师把碗移近并稳住碗，儿童继续尝试。'},
+    {scene:'freeplay',behaviors:['show','seekAdult'],signal:'share',support:'L1',envs:[],result:'reengage',note:'完成积木搭建后举起作品给教师看，教师描述性回应后继续搭建。'},
+    {scene:'transition',behaviors:['seekAdult','cry'],signal:'emotion',support:'L3',envs:['reduce'],result:'switch',note:'活动转换时出现哭闹，教师短暂陪同并降低现场刺激，情绪稳定后转入安静阅读。'}
+  ].map((x,i)=>({id:'demo'+Date.now()+i,child:'小禾（演示）',age:26,at:new Date(base+i*24*3600*1000).toISOString(),duration:i===0?'约2分钟':'',demo:true,...x}));
+  saveInstRecords([...existing,...demo]);
+  renderInstitutionRecent();refreshInstitutionChildren();
+  alert('已载入“小禾（演示）”的5条示例记录。所有内容均标记为演示数据。表单仍可直接填写您自己的记录。');
+}
+function clearInstitutionDemo(){
+  const all=loadInstRecords();
+  const demoCount=all.filter(x=>x.demo).length;
+  if(!demoCount){alert('当前没有演示数据。');return;}
+  if(!confirm(`确认清除 ${demoCount} 条演示数据？您自己填写的真实记录会保留。`))return;
+  saveInstRecords(all.filter(x=>!x.demo));
+  renderInstitutionRecent();refreshInstitutionChildren();
+}
+function clearAllInstitutionRecords(){
+  const all=loadInstRecords();
+  if(!all.length){alert('当前还没有观察记录。');return;}
+  if(!confirm('确认清空全部托育机构观察记录？演示数据和自己填写的记录都会删除，此操作不可恢复。'))return;
+  saveInstRecords([]);renderInstitutionRecent();refreshInstitutionChildren();
+}
+function deleteInstitutionRecord(id){
+  const all=loadInstRecords();const rec=all.find(x=>x.id===id);
+  if(!rec)return;
+  if(!confirm(`确认删除这条${rec.demo?'演示':'观察'}记录？`))return;
+  saveInstRecords(all.filter(x=>x.id!==id));renderInstitutionRecent();refreshInstitutionChildren();
+}
+function childNames(){return [...new Set(loadInstRecords().map(x=>x.child).filter(Boolean))];}
+function fillChildSelect(el,selected){
+  if(!el)return;
+  const names=childNames();
+  el.innerHTML=names.length?names.map(n=>`<option ${n===selected?'selected':''}>${safeText(n)}</option>`).join(''):'<option value="">暂无记录</option>';
+}
+function refreshInstitutionChildren(){
+  const ids=['instProfileChild','instCommChild','instReviewChild'];
+  ids.forEach(id=>{const el=document.getElementById(id);const cur=el?.value||'';fillChildSelect(el,cur);});
+  renderInstProfile();renderInstCommunication();renderInstReview();
+}
+function renderBars(obj,list){
+  const entries=Object.entries(obj).sort((a,b)=>b[1]-a[1]);
+  if(!entries.length)return '<p class="muted">暂无记录。</p>';
+  const max=Math.max(...entries.map(x=>x[1]));
+  return `<div class="profile-bars">${entries.map(([k,n])=>`<div class="profile-row"><span>${safeText(labelOf(list,k))}</span><div class="profile-track"><div class="profile-fill" style="width:${Math.round(n/max*100)}%"></div></div><strong>${n}</strong></div>`).join('')}</div>`;
+}
+function recordsForChild(name){return loadInstRecords().filter(x=>x.child===name).sort((a,b)=>new Date(a.at)-new Date(b.at));}
+function renderInstProfile(){
+  const sel=document.getElementById('instProfileChild'),el=document.getElementById('instProfileContent');if(!sel||!el)return;
+  const name=sel.value;const rs=recordsForChild(name);
+  if(!name||!rs.length){el.innerHTML='<p class="muted">完成至少一次观察记录后，这里会自动形成回应画像。</p>';return;}
+  const scenes=countBy(rs,'scene'),signals=countBy(rs,'signal'),supports=countBy(rs,'support'),results=countBy(rs,'result');
+  const mainScene=topKey(scenes),mainSignal=topKey(signals),mainSupport=topKey(supports);
+  const reeng=(results.reengage||0)+(results.switch||0);
+  const latest=rs.slice().reverse().slice(0,5);
+  el.innerHTML=`
+    <div class="inst-metrics">
+      <div class="metric-card"><div class="num">${rs.length}</div><div class="lab">近期观察节点</div></div>
+      <div class="metric-card"><div class="num" style="font-size:16px">${safeText(labelOf(INST_SCENES,mainScene))}</div><div class="lab">较常出现的场景</div></div>
+      <div class="metric-card"><div class="num" style="font-size:16px">${safeText(labelOf(INST_SIGNALS,mainSignal))}</div><div class="lab">较常见的信号</div></div>
+      <div class="metric-card"><div class="num">${reeng}</div><div class="lab">支持后重新投入 / 合适转入</div></div>
+    </div>
+    <div class="inst-note"><strong>回应画像摘要：</strong>近期记录中，${safeText(name)}较多在“${safeText(labelOf(INST_SCENES,mainScene))}”出现成人支持需要，常见信号为“${safeText(labelOf(INST_SIGNALS,mainSignal))}”。教师较常使用“${safeText(labelOf(INST_SUPPORTS,mainSupport))}”。这里只描述已记录事件，不据此给儿童贴标签。</div>
+    <div class="review-grid">
+      <div class="profile-section"><h3>场景分布</h3>${renderBars(scenes,INST_SCENES)}</div>
+      <div class="profile-section"><h3>信号分布</h3>${renderBars(signals,INST_SIGNALS)}</div>
+      <div class="profile-section"><h3>支持层级</h3>${renderBars(supports,INST_SUPPORTS)}</div>
+      <div class="profile-section"><h3>回看结果</h3>${renderBars(results,INST_RESULTS)}</div>
+    </div>
+    <div class="profile-section"><h3>最近5次记录</h3>${latest.map(r=>`<div class="inst-record"><strong>${safeText(labelOf(INST_SCENES,r.scene))}</strong> · ${safeText(labelOf(INST_SIGNALS,r.signal))} → ${safeText(labelOf(INST_SUPPORTS,r.support))} → ${safeText(labelOf(INST_RESULTS,r.result))}<br><span class="muted">${safeText(r.otherObservation||r.note||r.behaviors.map(x=>labelOf(INST_BEHAVIORS,x)).join('、'))} · ${safeText(fmtDateTime(r.at))}</span></div>`).join('')}</div>`;
+}
+function suggestedFamilyScene(rs){
+  const map={meal:'meal',transition:'busy',artread:'play',group:'play',freeplay:'play',arrival:'emotion',care:'busy',outdoor:'play'};
+  const top=topKey(countBy(rs,r=>map[r.scene]||'busy'));
+  return top||'busy';
+}
+function buildCommSummary(name){
+  const rs=recordsForChild(name);if(!rs.length)return '暂无可生成摘要的托育机构记录。';
+  const recent=rs.slice(-6),scene=topKey(countBy(recent,'scene')),signal=topKey(countBy(recent,'signal')),support=topKey(countBy(recent,'support')),result=topKey(countBy(recent,'result'));
+  const resultText=result==='reengage'?'多数记录中，孩子在得到支持后能够继续原来的活动':result==='switch'?'部分记录中，调整后转入了另一项合适活动':'有些节点仍需要成人继续支持';
+  return `最近一段时间，我们在园内主要关注到孩子在“${labelOf(INST_SCENES,scene)}”这一类场景中的表现。几次记录里，孩子更常见的是“${labelOf(INST_SIGNALS,signal)}”信号。教师通常从“${labelOf(INST_SUPPORTS,support)}”开始，根据孩子当时的反应再决定要不要增加帮助。${resultText}。\n\n回到家里，不需要照搬托育机构的活动。建议先选一个相近的生活场景，看看孩子是在分享、确认还是确实需要帮助，再给恰到好处的回应。`;
+}
+function renderInstCommunication(){
+  const sel=document.getElementById('instCommChild'),el=document.getElementById('instCommText');if(!sel||!el)return;
+  el.textContent=buildCommSummary(sel.value);
+}
+function sendFamilyTask(){
+  const sel=document.getElementById('instCommChild');const name=sel?.value;const rs=recordsForChild(name);if(!name||!rs.length){alert('请先选择有记录的儿童。');return;}
+  const scene=suggestedFamilyScene(rs);const task={id:'t'+Date.now(),child:name,scene,createdAt:new Date().toISOString(),text:`这周先从“${labelOf(P_SCENES,scene)}”这个场景试一次：先看孩子为什么来找您，再决定只回应一句、给一点提示，还是短暂一起开始。试过以后，记一下孩子能不能继续。`};
+  const arr=loadInstTasks();arr.push(task);saveInstTasks(arr);
+  const el=document.getElementById('instFamilyTask');el.style.display='block';el.innerHTML=`<strong>已生成家庭实践任务</strong><br>${safeText(task.text)}<br><span class="small muted">原型版已保存在本机；正式上线后可同步到家长端账号。</span>`;
+  renderFamilyTaskBanner();
+}
+function renderInstReview(){
+  const sel=document.getElementById('instReviewChild'),el=document.getElementById('instReviewContent');if(!sel||!el)return;
+  const name=sel.value,rs=recordsForChild(name);if(!name||!rs.length){el.innerHTML='<p class="muted">暂无阶段记录。</p>';return;}
+  const mid=Math.ceil(rs.length/2),early=rs.slice(0,mid),late=rs.slice(mid);
+  const describe=(arr)=>{
+    if(!arr.length)return '记录不足';
+    const s=topKey(countBy(arr,'scene')),sig=topKey(countBy(arr,'signal')),sup=topKey(countBy(arr,'support')),res=topKey(countBy(arr,'result'));
+    return `较常见场景：${labelOf(INST_SCENES,s)}；较常见信号：${labelOf(INST_SIGNALS,sig)}；较常用支持：${labelOf(INST_SUPPORTS,sup)}；较常见结果：${labelOf(INST_RESULTS,res)}。`;
+  };
+  const lateHigherSupport=late.length?late.filter(r=>['L3','L4'].includes(r.support)).length:0;
+  const earlyHigherSupport=early.filter(r=>['L3','L4'].includes(r.support)).length;
+  let trend='目前记录数量还不多，继续观察比下结论更重要。';
+  if(late.length>=2){
+    if(lateHigherSupport<earlyHigherSupport)trend='后半段记录中，需要三级/四级支持的节点较少，可以继续观察这种变化是否稳定。';
+    else if(lateHigherSupport>earlyHigherSupport)trend='后半段记录中，需要更高支持的节点有所增加，建议结合具体场景继续观察原因，而不是直接解释为能力下降。';
+    else trend='前后阶段所需支持强度整体接近，下一步可以重点看哪些具体场景最容易重复出现。';
+  }
+  el.innerHTML=`<div class="review-grid"><div class="metric-card"><strong>较早阶段</strong><p>${safeText(describe(early))}</p></div><div class="metric-card"><strong>较近阶段</strong><p>${safeText(describe(late.length?late:early))}</p></div></div><div class="inst-note" style="margin-top:12px"><strong>阶段提示：</strong>${safeText(trend)}</div><div class="profile-section"><h3>连续时间线</h3>${rs.slice().reverse().map(r=>`<div class="inst-record"><strong>${safeText(fmtDateTime(r.at))}</strong> · ${safeText(labelOf(INST_SCENES,r.scene))}<br><span class="muted">${safeText(labelOf(INST_SIGNALS,r.signal))} → ${safeText(labelOf(INST_SUPPORTS,r.support))} → ${safeText(labelOf(INST_RESULTS,r.result))}</span></div>`).join('')}</div>`;
+}
+function switchInstitutionPane(name){
+  document.querySelectorAll('[data-inav]').forEach(b=>b.classList.toggle('active',b.dataset.inav===name));
+  ['observe','profile','communication','review'].forEach(x=>{const el=document.getElementById('inst-'+x);if(el)el.hidden=x!==name;});
+  if(name==='profile')renderInstProfile();
+  if(name==='communication')renderInstCommunication();
+  if(name==='review')renderInstReview();
+}
+function initInstitutionModule(){
+  if(!institutionInited){
+    const dt=document.getElementById('instObservedAt');if(dt&&!dt.value)dt.value=new Date().toISOString().slice(0,16);
+    renderInstitutionForm();
+    document.querySelectorAll('[data-inav]').forEach(b=>b.onclick=()=>switchInstitutionPane(b.dataset.inav));
+    document.getElementById('instSaveBtn').onclick=saveInstRecord;
+    document.getElementById('instClearFormBtn').onclick=clearInstForm;
+    document.getElementById('instNewBtn').onclick=clearInstForm;
+    document.getElementById('instDemoBtn').onclick=loadInstitutionDemo;
+    document.getElementById('instClearDemoBtn').onclick=clearInstitutionDemo;
+    document.getElementById('instClearAllBtn').onclick=clearAllInstitutionRecords;
+    document.getElementById('instGenerateCommBtn').onclick=renderInstCommunication;
+    document.getElementById('instSendTaskBtn').onclick=sendFamilyTask;
+    document.getElementById('instProfileChild').onchange=renderInstProfile;
+    document.getElementById('instCommChild').onchange=()=>{renderInstCommunication();document.getElementById('instFamilyTask').style.display='none';};
+    document.getElementById('instReviewChild').onchange=renderInstReview;
+    const other=document.getElementById('instOtherObservation');
+    if(other)other.oninput=()=>{const c=document.getElementById('instOtherCount');if(c)c.textContent=String(other.value.length);};
+    institutionInited=true;
+  }
+  renderInstitutionRecent();refreshInstitutionChildren();
+}
+
 function initProjectModule(){
   if(!projectInited){
     const saved=loadProjectChoice(); if(saved) projectChoice={...projectChoice,...saved};
@@ -1274,7 +1977,6 @@ function initProjectModule(){
     document.getElementById('projectBackBtn').onclick=()=>goProjectBack();
     document.getElementById('swapStrategies').onclick=()=>swapStrategies();
     document.querySelectorAll('.step-pill.editable').forEach(p=>p.onclick=()=>jumpToStage(p.dataset.stage));
-    document.querySelectorAll('[data-pnav]').forEach(b=>b.onclick=()=>switchProjectPane(b.dataset.pnav));
     document.querySelectorAll('.feedback-btn').forEach(b=>b.onclick=()=>handleFeedback(b.dataset.feedback));
     projectInited=true;
   }
@@ -1288,13 +1990,17 @@ function initProjectModule(){
   else if(projectChoice.time) showProjectStage('state');
   else if(projectChoice.age) showProjectStage('time');
   else showProjectStage('age');
-  renderProjectHistory(); renderCommunity();
+  renderProjectRoleChrome(); renderProjectHistory(); renderCommunity(); initInstitutionModule(); renderFamilyTaskBanner();
 
 }
 function switchProjectPane(name){
+  renderProjectRoleChrome();
   document.querySelectorAll('[data-pnav]').forEach(b=>b.classList.toggle('active',b.dataset.pnav===name));
-  ['guide','history','community'].forEach(x=>document.getElementById('project-'+x).hidden=x!==name);
-  if(name==='history')renderProjectHistory(); if(name==='community')renderCommunity();
+  ['guide','institution','history','community'].forEach(x=>document.getElementById('project-'+x).hidden=x!==name);
+  const familyControls=name==='guide' && currentUserRole==='parent';
+  const back=document.getElementById('projectBackBtn'), reset=document.getElementById('projectResetBtn');
+  if(back) back.style.display=familyControls?'':'none'; if(reset) reset.style.display=familyControls?'':'none';
+  if(name==='institution')initInstitutionModule(); if(name==='history')renderProjectHistory(); if(name==='community'){renderCommunity();initCommunityModule();}
 }
 function responseAdvice(){
   const st=projectChoice.state, sc=projectChoice.scene;
@@ -1352,6 +2058,66 @@ function renderProjectHistory(){
   const fb={continue:'已经继续',stuck:'还有点卡住',upset:'情绪更明显',safety:'安全/生活需要'};
   el.innerHTML=h.map(x=>`<div class="history-item"><strong>${safeText(getLabel(P_SCENES,x.scene))}</strong> · ${safeText(x.strategy)}<br><span class="muted">${safeText(getLabel(P_AGES,x.age))}｜${safeText(getLabel(P_TIMES,x.time))}｜${safeText(fb[x.feedback]||x.feedback)}｜${new Date(x.at).toLocaleString()}</span></div>`).join('');
 }
+
+const COMMUNITY_RESOURCE_GUIDES={
+  busy:{
+    title:'成人忙碌：手可以忙，回应别断',
+    points:['先把孩子安排在成人看得到、但远离厨房热源、尖锐物等危险的位置。','先花1—3分钟和孩子一起开始一个简单活动，确认他知道怎么玩。','孩子能继续以后，成人可以回到自己的事情，不需要一直坐在旁边。','孩子回来找您时，先看看他是在分享、确认，还是确实需要帮助，再决定回应到哪一步。'],
+    line:'不需要一直陪着，但孩子需要您的时候，回应要接得上。'
+  },
+  emotion:{
+    title:'情绪哭闹：先接住，再想下一步',
+    points:['先看看有没有受伤、疼痛、饥饿、困倦等身体或生活需要。','明显哭闹时先靠近孩子，少讲道理，让情绪有机会慢下来。','情绪开始稳定后，再进入熟悉、低刺激的活动，不急着用新东西转移。','如果孩子又哭起来，就先回到陪伴和安抚，不把“玩起来”当成唯一目标。'],
+    line:'先别急着让他不哭，先看看他这一刻需要什么。'
+  },
+  meal:{
+    title:'进餐：把注意带回食物、身体和人',
+    points:['不建议把手机换成另一个玩具继续吸引孩子吃饭。','让孩子自己拿勺、碰食物、闻一闻、尝一口，增加对进餐的真实参与。','留意“还要”“吃好了”、转头、闭嘴、推开等饱腹或拒绝信号。','孩子吃得慢或注意转开时，先判断是不是已经饱了、累了，或环境刺激太多。'],
+    line:'不用另一个玩具替代手机，把注意重新带回食物、身体和人的回应。'
+  },
+  wait:{
+    title:'外出等待：短一点，也可以很好用',
+    points:['不用专门准备很多玩具，可以从身边的颜色、声音、车辆和动作开始。','互动只做一两轮就可以，孩子自己看看周围也很好。','孩子主动指给您看时，跟着看、回应一句，不必连续提问。','空间狭小或靠近道路时，以安全为先，不安排跑跳和追逐。'],
+    line:'等待不需要每一分钟都安排满，孩子自己看看周围也很好。'
+  },
+  play:{
+    title:'亲子陪伴：少教一点，多跟一点',
+    points:['可以从大纸涂画、音乐敲击、亲子共读、动作模仿和简单角色游戏开始。','先跟着孩子的兴趣走，不要求一次把活动做完整。','孩子有自己的玩法时，成人可以少示范、少纠正，多回应他的发现。','同一个活动按年龄降低或增加难度，不需要追求“学会多少”。'],
+    line:'少教一点，多跟一点，让孩子的动作和声音真正影响成人的下一步。'
+  },
+  sleep:{
+    title:'睡前过渡：稳定比“更有趣”重要',
+    points:['把收玩具、洗漱、看一本书、说晚安、关灯慢慢固定成顺序。','睡前尽量选择熟悉、安静、低刺激的活动，不再临时增加兴奋内容。','可以给孩子有限选择，例如“今天看这本还是那本”，但流程本身保持稳定。','如果孩子反复拖延，温和重复固定流程，不用屏幕交换“快点睡”。'],
+    line:'睡前不需要再找一个更有趣的活动，更需要的是稳定、可预期的顺序。'
+  }
+};
+function showCommunityResource(scene,mode='guide'){
+  const box=document.getElementById('communityResourceDetail'); if(!box)return;
+  const guide=COMMUNITY_RESOURCE_GUIDES[scene]; if(!guide)return;
+  const sceneMeta=P_SCENES.find(x=>x.id===scene);
+  const activities=STRATEGIES.filter(x=>x.scene===scene).map(x=>x.title);
+  box.hidden=false;
+  if(mode==='activities'){
+    box.innerHTML=`<h3>${safeText(sceneMeta?.label||'家庭场景')}：可推荐活动</h3><p>下面这些活动都来自家庭指导策略库。社区工作人员可以根据孩子年龄、家长可陪伴时间和当下状态，再选择更合适的一项。</p><div class="resource-strategies">${activities.map(x=>`<span class="resource-strategy-chip">${safeText(x)}</span>`).join('')}</div><div class="resource-tip"><strong>给家长的一句话：</strong>${safeText(guide.line)}</div>`;
+  }else{
+    box.innerHTML=`<h3>${safeText(guide.title)}</h3><h4>可以这样和家长说</h4><ul>${guide.points.map(x=>`<li>${safeText(x)}</li>`).join('')}</ul><div class="resource-tip"><strong>给家长的一句话：</strong>${safeText(guide.line)}</div>`;
+  }
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function switchCommunityPane(name){
+  document.querySelectorAll('[data-cnav]').forEach(b=>b.classList.toggle('active',b.dataset.cnav===name));
+  ['survey','knowledge','resources'].forEach(x=>{const el=document.getElementById('comm-'+x);if(el)el.hidden=x!==name;});
+  if(name==='survey')renderCommunity();
+}
+let communityInited=false;
+function initCommunityModule(){
+  if(communityInited)return;
+  document.querySelectorAll('[data-cnav]').forEach(b=>b.onclick=()=>switchCommunityPane(b.dataset.cnav));
+  document.querySelectorAll('.resource-guide-btn').forEach(b=>b.onclick=()=>showCommunityResource(b.dataset.scene,'guide'));
+  document.querySelectorAll('.resource-activity-btn').forEach(b=>b.onclick=()=>showCommunityResource(b.dataset.scene,'activities'));
+  communityInited=true;
+}
 function renderCommunity(){
   const el=document.getElementById('communityBars'); if(!el)return;
   const d=loadCommunity(); const total=P_SCENES.reduce((n,x)=>n+(d[x.id]||0),0); const max=Math.max(1,...P_SCENES.map(x=>d[x.id]||0));
@@ -1365,6 +2131,7 @@ function renderAll(){
   updateIndicatorsTable(); renderMonthlyChart(); buildHomeTable();
 }
 renderAll();
+initRoleSwitcher();
 goHome();
 </script>
 
