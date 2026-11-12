@@ -779,6 +779,7 @@ body { font-family: var(--ui-font); font-size: 16px; line-height: 1.7; }
   .assistant-fab { bottom: 14px; right: 14px; }
 }
 
+.tb-voice-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:8px 16px;font-size:13px}.tb-voice-tools input{max-width:130px}.tb-chat-reply+button{margin-bottom:12px}
 </style>
 </head>
 <body>
@@ -915,7 +916,7 @@ body { font-family: var(--ui-font); font-size: 16px; line-height: 1.7; }
     <div class="assistant-note">联网问答请通过完整项目包中的「启动童伴演示」打开。</div>
     <div class="assistant-msg">你可以先描述孩子年龄、当前场景和最想解决的问题。</div>
   </div>
-  <div class="drawer-input"><textarea id="assistantInput" maxlength="3000" aria-label="输入问题" placeholder="输入你的问题……"></textarea><button class="primary" id="assistantSend">发送</button></div>
+  <div class="tb-voice-tools"><input id="tbDemoCode" type="password" maxlength="100" aria-label="现场口令" placeholder="现场口令" hidden><button type="button" class="nurture-secondary" id="tbAssistantMic">语音输入</button><span id="tbSpeechStatus" role="status"></span></div><div class="drawer-input"><textarea id="assistantInput" maxlength="3000" aria-label="输入问题" placeholder="输入你的问题……"></textarea><button class="primary" id="assistantSend">发送</button></div>
 </div>
 
 <div class="login-modal" id="loginModal">
@@ -2891,6 +2892,15 @@ const tbAssistantInput=document.getElementById('assistantInput');
 const tbAssistantSend=document.getElementById('assistantSend');
 const tbAssistantBody=document.getElementById('assistantBody');
 const tbAssistantLocal=location.origin==='http://127.0.0.1:8765';
+// Deploy the Worker first, then paste its HTTPS /api/chat address between the quotes.
+const tbPublicChatUrl = '';
+const tbAssistantEndpoint=tbAssistantLocal?'/api/chat':location.origin==='https://xusharon6-art.github.io'?tbPublicChatUrl:'';
+const tbAssistantNote=tbAssistantBody.querySelector('.assistant-note');
+const tbDemoCode=document.getElementById('tbDemoCode');
+if(!tbAssistantLocal&&tbAssistantEndpoint){
+ tbDemoCode.hidden=false;
+ tbAssistantNote.textContent='输入现场口令后即可提问。请勿填写儿童姓名等个人信息。';
+}
 if(tbAssistantLocal){
  fetch('/api/status').then(response=>response.json()).then(({ready})=>{
   tbAssistantBody.querySelector('.assistant-note').textContent=ready
@@ -2898,6 +2908,70 @@ if(tbAssistantLocal){
    :'当前为离线预览。重新启动演示程序并输入火山方舟 API Key 和模型 ID，即可使用问答。';
  }).catch(()=>{});
 }
+async function tbReadChatStream(response,onText){
+ const reader=response.body.pipeThrough(new TextDecoderStream()).getReader();
+ let buffer='',answer='',finish='',done=false;
+ try{
+  while(!done){
+   const chunk=await reader.read();
+   if(chunk.done)break;
+   buffer+=chunk.value;
+   let newline;
+   while((newline=buffer.indexOf('\n'))>=0){
+    const line=buffer.slice(0,newline).trim();
+    buffer=buffer.slice(newline+1);
+    if(!line.startsWith('data:'))continue;
+    const data=line.slice(5).trim();
+    if(data==='[DONE]'){done=true;break;}
+    const event=JSON.parse(data);
+    if(event.error)throw new Error('方舟中断了这次回复，请重试。');
+    const choice=event.choices?.[0];
+    if(!choice)continue;
+    if(choice.finish_reason)finish=choice.finish_reason;
+    if(typeof choice.delta?.content==='string'){
+     answer+=choice.delta.content;
+     onText(answer);
+    }
+   }
+  }
+ }finally{await reader.cancel().catch(()=>{});}
+ if(finish==='content_filter')return {error:'这次回复被内容审核拦截，可以换个问法再试。'};
+ if(!done&&!finish)throw new Error('回复连接中断，请重试。');
+ if(!answer.trim())return {error:finish==='length'?'回复达到输出上限，请把问题拆开提问。':'模型未返回正文，请重试。'};
+ return {answer,truncated:finish==='length'};
+}
+function tbAddReadButton(reply,text){
+ if(!window.speechSynthesis||!window.SpeechSynthesisUtterance)return;
+ const button=document.createElement('button');
+ button.type='button';button.className='nurture-secondary';button.textContent='朗读回复';
+ button.onclick=()=>{
+  const wasReading=button.textContent==='停止朗读';
+  window.speechSynthesis.cancel();
+  if(wasReading){button.textContent='朗读回复';return;}
+  const speech=new SpeechSynthesisUtterance(text);speech.lang='zh-CN';
+  speech.onend=speech.onerror=()=>{button.textContent='朗读回复';};
+  button.textContent='停止朗读';window.speechSynthesis.speak(speech);
+ };
+ reply.after(button);
+}
+const tbMic=document.getElementById('tbAssistantMic');
+const tbSpeechStatus=document.getElementById('tbSpeechStatus');
+const tbRecognizer=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!tbRecognizer)tbMic.disabled=true;
+tbMic.onclick=()=>{
+ const recognizer=new tbRecognizer();
+ recognizer.lang='zh-CN';
+ recognizer.onresult=event=>{
+  const spoken=event.results[0][0].transcript;
+  tbAssistantInput.value=[tbAssistantInput.value.trim(),spoken].filter(Boolean).join(' ').slice(0,3000);
+  tbSpeechStatus.textContent='已转成文字，确认后发送。';
+ };
+ recognizer.onerror=()=>{tbSpeechStatus.textContent='语音识别未成功，请检查麦克风权限或改用文字。';};
+ recognizer.onend=()=>{tbMic.disabled=false;if(tbSpeechStatus.textContent==='正在听…')tbSpeechStatus.textContent='已结束听写。';};
+ try{recognizer.start();tbMic.disabled=true;tbSpeechStatus.textContent='正在听…';}
+ catch{tbSpeechStatus.textContent='无法启动麦克风，请改用文字。';}
+};
+if(!tbRecognizer)tbSpeechStatus.textContent='此浏览器不支持语音输入。';
 function tbAppendMessage(text,kind){
  const message=document.createElement('div');
  message.className='assistant-msg tb-chat-'+kind;
@@ -2909,9 +2983,12 @@ function tbAppendMessage(text,kind){
 tbAssistantSend.onclick=async()=>{
  const question=tbAssistantInput.value.trim();
  if(!question||tbAssistantSend.disabled)return;
- if(!tbAssistantLocal){
+ if(!tbAssistantEndpoint){
   tbAppendMessage('请解压完整项目包，双击「启动童伴演示.cmd」后使用智能问答。','notice');
   return;
+ }
+ if(!tbAssistantLocal&&!tbDemoCode.value.trim()){
+  tbSpeechStatus.textContent='请先输入现场口令。';tbDemoCode.focus();return;
  }
  tbAssistantSend.disabled=true;
  tbAssistantInput.value='';
@@ -2919,15 +2996,20 @@ tbAssistantSend.onclick=async()=>{
  const reply=tbAppendMessage('正在回答…','reply');
  try{
   const messages=[...tbAssistantHistory.slice(-6),{role:'user',content:question}];
-  const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
-   body:JSON.stringify({messages}),signal:AbortSignal.timeout(45000)});
-  const data=await response.json();
-  if(!response.ok){reply.textContent=data.error||'暂时无法取得回复。';tbAssistantInput.value ||= question;return;}
-  reply.textContent=data.answer;
+  const response=await fetch(tbAssistantEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({messages,code:tbAssistantLocal?undefined:tbDemoCode.value.trim()}),signal:AbortSignal.timeout(110000)});
+  const streaming=response.ok&&response.headers.get('Content-Type')?.includes('text/event-stream');
+  const data=streaming?await tbReadChatStream(response,text=>{
+   reply.textContent=text;tbAssistantBody.scrollTop=tbAssistantBody.scrollHeight;
+  }):await response.json();
+  if(!response.ok||data.error){reply.textContent=data.error||'暂时无法取得回复。';tbAssistantInput.value ||= question;return;}
+  reply.textContent=data.answer+(data.truncated?'\n\n回复已达输出上限，可以发送「请继续」。':'');
   tbAssistantHistory.push({role:'user',content:question},{role:'assistant',content:data.answer.slice(0,3000)});
   if(tbAssistantHistory.length>6)tbAssistantHistory.splice(0,tbAssistantHistory.length-6);
+  tbAddReadButton(reply,data.answer);
  }catch{
-  reply.textContent='连接超时或演示服务已停止。请检查网络和演示窗口后重试。';
+  const partial=reply.textContent==='正在回答…'?'':reply.textContent+'\n\n';
+  reply.textContent=partial+'回复中断或超时，请重试。';
   tbAssistantInput.value ||= question;
  }finally{
   tbAssistantSend.disabled=false;
