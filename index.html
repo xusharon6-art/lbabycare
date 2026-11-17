@@ -780,6 +780,23 @@ body { font-family: var(--ui-font); font-size: 16px; line-height: 1.7; }
 }
 
 .tb-voice-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:8px 16px;font-size:13px}.tb-voice-tools input{max-width:130px}.tb-chat-reply+button{margin-bottom:12px}
+
+/* 童趣镜观察扩展 — scoped to the teacher observation tool */
+.tb-mirror-tool{--m-green:#24876a;--m-ink:#174c49;color:var(--m-ink);font-family:inherit}
+.tb-mirror-hero{background:linear-gradient(115deg,#e4f5ea,#edf6fd);border:1px solid #c9e6d6;border-radius:20px;padding:22px;margin:12px 0 18px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.tb-mirror-hero h3{font-size:24px;margin:3px 0 6px;color:#175447}.tb-mirror-hero p{margin:0;color:#4e756d}.tb-mirror-tool button{cursor:pointer;font:inherit}
+.tb-mirror-primary{background:#258b63;color:white;border:0;border-radius:12px;padding:11px 16px;font-weight:700}.tb-mirror-secondary{background:white;color:#236950;border:1px solid #99c5ae;border-radius:12px;padding:10px 14px;font-weight:650}
+.tb-mirror-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:13px}.tb-mirror-panel{background:#fff;border:1px solid #dbe8df;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 4px 18px #244e3810}
+.tb-mirror-panel h4{font-size:17px;margin:0 0 12px;color:#1a574a}.tb-mirror-label{display:block;font-weight:650;font-size:13px;margin:12px 0 6px}.tb-mirror-tool input[type=text],.tb-mirror-tool select,.tb-mirror-tool textarea{width:100%;box-sizing:border-box;border:1px solid #bfdbcd;border-radius:10px;background:#fff;padding:10px 12px;color:#274942;font:inherit;min-height:42px}
+.tb-mirror-tool textarea{min-height:72px;resize:vertical}.tb-mirror-chips{display:flex;flex-wrap:wrap;gap:8px}.tb-mirror-chip{border:1px solid #c9dcd3;border-radius:12px;background:#f5faf7;padding:10px 12px;color:#245c4b;min-height:43px}.tb-mirror-chip.active{background:#d5f2df;border-color:#32875a;box-shadow:inset 0 0 0 1px #32875a;color:#145237;font-weight:700}.tb-mirror-actions{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.tb-mirror-photo-preview{display:flex;flex-wrap:wrap;gap:10px}.tb-mirror-photo-preview img{width:116px;height:86px;object-fit:cover;border-radius:12px;border:1px solid #d0e3d7}.tb-mirror-muted{font-size:13px;color:#687f76;line-height:1.5}.tb-mirror-status{min-height:21px;color:#236b4b;font-weight:600}.tb-mirror-result{background:linear-gradient(120deg,#f8fff9,#fffaf0);border:1px solid #d2e5d6;border-radius:15px;padding:14px;margin:10px 0}.tb-mirror-result h5{font-size:17px;color:#215c45;margin:0 0 6px}.tb-mirror-result img{width:100%;max-height:150px;object-fit:cover;border-radius:10px;margin-top:9px}.tb-mirror-result p{margin:7px 0}.tb-mirror-pill{display:inline-block;background:#e1f2e9;color:#215d49;padding:5px 9px;border-radius:30px;font-size:12px;margin:3px}.tb-mirror-stage{padding:7px 11px;background:#f2f8f4;border-radius:10px;margin:6px 0}.tb-mirror-board{position:fixed;inset:0;background:#f3f9f3;z-index:99999;overflow:auto;padding:3vw;box-sizing:border-box;color:#184f43}.tb-mirror-board .tb-mirror-board-head{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.tb-mirror-board h2{font-size:clamp(28px,4vw,56px);margin:0 0 10px}.tb-mirror-board .tb-mirror-board-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:25px}.tb-mirror-board .tb-mirror-result{padding:20px;box-shadow:0 8px 26px #3353441b}.tb-mirror-board .tb-mirror-result h5{font-size:26px}.tb-mirror-board .tb-mirror-result img{max-height:290px}.tb-mirror-board .tb-mirror-result p{font-size:18px}.tb-mirror-board .tb-mirror-pill{font-size:15px}.tb-mirror-tool details{margin-top:18px}.tb-mirror-tool summary{cursor:pointer;font-weight:700;padding:10px}
+@media(max-width:620px){.tb-mirror-hero{padding:15px}.tb-mirror-hero h3{font-size:21px}.tb-mirror-board{padding:18px}.tb-mirror-board .tb-mirror-board-grid{grid-template-columns:1fr}}
+
+</style>
+
+<style id="tb-mirror-grouping-upgrade">
+.tb-mirror-child-card{min-width:0}.tb-mirror-child-card>h5{margin-bottom:12px}.tb-mirror-child-card>h5 small{font-size:.75em;font-weight:normal;color:#58786f}
+.tb-mirror-child-stage{padding:12px 0;border-top:1px solid #e4eee8}.tb-mirror-child-stage h6{margin:0 0 9px;font-size:15px;color:#216b54}.tb-mirror-child-stage p{margin:8px 0}.tb-mirror-group-photos{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.tb-mirror-group-photo{width:120px;max-width:100%;height:94px;object-fit:cover;border-radius:9px}
+.tb-mirror-legacy-original{margin-top:18px}.tb-mirror-legacy-original>.nurture-detail-panel{margin-top:12px}
 </style>
 </head>
 <body>
@@ -1722,7 +1739,82 @@ const tbWorkForms={
 function tbLocalDate(){
  const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
 }
-function tbRecordForm(host,title,childScope=false){
+
+const tbMirrorStages=['看细节','换颜色','翻镜子','找形状','自由探索'];
+const tbMirrorBehaviors=['主动发现','主动观察','持续专注','反复尝试','自主选择','自主调整','主动表达','提问交流','比较差异','发现细节','探索新玩法','寻求帮助','解决问题','亲子互动','分享发现'];
+const tbMirrorAdvice={
+'看细节':'下次等车或排队时，陪孩子找找树叶、衣服、地砖上的细小纹路。',
+'换颜色':'请孩子选一种颜色，看看同一个地方有什么变化，再聊一聊自己的发现。',
+'翻镜子':'在安全、固定的位置玩“不回头找一找”，请孩子自己慢慢调整镜面角度。',
+'找形状':'在周围找圆形、方形或三角形；熟悉后再比较大小和远近。',
+'自由探索':'把选择权交给孩子，跟着他喜欢的玩法继续观察，不急着给答案。'
+};
+function tbMirrorRead(){return getStored('tongban_mirror_observations_v1').filter(r=>r&&r.id&&r.name)}
+function tbMirrorWrite(items){return saveStored('tongban_mirror_observations_v1',items)}
+function tbMirrorResultHtml(r){
+ const e=escapeHtml;
+ const tags=(r.behaviors||[]).map(x=>'<span class="tb-mirror-pill">'+e(x)+'</span>').join('');
+ const photo=r.photo?'<img alt="'+e(r.name)+'的探索照片" src="'+r.photo+'">':'';
+ return '<article class="tb-mirror-result"><h5>'+e(r.name)+' · '+e(r.stage)+'</h5><p>'+tags+'</p>'+(r.note?'<p><strong>现场发现：</strong>'+e(r.note)+'</p>':'')+photo+'<p><strong>家庭延伸：</strong>'+e(tbMirrorAdvice[r.stage]||tbMirrorAdvice['自由探索'])+'</p><small>'+e(r.date||'')+'</small></article>';
+}
+function tbMirrorGroupByChild(items){
+ const children=new Map();
+ items.forEach(r=>{
+  const name=String(r.name||'').trim();if(!name)return;
+  if(!children.has(name))children.set(name,[]);
+  children.get(name).push(r);
+ });
+ return [...children.entries()].map(([name,records])=>({name,records:records.slice().reverse()})).reverse();
+}
+function tbMirrorChildCard(group){
+ const e=escapeHtml;
+ const byStage=new Map();
+ group.records.forEach(r=>{if(!byStage.has(r.stage))byStage.set(r.stage,[]);byStage.get(r.stage).push(r)});
+ const contents=[...byStage.entries()].map(([stage,items])=>{
+  const tags=[...new Set(items.flatMap(r=>r.behaviors||[]))].map(x=>'<span class="tb-mirror-pill">'+e(x)+'</span>').join('');
+  const notes=items.filter(r=>r.note).map(r=>'<p><strong>其他表现：</strong>'+e(r.note)+'</p>').join('');
+  const photos=items.filter(r=>r.photo).map(r=>'<img class="tb-mirror-group-photo" alt="'+e(group.name)+'的'+e(stage)+'照片" src="'+r.photo+'">').join('');
+  return '<section class="tb-mirror-child-stage"><h6>'+e(stage)+'</h6><div>'+tags+'</div>'+notes+(photos?'<div class="tb-mirror-group-photos">'+photos+'</div>':'')+'<p><strong>家庭延伸：</strong>'+e(tbMirrorAdvice[stage]||tbMirrorAdvice['自由探索'])+'</p></section>';
+ }).join('');
+ return '<article class="tb-mirror-result tb-mirror-child-card"><h5>'+e(group.name)+' · 探索成长记录 <small>（'+byStage.size+'个环节）</small></h5>'+contents+'</article>';
+}
+function tbMirrorBoardOpen(){
+ const old=document.getElementById('tbMirrorBoard');if(old)old.remove();
+ const groups=tbMirrorGroupByChild(tbMirrorRead());
+ const cover=document.createElement('section');cover.id='tbMirrorBoard';cover.className='tb-mirror-board';cover.setAttribute('role','dialog');cover.setAttribute('aria-label','童趣镜探索成果大屏');
+ cover.innerHTML='<div class="tb-mirror-board-head"><div><div style="font-size:18px">童伴 · 亲子活动成果</div><h2>童趣镜 · 今天的发现</h2><p>看细节 · 换颜色 · 翻镜子 · 找形状 · 自由探索</p></div><button type="button" class="tb-mirror-secondary" id="tbMirrorBoardClose">关闭大屏 ×</button></div><div class="tb-mirror-board-grid">'+(groups.length?groups.map(tbMirrorChildCard).join(''):'<p>还没有观察记录。请先在教师端完成现场观察，再展示成果。</p>')+'</div>';
+ document.body.appendChild(cover);cover.querySelector('#tbMirrorBoardClose').onclick=()=>cover.remove();
+ document.addEventListener('keydown',function closeMirrorOnEsc(ev){if(ev.key==='Escape'){cover.remove();document.removeEventListener('keydown',closeMirrorOnEsc)}});
+}
+
+function tbMirrorObservationPanel(host){
+ const e=escapeHtml;
+ host.innerHTML='<section class="tb-mirror-tool"><div class="tb-mirror-hero"><div><small>教师 / 观察 / 幼儿观察记录</small><h3>🔎 童趣镜 · 亲子探索观察</h3></div><button type="button" class="tb-mirror-secondary" id="tbMirrorBigScreen">▣ 查看成果大屏</button></div><div class="tb-mirror-grid"><div class="tb-mirror-panel"><h4>① 选择幼儿与活动</h4><label class="tb-mirror-label" for="tbMirrorName">幼儿姓名或代号</label><input id="tbMirrorName" type="text" maxlength="24" placeholder="例如：朵朵"><label class="tb-mirror-label">当前观察环节</label><div class="tb-mirror-chips" id="tbMirrorStages"></div><label class="tb-mirror-label">观察到的表现（可多选）</label><div class="tb-mirror-chips" id="tbMirrorBehaviors"></div><label class="tb-mirror-label" for="tbMirrorNote">其他表现（选填）</label><textarea id="tbMirrorNote" maxlength="240" placeholder="例如：朵朵主动调整观察距离，把画框进爱心窗口。"></textarea></div><div class="tb-mirror-panel"><h4>② 拍下探索瞬间</h4><p class="tb-mirror-muted"></p><label style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><input type="checkbox" id="tbMirrorConsent">已确认有适当拍摄与展示授权</label><div class="tb-mirror-actions"><button type="button" class="tb-mirror-primary" id="tbMirrorCamera">📷 拍照记录</button><button type="button" class="tb-mirror-secondary" id="tbMirrorAlbum">从相册选择</button><button type="button" class="tb-mirror-secondary" id="tbMirrorClearPhoto">清除照片</button></div><input id="tbMirrorCameraInput" type="file" accept="image/*" capture="environment" hidden><input id="tbMirrorAlbumInput" type="file" accept="image/*" hidden><div class="tb-mirror-photo-preview" id="tbMirrorPreview"></div><p class="tb-mirror-muted"></p></div></div><div class="tb-mirror-panel"><div class="tb-mirror-actions"><button type="button" class="tb-mirror-primary" id="tbMirrorSave">✓ 保存观察</button><button type="button" class="tb-mirror-secondary" id="tbMirrorReset">清空本次填写</button></div><p class="tb-mirror-status" id="tbMirrorStatus" role="status"></p></div><div class="tb-mirror-panel"><h4>③ 观察成果与家庭建议</h4><p class="tb-mirror-muted">保存后可查看观察成果与家庭延伸建议。</p><div id="tbMirrorResults"></div></div><div id="tbMirrorLegacy" class="tb-mirror-legacy-original"></div></section>';
+ let stage='看细节',selected=new Set(),photo='';
+ const stages=host.querySelector('#tbMirrorStages'),behaviors=host.querySelector('#tbMirrorBehaviors'),status=host.querySelector('#tbMirrorStatus');
+ function drawOptions(){
+ stages.innerHTML=tbMirrorStages.map(x=>'<button type="button" class="tb-mirror-chip '+(x===stage?'active':'')+'" data-m-stage="'+x+'">'+x+'</button>').join('');
+ behaviors.innerHTML=tbMirrorBehaviors.map(x=>'<button type="button" class="tb-mirror-chip '+(selected.has(x)?'active':'')+'" data-m-behavior="'+x+'">'+x+'</button>').join('');
+ stages.querySelectorAll('button').forEach(b=>b.onclick=()=>{const next=b.dataset.mStage;if(stage!==next){stage=next;selected.clear();host.querySelector('#tbMirrorNote').value='';photo='';preview();status.textContent='已切换观察环节，请重新选择本环节的表现。'}drawOptions()});
+ behaviors.querySelectorAll('button').forEach(b=>b.onclick=()=>{const x=b.dataset.mBehavior;selected.has(x)?selected.delete(x):selected.add(x);drawOptions()});
+ }
+ function drawRecords(){const data=tbMirrorRead();host.querySelector('#tbMirrorResults').innerHTML=data.length?tbMirrorGroupByChild(data).map(g=>'<div>'+tbMirrorChildCard(g)+g.records.map(r=>'<button type="button" class="tb-mirror-secondary" data-m-delete="'+r.id+'">删除 '+e(r.stage)+' 记录</button>').join(' ')+'</div>').join(''):'<p class="tb-mirror-muted">还没有记录，完成一次观察后这里就会显示成果卡。</p>';host.querySelectorAll('[data-m-delete]').forEach(b=>b.onclick=()=>{if(!confirm('确认删除这条观察记录和照片吗？'))return;tbMirrorWrite(tbMirrorRead().filter(r=>r.id!==b.dataset.mDelete));drawRecords()})}
+ function preview(){host.querySelector('#tbMirrorPreview').innerHTML=photo?'<img alt="本次照片预览" src="'+photo+'">':''}
+ async function loadPhoto(file){if(!file)return;if(!host.querySelector('#tbMirrorConsent').checked){status.textContent='请先确认拍摄和展示授权。';return}if(!file.type.startsWith('image/')){status.textContent='请选择图片文件。';return}
+ try{const objectUrl=URL.createObjectURL(file),img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=objectUrl});const canvas=document.createElement('canvas'),ratio=Math.min(1,1000/Math.max(img.naturalWidth,img.naturalHeight));canvas.width=Math.max(1,Math.round(img.naturalWidth*ratio));canvas.height=Math.max(1,Math.round(img.naturalHeight*ratio));canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);photo=canvas.toDataURL('image/jpeg',.68);URL.revokeObjectURL(objectUrl);preview();status.textContent='照片已添加，保存观察后会出现在成果卡中。'}catch(err){status.textContent='无法读取这张图片，请换一张试试。'}}
+ host.querySelector('#tbMirrorCamera').onclick=()=>host.querySelector('#tbMirrorCameraInput').click();host.querySelector('#tbMirrorAlbum').onclick=()=>host.querySelector('#tbMirrorAlbumInput').click();
+ ['tbMirrorCameraInput','tbMirrorAlbumInput'].forEach(id=>host.querySelector('#'+id).onchange=ev=>{loadPhoto(ev.target.files?.[0]);ev.target.value=''});
+ host.querySelector('#tbMirrorClearPhoto').onclick=()=>{photo='';preview()};
+ host.querySelector('#tbMirrorSave').onclick=()=>{const name=host.querySelector('#tbMirrorName').value.trim(),note=host.querySelector('#tbMirrorNote').value.trim();if(!name){status.textContent='请先填写幼儿姓名或代号。';return}if(!note&&!selected.size){status.textContent='请勾选一项真实观察到的表现，或填写具体发现。';return}if(photo&&!host.querySelector('#tbMirrorConsent').checked){status.textContent='带有照片的记录需先确认授权。';return}
+ const record={id:'mirror-'+Date.now()+'-'+Math.floor(Math.random()*10000),name,stage,behaviors:[...selected],note,photo,date:new Date().toLocaleString('zh-CN',{hour12:false})};if(!tbMirrorWrite([...tbMirrorRead(),record])){status.textContent='保存失败：浏览器空间可能已满。请减少照片或导出旧记录。';return}status.textContent='已保存 '+name+' 的'+stage+'观察，可立即查看成果大屏。';drawRecords();};
+ host.querySelector('#tbMirrorReset').onclick=()=>{host.querySelector('#tbMirrorName').value='';host.querySelector('#tbMirrorNote').value='';selected.clear();photo='';stage='看细节';status.textContent='已清空本次填写。';drawOptions();preview()};
+ host.querySelector('#tbMirrorBigScreen').onclick=tbMirrorBoardOpen;
+ tbRecordForm(host.querySelector('#tbMirrorLegacy'),'幼儿观察记录',false,true);
+ drawOptions();preview();drawRecords();
+}
+
+function tbRecordForm(host,title,childScope=false,legacy=false){
+if(title==='幼儿观察记录'&&!legacy){tbMirrorObservationPanel(host);return;}
  const [fields,tip]=tbWorkForms[title],child=childScope?getActiveChild():null,key='tongban_work_'+title;
  const scope=childScope?(child?.id||'guest'):'';
  const schema=['日期:date',...fields].map((f,i)=>{const [plain,opts]=f.split('|'),[label,type='text']=plain.split(':');return {label,type,opts:opts?.split('/'),id:'f'+i};});
