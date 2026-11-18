@@ -791,6 +791,12 @@ body { font-family: var(--ui-font); font-size: 16px; line-height: 1.7; }
 .tb-mirror-tool textarea{min-height:72px;resize:vertical}.tb-mirror-chips{display:flex;flex-wrap:wrap;gap:8px}.tb-mirror-chip{border:1px solid #c9dcd3;border-radius:12px;background:#f5faf7;padding:10px 12px;color:#245c4b;min-height:43px}.tb-mirror-chip.active{background:#d5f2df;border-color:#32875a;box-shadow:inset 0 0 0 1px #32875a;color:#145237;font-weight:700}.tb-mirror-actions{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.tb-mirror-photo-preview{display:flex;flex-wrap:wrap;gap:10px}.tb-mirror-photo-preview img{width:116px;height:86px;object-fit:cover;border-radius:12px;border:1px solid #d0e3d7}.tb-mirror-muted{font-size:13px;color:#687f76;line-height:1.5}.tb-mirror-status{min-height:21px;color:#236b4b;font-weight:600}.tb-mirror-result{background:linear-gradient(120deg,#f8fff9,#fffaf0);border:1px solid #d2e5d6;border-radius:15px;padding:14px;margin:10px 0}.tb-mirror-result h5{font-size:17px;color:#215c45;margin:0 0 6px}.tb-mirror-result img{width:100%;max-height:150px;object-fit:cover;border-radius:10px;margin-top:9px}.tb-mirror-result p{margin:7px 0}.tb-mirror-pill{display:inline-block;background:#e1f2e9;color:#215d49;padding:5px 9px;border-radius:30px;font-size:12px;margin:3px}.tb-mirror-stage{padding:7px 11px;background:#f2f8f4;border-radius:10px;margin:6px 0}.tb-mirror-board{position:fixed;inset:0;background:#f3f9f3;z-index:99999;overflow:auto;padding:3vw;box-sizing:border-box;color:#184f43}.tb-mirror-board .tb-mirror-board-head{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.tb-mirror-board h2{font-size:clamp(28px,4vw,56px);margin:0 0 10px}.tb-mirror-board .tb-mirror-board-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:25px}.tb-mirror-board .tb-mirror-result{padding:20px;box-shadow:0 8px 26px #3353441b}.tb-mirror-board .tb-mirror-result h5{font-size:26px}.tb-mirror-board .tb-mirror-result img{max-height:290px}.tb-mirror-board .tb-mirror-result p{font-size:18px}.tb-mirror-board .tb-mirror-pill{font-size:15px}.tb-mirror-tool details{margin-top:18px}.tb-mirror-tool summary{cursor:pointer;font-weight:700;padding:10px}
 @media(max-width:620px){.tb-mirror-hero{padding:15px}.tb-mirror-hero h3{font-size:21px}.tb-mirror-board{padding:18px}.tb-mirror-board .tb-mirror-board-grid{grid-template-columns:1fr}}
 
+
+/* 家庭反馈与一童一档 */
+[data-tb-daily-fields][hidden],[data-other-wrap][hidden]{display:none!important}
+.tb-family-wrap{display:grid;gap:18px;margin:14px 0 24px}.tb-family-hero{padding:24px;border:1px solid #deded2;background:linear-gradient(135deg,#f1f5ed,#fcf9f1);border-radius:18px}.tb-family-hero h3{font-size:24px;margin:0 0 10px;color:#385345}.tb-family-hero p{line-height:1.8}.tb-family-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.tb-family-card{border:1px solid #d9dfd5;border-radius:16px;background:#fff;padding:19px}.tb-family-card h4{margin:0 0 8px;font-size:21px;color:#3d5645}.tb-family-card p{line-height:1.7}.tb-family-tags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.tb-family-tag{display:inline-block;background:#eef3e9;color:#4a6652;border-radius:30px;padding:6px 12px;font-size:13px}.tb-family-btn{background:#516e58;color:white;border:0;border-radius:10px;padding:10px 16px;cursor:pointer;margin:3px 7px 3px 0}.tb-family-btn.alt{background:#f1f5ef;color:#395341;border:1px solid #cbd7cc}.tb-family-form{background:white;border:1px solid #e0e3db;padding:21px;border-radius:15px;display:grid;gap:15px}.tb-family-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tb-family-fields label{display:grid;gap:6px;font-size:14px}.tb-family-fields input,.tb-family-fields select,.tb-family-fields textarea{width:100%;padding:10px;border:1px solid #cdd6cd;border-radius:8px;background:white;color:#303b33;font:inherit}.tb-family-fields .wide{grid-column:1/-1}.tb-family-checks{display:flex;flex-wrap:wrap;gap:10px}.tb-family-checks label{background:#f5f6f2;border:1px solid #dfe4da;border-radius:9px;padding:8px 11px;font-size:14px}.tb-family-checks input{width:auto;margin-right:5px}.tb-family-history{display:grid;gap:11px}.tb-family-history article{background:white;border:1px solid #e1e5de;padding:14px;border-radius:12px}.tb-family-history p{margin:6px 0;line-height:1.7}.tb-family-topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.tb-family-muted{font-size:13px;color:#727d72}.tb-family-badge{border-radius:30px;padding:6px 11px;background:#f5e9d9;color:#8b633c;font-size:12px}@media(max-width:720px){.tb-family-grid,.tb-family-fields{grid-template-columns:1fr}}
+
+.tb-family-wrap [hidden]{display:none!important}.tb-family-task-grid{display:flex;flex-wrap:wrap;gap:9px;margin-top:11px}.tb-family-task{padding:10px 18px;background:#f5f7f1;border:1px solid #d8e1d7;border-radius:10px;color:#385242;font:inherit;cursor:pointer}.tb-family-task.selected{background:#496d55;color:#fff;border-color:#496d55}.tb-family-task.recorded:not(.selected){background:#e4f0e5;border-color:#9dbca4}.tb-family-task.recorded:not(.selected)::after{content:' ✓';font-weight:700}
 </style>
 
 <style id="tb-mirror-grouping-upgrade">
@@ -837,9 +843,9 @@ body { font-family: var(--ui-font); font-size: 16px; line-height: 1.7; }
     <div class="shell">
       <div class="section-head"><h2 class="section-title">选择你的角色</h2></div>
       <div class="role-grid">
-        <article class="role" data-go="parent"><h3>家长</h3><div class="role-links"><span>健康</span><span>成长</span><span>养育</span><span>陪伴</span><span>记录</span><span>智能助手</span></div></article>
-        <article class="role" data-go="teacher"><h3>教师</h3><div class="role-links"><span>观察</span><span>班级</span><span>教学</span><span>家园</span><span>成长</span><span>智能助手</span></div></article>
-        <article class="role" data-go="community"><h3>社区工作人员</h3><div class="role-links"><span>活动</span><span>服务</span><span>走访</span><span>推广</span><span>管理</span><span>智能助手</span></div></article>
+        <article class="role" data-go="parent"><h3>家长</h3><div class="role-links"><span>养育</span><span>健康</span><span>成长</span><span>记录</span><span>智能助手</span></div></article>
+        <article class="role" data-go="teacher"><h3>教师</h3><div class="role-links"><span>观察</span><span>班级</span><span>家园</span><span>智能助手</span></div></article>
+        <article class="role" data-go="community"><h3>社区工作人员</h3><div class="role-links"><span>活动</span><span>推广</span><span>智能助手</span></div></article>
       </div>
     </div>
   </section>
@@ -1018,10 +1024,10 @@ favorite:{title:'我的收藏',intro:'集中查看保存的常用内容。',bloc
 };
 
 const teacherData={
-observe:{title:'观察',desc:'把日常观察转化为可持续的幼儿发展记录。',items:[['幼儿观察记录','记录观察日期、情境、幼儿行为与教师回应。'],['发展评估档案','按 0–72 月龄和观察维度记录指标得分，查看本月曲线。'],]},
+observe:{title:'观察',desc:'把日常观察转化为可持续的幼儿发展记录。',items:[['幼儿观察记录','记录观察日期、情境、幼儿行为与教师回应。'],['家庭反馈信息','查看家长反馈。'],['发展评估档案','按 0–72 月龄和观察维度记录指标得分，查看本月曲线。'],]},
 class:{title:'班级',desc:'支持班级一日生活组织、环境创设与安全保育。',items:[['班级点名与签到','登记幼儿到离园情况，查看当日出勤。'],['安全与保育管理','检查卫生、消毒、饮水、午睡和活动安全。']]},
 teaching:{title:'教学',desc:'组织适宜的游戏活动，沉淀可复用的教学资源。',items:[['活动方案库','按年龄、领域、主题和时长查找活动。'],['教案与课件资源','整理活动目标、材料准备、过程与观察重点。'],]},
-home:{title:'家园',desc:'让家庭指导与幼儿园保教工作保持连续。',items:[['家长沟通','记录沟通主题、家长反馈和后续跟进。'],['家园任务','发布亲子任务、家庭观察和反馈记录。'],]},
+home:{title:'家园',desc:'让家庭指导与幼儿园保教工作保持连续。',items:[['家庭反馈信息','查看家长反馈，跟进艺艺和可可的家庭指导。'],['家长沟通','记录沟通主题、家长反馈和后续跟进。'],['家园任务','发布亲子任务、家庭观察和反馈记录。'],]},
 development:{title:'成长',desc:'支持教师专业学习、教研协作和实践反思。',items:[['教研学习','整理专题学习、政策资料和案例研修。'],]}
 };
 const communityData={
@@ -1719,6 +1725,24 @@ const tbCommunityGroups=[
 const tbCommunityActivities=tbCommunityGroups.flatMap(([domain,theme,place,min,max,duration,items])=>
  items.map(([title,materials,steps])=>[title,domain,theme,place,min,duration,materials,steps,max]));
 
+
+/* 新增分龄主题活动：20种基础玩法 × 10种情境主题 × 5个年龄层级。
+   属于主题/分龄拓展方案，并非1000个独立原创研发成果。 */
+const tbExpansionFormats = [["找一找", "科学", "自然", "户外", 15, "观察纸、粗蜡笔", "在安全范围内找出两种相关物体，比较颜色或形状，把发现画在纸上。"], ["听声地图", "科学", "自然", "户外", 15, "记录纸、画笔", "安静听两种声音，指一指来源方向，再用符号画出听到的位置。"], ["形状侦探", "科学", "自然", "室内", 15, "形状纸卡", "拿着圆形、方形纸卡观察身边的物品，找一个相似轮廓，换位置再看。"], ["分类小篮", "科学", "手工", "室内", 15, "大纸卡、收纳篮", "挑选准备好的大尺寸卡片，按一个特征分类，向同伴说说选择的理由。"], ["画一条路", "艺术", "手工", "室内", 20, "大画纸、粗蜡笔", "在纸上画一条从起点到终点的路，由孩子决定路线、颜色和转弯。"], ["纸盒展馆", "艺术", "手工", "室内", 25, "预制纸盒、纸卡、胶棒", "成人提前处理纸盒边缘，孩子决定展品摆放位置，给作品起一个名字。"], ["拼贴画", "艺术", "手工", "室内", 20, "大纸片、胶棒、画纸", "从准备好的大纸片中选几张，按自己的想法拼贴，讲讲画面里发生了什么。"], ["拓印纹理", "艺术", "手工", "室内", 15, "蜡笔、白纸、安全纹理板", "把纸盖在纹理板上轻轻涂画，比较两种纹路留下的印迹。"], ["编个开头", "语言", "阅读", "室内", 15, "图画卡、绘本", "选一张主题图，成人开头一句，孩子接着讲或用动作续讲。"], ["角色交换", "语言", "阅读", "室内", 20, "大角色卡、手偶", "两人选择角色，先轮流说一句话，再交换角色重新表演。"], ["三张排序", "语言", "阅读", "室内", 15, "三张大图卡", "选三张图片，先排出发生的顺序，再讲一讲为什么这样排。"], ["说说不同", "语言", "阅读", "室内", 15, "两张主题图片", "观察两张图片，指出一个相同和一个不同，允许用动作表达。"], ["一起搬运", "健康", "运动", "室内", 15, "轻软靠垫、收纳筐", "在清空障碍的地方，把轻软靠垫搬到指定位置，完成后一起归位。"], ["脚步节奏", "健康", "运动", "室内", 15, "防滑地垫", "跟随慢节奏踏步、停下，再由孩子决定下一次走快还是走慢。"], ["小桥过河", "健康", "运动", "室内", 20, "防滑地垫、宽纸条", "用防滑地垫铺出安全路线，在成人陪伴下选择路线并走到终点。"], ["动作接龙", "健康", "运动", "户外", 15, "安全空地", "一个人做简单动作，另一个人模仿，再换孩子发起动作。"], ["轮流当店长", "社会", "生活", "室内", 20, "大纸卡、空纸盒", "扮演顾客和店长，练习轮流表达需要、等待和说谢谢。"], ["合作布置", "社会", "生活", "室内", 20, "大纸卡、纸盒", "两人商量如何摆放材料，一人提议、一人尝试，再交换分工。"], ["我的一天", "社会", "生活", "室内", 15, "生活流程图卡", "挑选两三张生活图卡，排出一天里的顺序，说说自己愿意做的一件事。"], ["感谢小卡", "社会", "手工", "室内", 15, "画纸、粗蜡笔", "回想一次得到帮助的经历，用一张小画或一句话表达感谢。"]];
+const tbExpansionThemes = [["自然", "叶子、树影、花草"], ["小动物", "鸟儿、兔子、小熊"], ["四季", "春风、夏雨、秋叶"], ["社区", "公园、活动室、街角"], ["交通", "小汽车、公交车、车站"], ["家庭", "衣物、餐具、照片"], ["颜色", "红黄蓝绿"], ["声音", "沙沙声、咚咚声"], ["食物", "水果、蔬菜、餐盘"], ["节日", "灯笼、祝福、团聚"]];
+const tbAgeSupports = {
+  2:'成人先示范一次，只给两种选择；允许用指认、动作回应，活动可随时缩短。',
+  3:'让孩子自己挑选材料和先后顺序，成人在需要时提供简短提醒。',
+  4:'邀请孩子说出一个自己的想法，再尝试不同做法并比较结果。',
+  5:'让孩子和同伴商量分工，尝试解释自己的选择，并一起检查成果。',
+  6:'鼓励孩子自主设计规则、记录发现，结束时说说下次想怎样改进。'
+};
+const tbExpandedActivities=tbExpansionFormats.flatMap(([action,domain,theme,place,duration,materials,base])=>
+ tbExpansionThemes.flatMap(([topic,examples])=>[2,3,4,5,6].map(age=>[
+  age+'岁·'+topic+'·'+action,domain,theme,place,age,duration,materials,
+  '主题：'+topic+'（例如'+examples+'）。'+base+' '+tbAgeSupports[age]+' 成人先检查材料、场地与儿童状态，避免尖锐、细小或易吞咽物品。',age
+ ])));
+
 const tbWorkForms={
  '幼儿观察记录':[['幼儿信息','观察情境:textarea','幼儿行为:textarea','教师回应:textarea'], '用实际看到或听到的行为记录，例：积木倒下后，孩子重新搭了两次。'],
  '发展评估档案':[['幼儿信息','发展领域|健康/语言/社会/科学/艺术','观察证据:textarea','阶段变化','下阶段支持','能力指标及单位','观察时月龄:number','实测值:number'],'同一能力指标请使用相同名称、单位和测量方法。保存两次以上不同月龄的实测值，可回看变化。'],
@@ -1740,14 +1764,19 @@ function tbLocalDate(){
  const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
 }
 
-const tbMirrorStages=['看细节','换颜色','翻镜子','找形状','自由探索'];
+const tbMirrorStages=['看细节','换颜色','翻镜子','找形状','自由探索','忙时','闹时','晨时','睡时','其他'];
 const tbMirrorBehaviors=['主动发现','主动观察','持续专注','反复尝试','自主选择','自主调整','主动表达','提问交流','比较差异','发现细节','探索新玩法','寻求帮助','解决问题','亲子互动','分享发现'];
 const tbMirrorAdvice={
 '看细节':'下次等车或排队时，陪孩子找找树叶、衣服、地砖上的细小纹路。',
 '换颜色':'请孩子选一种颜色，看看同一个地方有什么变化，再聊一聊自己的发现。',
 '翻镜子':'在安全、固定的位置玩“不回头找一找”，请孩子自己慢慢调整镜面角度。',
 '找形状':'在周围找圆形、方形或三角形；熟悉后再比较大小和远近。',
-'自由探索':'把选择权交给孩子，跟着他喜欢的玩法继续观察，不急着给答案。'
+'自由探索':'把选择权交给孩子，跟着他喜欢的玩法继续观察，不急着给答案。',
+'忙时':'从家里的现有材料入手，鼓励孩子自己选择和动手。',
+'闹时':'先理解情绪，再用声音、节奏与舒缓音乐陪孩子慢慢平静。',
+'晨时':'使用任务卡引导孩子自己选择、完成生活准备。',
+'睡时':'通过互动阅读和固定晚安仪式逐步减少睡前屏幕使用。',
+'其他':'结合本次活动观察和孩子需要，继续进行家庭支持。'
 };
 function tbMirrorRead(){return getStored('tongban_mirror_observations_v1').filter(r=>r&&r.id&&r.name)}
 function tbMirrorWrite(items){return saveStored('tongban_mirror_observations_v1',items)}
@@ -1761,10 +1790,11 @@ function tbMirrorGroupByChild(items){
  const children=new Map();
  items.forEach(r=>{
   const name=String(r.name||'').trim();if(!name)return;
-  if(!children.has(name))children.set(name,[]);
-  children.get(name).push(r);
+  const key=r.childId||'common:'+name;
+  if(!children.has(key))children.set(key,{name,records:[]});
+  children.get(key).records.push(r);
  });
- return [...children.entries()].map(([name,records])=>({name,records:records.slice().reverse()})).reverse();
+ return [...children.values()].map(group=>({name:group.name,records:group.records.slice().reverse()})).reverse();
 }
 function tbMirrorChildCard(group){
  const e=escapeHtml;
@@ -1780,19 +1810,21 @@ function tbMirrorChildCard(group){
 }
 function tbMirrorBoardOpen(){
  const old=document.getElementById('tbMirrorBoard');if(old)old.remove();
- const groups=tbMirrorGroupByChild(tbMirrorRead());
- const cover=document.createElement('section');cover.id='tbMirrorBoard';cover.className='tb-mirror-board';cover.setAttribute('role','dialog');cover.setAttribute('aria-label','童趣镜探索成果大屏');
- cover.innerHTML='<div class="tb-mirror-board-head"><div><div style="font-size:18px">童伴 · 亲子活动成果</div><h2>童趣镜 · 今天的发现</h2><p>看细节 · 换颜色 · 翻镜子 · 找形状 · 自由探索</p></div><button type="button" class="tb-mirror-secondary" id="tbMirrorBoardClose">关闭大屏 ×</button></div><div class="tb-mirror-board-grid">'+(groups.length?groups.map(tbMirrorChildCard).join(''):'<p>还没有观察记录。请先在教师端完成现场观察，再展示成果。</p>')+'</div>';
+ const familyRows=tbFamilyAllRecords().map(x=>({id:x.id,name:x.name,childId:x.childId,stage:x.scene+' · '+(x.task||x.steps?.join('、')||'观察'),behaviors:x.behaviors||[],note:[x.book?'绘本：'+x.book:'',x.screen?'屏幕反应：'+x.screen:'',x.state?'活动状态：'+x.state:'',x.note||''].filter(Boolean).join('；'),photo:'',date:x.date}));
+ const groups=tbMirrorGroupByChild([...tbMirrorRead(),...familyRows]);
+ const cover=document.createElement('section');cover.id='tbMirrorBoard';cover.className='tb-mirror-board';cover.setAttribute('role','dialog');cover.setAttribute('aria-label','幼儿观察大屏');
+ cover.innerHTML='<div class="tb-mirror-board-head"><div><div style="font-size:18px">童伴 · 幼儿观察记录</div><h2>幼儿观察 · 成长足迹</h2><p>等时 · 忙时 · 闹时 · 晨时 · 睡时 · 其他</p></div><button type="button" class="tb-mirror-secondary" id="tbMirrorBoardClose">关闭大屏 ×</button></div><div class="tb-mirror-board-grid">'+(groups.length?groups.map(tbMirrorChildCard).join(''):'<p>还没有观察记录。请先在教师端完成现场观察，再展示成果。</p>')+'</div>';
  document.body.appendChild(cover);cover.querySelector('#tbMirrorBoardClose').onclick=()=>cover.remove();
  document.addEventListener('keydown',function closeMirrorOnEsc(ev){if(ev.key==='Escape'){cover.remove();document.removeEventListener('keydown',closeMirrorOnEsc)}});
 }
 
 function tbMirrorObservationPanel(host){
  const e=escapeHtml;
- host.innerHTML='<section class="tb-mirror-tool"><div class="tb-mirror-hero"><div><small>教师 / 观察 / 幼儿观察记录</small><h3>🔎 童趣镜 · 亲子探索观察</h3></div><button type="button" class="tb-mirror-secondary" id="tbMirrorBigScreen">▣ 查看成果大屏</button></div><div class="tb-mirror-grid"><div class="tb-mirror-panel"><h4>① 选择幼儿与活动</h4><label class="tb-mirror-label" for="tbMirrorName">幼儿姓名或代号</label><input id="tbMirrorName" type="text" maxlength="24" placeholder="例如：朵朵"><label class="tb-mirror-label">当前观察环节</label><div class="tb-mirror-chips" id="tbMirrorStages"></div><label class="tb-mirror-label">观察到的表现（可多选）</label><div class="tb-mirror-chips" id="tbMirrorBehaviors"></div><label class="tb-mirror-label" for="tbMirrorNote">其他表现（选填）</label><textarea id="tbMirrorNote" maxlength="240" placeholder="例如：朵朵主动调整观察距离，把画框进爱心窗口。"></textarea></div><div class="tb-mirror-panel"><h4>② 拍下探索瞬间</h4><p class="tb-mirror-muted"></p><label style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><input type="checkbox" id="tbMirrorConsent">已确认有适当拍摄与展示授权</label><div class="tb-mirror-actions"><button type="button" class="tb-mirror-primary" id="tbMirrorCamera">📷 拍照记录</button><button type="button" class="tb-mirror-secondary" id="tbMirrorAlbum">从相册选择</button><button type="button" class="tb-mirror-secondary" id="tbMirrorClearPhoto">清除照片</button></div><input id="tbMirrorCameraInput" type="file" accept="image/*" capture="environment" hidden><input id="tbMirrorAlbumInput" type="file" accept="image/*" hidden><div class="tb-mirror-photo-preview" id="tbMirrorPreview"></div><p class="tb-mirror-muted"></p></div></div><div class="tb-mirror-panel"><div class="tb-mirror-actions"><button type="button" class="tb-mirror-primary" id="tbMirrorSave">✓ 保存观察</button><button type="button" class="tb-mirror-secondary" id="tbMirrorReset">清空本次填写</button></div><p class="tb-mirror-status" id="tbMirrorStatus" role="status"></p></div><div class="tb-mirror-panel"><h4>③ 观察成果与家庭建议</h4><p class="tb-mirror-muted">保存后可查看观察成果与家庭延伸建议。</p><div id="tbMirrorResults"></div></div><div id="tbMirrorLegacy" class="tb-mirror-legacy-original"></div></section>';
+ host.innerHTML='<section class="tb-mirror-tool"><div class="tb-mirror-hero"><div><small>教师 / 观察 / 幼儿观察记录</small><h3>🔎 快速记录 · 幼儿观察</h3></div><button type="button" class="tb-mirror-secondary" id="tbMirrorBigScreen">▣ 查看观察大屏</button></div><div class="tb-mirror-grid"><div class="tb-mirror-panel"><h4>① 选择幼儿与活动</h4><label class="tb-mirror-label" for="tbMirrorName">幼儿姓名或代号</label><input id="tbMirrorName" type="text" maxlength="24" placeholder="例如：朵朵"><label class="tb-mirror-label">当前观察环节</label><div class="tb-mirror-chips" id="tbMirrorStages"></div><div id="tbOtherStageWrap" style="display:none;margin:9px 0"><input id="tbOtherStage" maxlength="60" placeholder="填写其他观察环节" style="width:100%"></div><label class="tb-mirror-label">观察到的表现（可多选）</label><div class="tb-mirror-chips" id="tbMirrorBehaviors"></div><label class="tb-mirror-label" for="tbMirrorNote">其他表现（选填）</label><textarea id="tbMirrorNote" maxlength="240" placeholder="例如：朵朵主动调整观察距离，把画框进爱心窗口。"></textarea></div><div class="tb-mirror-panel"><h4>② 拍下探索瞬间</h4><p class="tb-mirror-muted"></p><label style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><input type="checkbox" id="tbMirrorConsent">已确认有适当拍摄与展示授权</label><div class="tb-mirror-actions"><button type="button" class="tb-mirror-primary" id="tbMirrorCamera">📷 拍照记录</button><button type="button" class="tb-mirror-secondary" id="tbMirrorAlbum">从相册选择</button><button type="button" class="tb-mirror-secondary" id="tbMirrorClearPhoto">清除照片</button></div><input id="tbMirrorCameraInput" type="file" accept="image/*" capture="environment" hidden><input id="tbMirrorAlbumInput" type="file" accept="image/*" hidden><div class="tb-mirror-photo-preview" id="tbMirrorPreview"></div><p class="tb-mirror-muted"></p></div></div><div class="tb-mirror-panel"><div class="tb-mirror-actions"><button type="button" class="tb-mirror-primary" id="tbMirrorSave">✓ 保存观察</button><button type="button" class="tb-mirror-secondary" id="tbMirrorReset">清空本次填写</button></div><p class="tb-mirror-status" id="tbMirrorStatus" role="status"></p></div><div class="tb-mirror-panel"><h4>③ 观察成果与家庭建议</h4><p class="tb-mirror-muted">保存后可查看观察成果与家庭延伸建议。</p><div id="tbMirrorResults"></div></div><div id="tbMirrorLegacy" class="tb-mirror-legacy-original"></div></section>';
  let stage='看细节',selected=new Set(),photo='';
  const stages=host.querySelector('#tbMirrorStages'),behaviors=host.querySelector('#tbMirrorBehaviors'),status=host.querySelector('#tbMirrorStatus');
  function drawOptions(){
+ const otherWrap=host.querySelector('#tbOtherStageWrap');if(otherWrap)otherWrap.style.display=stage==='其他'?'block':'none';
  stages.innerHTML=tbMirrorStages.map(x=>'<button type="button" class="tb-mirror-chip '+(x===stage?'active':'')+'" data-m-stage="'+x+'">'+x+'</button>').join('');
  behaviors.innerHTML=tbMirrorBehaviors.map(x=>'<button type="button" class="tb-mirror-chip '+(selected.has(x)?'active':'')+'" data-m-behavior="'+x+'">'+x+'</button>').join('');
  stages.querySelectorAll('button').forEach(b=>b.onclick=()=>{const next=b.dataset.mStage;if(stage!==next){stage=next;selected.clear();host.querySelector('#tbMirrorNote').value='';photo='';preview();status.textContent='已切换观察环节，请重新选择本环节的表现。'}drawOptions()});
@@ -1806,10 +1838,11 @@ function tbMirrorObservationPanel(host){
  ['tbMirrorCameraInput','tbMirrorAlbumInput'].forEach(id=>host.querySelector('#'+id).onchange=ev=>{loadPhoto(ev.target.files?.[0]);ev.target.value=''});
  host.querySelector('#tbMirrorClearPhoto').onclick=()=>{photo='';preview()};
  host.querySelector('#tbMirrorSave').onclick=()=>{const name=host.querySelector('#tbMirrorName').value.trim(),note=host.querySelector('#tbMirrorNote').value.trim();if(!name){status.textContent='请先填写幼儿姓名或代号。';return}if(!note&&!selected.size){status.textContent='请勾选一项真实观察到的表现，或填写具体发现。';return}if(photo&&!host.querySelector('#tbMirrorConsent').checked){status.textContent='带有照片的记录需先确认授权。';return}
- const record={id:'mirror-'+Date.now()+'-'+Math.floor(Math.random()*10000),name,stage,behaviors:[...selected],note,photo,date:new Date().toLocaleString('zh-CN',{hour12:false})};if(!tbMirrorWrite([...tbMirrorRead(),record])){status.textContent='保存失败：浏览器空间可能已满。请减少照片或导出旧记录。';return}status.textContent='已保存 '+name+' 的'+stage+'观察，可立即查看成果大屏。';drawRecords();};
+ const stageLabel=stage==='其他'?(host.querySelector('#tbOtherStage').value.trim()||'其他'):stage;
+ const record={id:'mirror-'+Date.now()+'-'+Math.floor(Math.random()*10000),name,stage:stageLabel,behaviors:[...selected],note,photo,date:new Date().toLocaleString('zh-CN',{hour12:false})};if(!tbMirrorWrite([...tbMirrorRead(),record])){status.textContent='保存失败：浏览器空间可能已满。请减少照片或导出旧记录。';return}status.textContent='已保存 '+name+' 的'+stage+'观察，可立即查看观察大屏。';drawRecords();};
  host.querySelector('#tbMirrorReset').onclick=()=>{host.querySelector('#tbMirrorName').value='';host.querySelector('#tbMirrorNote').value='';selected.clear();photo='';stage='看细节';status.textContent='已清空本次填写。';drawOptions();preview()};
  host.querySelector('#tbMirrorBigScreen').onclick=tbMirrorBoardOpen;
- tbRecordForm(host.querySelector('#tbMirrorLegacy'),'幼儿观察记录',false,true);
+ host.querySelector('#tbMirrorLegacy').innerHTML='<h3 style="margin:20px 0 12px">日常记录</h3>';const tbDaily=document.createElement('div');host.querySelector('#tbMirrorLegacy').appendChild(tbDaily);tbRecordForm(tbDaily,'幼儿观察记录',false,true);
  drawOptions();preview();drawRecords();
 }
 
@@ -1869,8 +1902,8 @@ const tbStudy=[
 function tbActivityPanel(host,mode){
  const e=escapeHtml,select=(name,values)=>'<label class="nurture-field">'+name+'<select name="'+name+'">'+values.map(v=>'<option>'+v+'</option>').join('')+'</select></label>';
  const planner=mode==='周末活动生成',teacher=mode==='活动方案库';
- const activities=teacher?tbActivities:[...tbActivities,...tbCommunityActivities];
- host.innerHTML='<p>共 '+activities.length+' 项活动</p><form class="nurture-form-grid">'+select('年龄',['不限','0—12个月','1岁','2岁','3岁','4岁','5岁','6岁'])+(teacher?select('领域',['不限','健康','语言','社会','科学','艺术']):select('场地',['不限','室内','户外']))+
+ const activities=teacher?tbActivities:[...tbActivities,...tbCommunityActivities,...tbExpandedActivities];
+ host.innerHTML='<p>共 '+activities.length+' 项可选方案'+(teacher?'':'（含113项基础活动与 '+tbExpandedActivities.length+' 项分龄主题拓展方案）')+'</p><form class="nurture-form-grid">'+select('年龄',['不限','0—12个月','1岁','2岁','3岁','4岁','5岁','6岁'])+(teacher?select('领域',['不限','健康','语言','社会','科学','艺术']):select('场地',['不限','室内','户外']))+
  select('主题',['不限','阅读','自然','手工','运动','生活'])+select('时长',['不限','10分钟','15分钟','20分钟','30分钟','45分钟'])+(planner?'<label class="nurture-field">参与人数<input name="人数" type="number" min="2" max="60" value="4" required></label>':'<label class="nurture-field">关键词<input name="关键词" type="search"></label>')+'<button class="nurture-primary">'+(planner?'生成周末安排':'筛选活动')+'</button></form><div aria-live="polite" data-tb-plans></div>';
  const form=host.querySelector('form'),out=host.querySelector('[data-tb-plans]');
  function draw(){
@@ -1903,7 +1936,58 @@ function tbActivityPanel(host,mode){
  }
  form.onsubmit=ev=>{ev.preventDefault();draw();};if(!planner)draw();
 }
+
+const TB_FAMILY_KEY='tongban_household_case_observations_v1';
+const tbFamilyChildren={
+yiyi:{id:'case-siblings-yiyi',name:'艺艺',relation:'妹妹',className:'小班',scene:'晨时',topic:'晨起依赖公主动画',interest:'公主角色、晨间任务卡',resource:'小公主晨间启动站',family:'早晨想看公主动画，穿衣、梳头和出门准备多由成人代劳。',steps:['穿衣','刷牙','洗脸','梳头','整理书包','穿鞋'],behaviors:['主动选择任务','愿意参与','跟随口令','独立尝试','需要少量协助','完成任务','提醒后回到活动'],advice:'提前备好晨间用品，鼓励艺艺自己选任务、自己尝试；熟悉后逐步减少提醒。'},
+ keke:{id:'case-siblings-keke',name:'可可',relation:'哥哥',className:'大班',scene:'睡时',topic:'睡前反复要求手机',interest:'故事、角色寻找、睡前放松',resource:'《晚安，亮盒慢慢熄灯》',family:'晚上仍想玩手机，收起手机后难以安静下来，希望建立稳定的晚安仪式。',steps:['选择绘本','阅读故事','寻找角色','晚安互动','放下亮盒','选择放松活动'],behaviors:['愿意听故事','观察画面','回应提问','寻找角色','主动表达','愿意放下手机','选择放松方式','动作逐渐放缓'],advice:'根据睡前状态选择绘本，阅读后提供简单的晚安选择，记录变化并保持稳定作息。'}
+};
+
+function tbFamilyAllRecords(){return getStored(TB_FAMILY_KEY).filter(x=>x&&x.childId&&x.id)}
+function tbFamilyRecords(childId){return tbFamilyAllRecords().filter(x=>x.childId===childId).sort((a,b)=>(b.stamp||0)-(a.stamp||0))}
+function tbFamilySave(row){return saveStored(TB_FAMILY_KEY,[...tbFamilyAllRecords(),row])}
+function tbFamilyContentCard(c){return `<article class="tb-family-card"><div class="tb-family-topline"><h4>${escapeHtml(c.name)} · ${escapeHtml(c.relation)}</h4><span class="tb-family-badge">${escapeHtml(c.scene)}</span></div><p class="tb-family-muted">${escapeHtml(c.className)} · ${escapeHtml(c.topic)}</p><div class="tb-family-tags"><span class="tb-family-tag">一童一档</span><span class="tb-family-tag">${escapeHtml(c.resource)}</span></div><button class="tb-family-btn" data-family-open="${c.id}">查看一童一档</button></article>`}
+function tbFamilyFeedbackPanel(host){
+ host.innerHTML=`<section class="tb-family-wrap"><div class="tb-family-hero"><div class="tb-family-topline"><h3>家庭反馈信息</h3><span class="tb-family-badge">待跟进</span></div><p><strong>双童家庭 · 家长求助</strong></p><p>妹妹艺艺上小班，早上起来就要看公主动画；哥哥可可上大班，晚上不看手机就不肯睡。家长希望老师上门提供指导。</p></div><div class="tb-family-grid">${Object.values(tbFamilyChildren).map(tbFamilyContentCard).join('')}</div><div class="tb-family-card"><h4>家庭指导安排</h4><p>分别查看两名幼儿的情况：艺艺从晨间自理入手，可可通过互动绘本和晚安仪式逐步减少睡前屏幕依赖。</p></div></section>`;
+ host.querySelectorAll('[data-family-open]').forEach(b=>b.onclick=()=>tbFamilyChildPanel(host,b.dataset.familyOpen));
+}
+function tbFamilyChildPanel(host,id){
+ const c=Object.values(tbFamilyChildren).find(x=>x.id===id);if(!c)return;
+ const e=escapeHtml,isMorning=c.id==='case-siblings-yiyi';
+ const books=['《晚安，玩具慢慢回家》','《晚安，亮盒慢慢熄灯》','《晚安，小鸟慢慢归巢》','《晚安，乌云慢慢散开》','《晚安，小脚慢慢停下》','《晚安，星星慢慢睡着》'];
+ const taskBehaviors=isMorning?{
+ '穿衣':['主动选择穿衣任务','跟随穿衣儿歌','尝试自己穿衣','能找到衣袖','能拉上拉链','需要少量协助','完成任务卡'],
+ '刷牙':['主动选择刷牙任务','能够握持牙刷','能模仿斜一斜、颤一颤','尝试刷牙齿内外侧','能刷咬合面','需要成人补刷','完成任务卡'],
+ '洗脸':['愿意自己洗脸','会使用小毛巾','能擦拭脸部','尝试独立完成','需要少量提示','完成任务卡'],
+ '梳头':['主动拿起梳子','尝试自己梳头','动作轻柔','需要少量协助','完成任务卡'],
+ '整理书包':['主动整理书包','检查水杯和手帕','能按提示整理','独立完成','完成任务卡'],
+ '穿鞋':['主动选择鞋子','区分左右鞋','尝试独立穿鞋','调整鞋子位置','需要少量协助','完成任务卡']
+ }:{
+ '选择绘本':['愿意选择绘本','主动观察封面','能够说出想读哪本','回应成人邀请','仍要求玩手机'],
+ '阅读故事':['愿意倾听','关注故事画面','回应教师提问','主动表达想法','能够继续参与阅读'],
+ '寻找角色':['主动寻找车车','主动寻找啾啾','主动寻找恐恐','能指出角色位置','模仿角色动作','愿意继续寻找'],
+ '晚安互动':['跟角色说晚安','轻声回应','愿意模仿睡前动作','主动表达情绪','在陪伴下放慢声音'],
+ '放下亮盒':['愿意暂时放下手机','主动把亮盒送回家','需要语言提醒','仍反复要求手机','情绪逐渐平稳'],
+ '选择放松活动':['主动选择放松方式','选择听故事','选择听音乐','选择聊一聊','选择小月亮放松','动作逐渐放缓','安静参与晚安仪式']
+ };
+ host.innerHTML=`<section class="tb-family-wrap"><div class="tb-family-topline"><h3>${e(c.name)} · 一童一档</h3><button class="tb-family-btn alt" id="tbFamilyBack">返回家庭反馈</button></div><div class="tb-family-grid"><article class="tb-family-card"><h4>基本情况</h4><p>${e(c.relation)} · ${e(c.className)}</p><p><strong>关注问题：</strong>${e(c.topic)}</p><p><strong>兴趣偏好：</strong>${e(c.interest)}</p><p><strong>家庭反馈：</strong>${e(c.family)}</p></article><article class="tb-family-card"><h4>本次指导方案</h4><p><strong>${e(c.resource)}</strong></p><div class="tb-family-tags">${c.steps.map(x=>'<span class="tb-family-tag">'+e(x)+'</span>').join('')}</div><p><strong>家庭建议：</strong>${e(c.advice)}</p></article></div><div class="tb-family-topline"><h3>${e(c.scene)}观察记录</h3><button class="tb-family-btn alt" id="tbFamilyBoard">查看观察大屏</button></div><div class="tb-family-topline"><div><button type="button" class="tb-family-btn" data-tb-family-mode="quick">快速记录</button><button type="button" class="tb-family-btn alt" data-tb-family-mode="daily">日常记录</button></div><span class="tb-family-muted">每个${isMorning?'晨间任务':'睡前环节'}单独保存一条记录</span></div><form class="tb-family-form" id="tbFamilyForm"><div class="tb-family-fields"><label>观察日期<input type="date" name="date" required value="${tbLocalDate()}"></label><label>当前观察环节<select name="scene"><option>${e(c.scene)}</option><option>等时</option><option>忙时</option><option>闹时</option><option>晨时</option><option>睡时</option><option>其他</option></select></label><label class="wide" data-other-wrap hidden>其他观察环节<input name="other" maxlength="60" placeholder="填写其他观察环节"></label>${!isMorning?`<label class="wide">使用绘本<select name="book">${books.map(x=>`<option ${x===c.resource?'selected':''}>${e(x)}</option>`).join('')}</select></label>`:''}</div><div><strong>${isMorning?'晨间任务完成情况':'绘本与晚安环节'}</strong><p class="tb-family-muted" style="margin:7px 0">${isMorning?'选择一项任务，记录完成后再切换下一项。':'选择一个环节，记录后继续下一环节。'}</p><div class="tb-family-task-grid" id="tbFamilyTasks">${c.steps.map((x,i)=>`<button type="button" class="tb-family-task ${i===0?'selected':''}" data-family-task="${e(x)}">${e(x)}</button>`).join('')}</div></div><div><div class="tb-family-topline"><strong>当前任务：<span id="tbFamilyCurrentTask">${e(c.steps[0])}</span></strong><span class="tb-family-muted" id="tbFamilyTaskProgress"></span></div><strong>观察到的表现（可多选）</strong><div id="tbFamilyBehaviors" class="tb-family-checks" style="margin-top:9px"></div></div><div class="tb-family-fields" data-tb-daily-fields hidden><label>${isMorning?'对手机的反应':'屏幕依赖表现'}<select name="screen"><option value="">选择观察结果</option>${(isMorning?['未要求看手机','曾要求手机，提醒后回到活动','仍持续要求手机']:['未主动要求手机','在陪伴下暂时放下手机','仍反复要求手机']).map(x=>`<option>${e(x)}</option>`).join('')}</select></label><label>${isMorning?'教师支持程度':'活动结束时的状态'}<select name="state"><option value="">选择观察结果</option>${(isMorning?['独立完成','少量语言提示','需要操作协助']:['仍较兴奋','动作和声音逐渐放缓','安静参与睡前仪式','已入睡']).map(x=>`<option>${e(x)}</option>`).join('')}</select></label></div><div class="tb-family-fields"><label class="wide">观察补充<textarea name="note" rows="3" maxlength="1000" placeholder="记录本环节的具体表现"></textarea></label></div><div><button class="tb-family-btn" type="submit">保存当前环节观察</button><span data-family-status class="tb-family-muted" role="status"></span></div></form><div><h3>观察历史</h3><div id="tbFamilyHistory" class="tb-family-history"></div></div></section>`;
+ host.querySelector('#tbFamilyBack').onclick=()=>tbFamilyFeedbackPanel(host);
+ host.querySelector('#tbFamilyBoard').onclick=tbMirrorBoardOpen;
+ const f=host.querySelector('#tbFamilyForm');let activeTask=c.steps[0];
+ const drawBehaviors=()=>{host.querySelector('#tbFamilyBehaviors').innerHTML=(taskBehaviors[activeTask]||c.behaviors).map(x=>`<label><input type="checkbox" name="behaviors" value="${e(x)}">${e(x)}</label>`).join('')};
+ const resetTaskFields=()=>{host.querySelector('#tbFamilyBehaviors').querySelectorAll('input').forEach(x=>x.checked=false);f.elements.note.value='';f.elements.screen.value='';f.elements.state.value=''};
+ const drawProgress=()=>{const done=new Set(tbFamilyRecords(c.id).filter(x=>x.scene===c.scene).map(x=>x.task||x.steps?.[0]).filter(Boolean));host.querySelector('#tbFamilyTaskProgress').textContent='已记录 '+done.size+'/'+c.steps.length+' 个环节';host.querySelectorAll('[data-family-task]').forEach(b=>{b.classList.toggle('selected',b.dataset.familyTask===activeTask);b.classList.toggle('recorded',done.has(b.dataset.familyTask));});};
+ const selectTask=task=>{if(task===activeTask)return;activeTask=task;host.querySelector('#tbFamilyCurrentTask').textContent=task;drawBehaviors();resetTaskFields();drawProgress();f.querySelector('[data-family-status]').textContent='已切换到“'+task+'”，请记录本环节的表现。'};
+ host.querySelectorAll('[data-family-task]').forEach(b=>b.onclick=()=>selectTask(b.dataset.familyTask));
+ host.querySelectorAll('[data-tb-family-mode]').forEach(btn=>btn.onclick=()=>{const daily=btn.dataset.tbFamilyMode==='daily';host.querySelector('[data-tb-daily-fields]').hidden=!daily;host.querySelectorAll('[data-tb-family-mode]').forEach(b=>b.classList.toggle('alt',b!==btn));});
+ f.elements.scene.onchange=()=>host.querySelector('[data-other-wrap]').hidden=f.elements.scene.value!=='其他';
+ const draw=()=>{const items=tbFamilyRecords(c.id);host.querySelector('#tbFamilyHistory').innerHTML=items.length?items.map(r=>`<article><div class="tb-family-topline"><strong>${e(r.scene)} · ${e(r.task||r.steps?.join('、')||'活动记录')} · ${e(r.date)}</strong><button type="button" class="tb-family-btn alt" data-del-family="${e(r.id)}">删除</button></div>${r.book?`<p>使用绘本：${e(r.book)}</p>`:''}<p>幼儿表现：${e((r.behaviors||[]).join('、')||'未选择')}</p>${r.screen?`<p>屏幕反应：${e(r.screen)}</p>`:''}${r.state?`<p>活动状态：${e(r.state)}</p>`:''}${r.note?`<p>观察补充：${e(r.note)}</p>`:''}</article>`).join(''):'<p class="tb-family-muted">暂无记录</p>';host.querySelectorAll('[data-del-family]').forEach(b=>b.onclick=()=>{if(!confirm('确定删除这条记录？'))return;saveStored(TB_FAMILY_KEY,tbFamilyAllRecords().filter(r=>r.id!==b.dataset.delFamily));draw();drawProgress()});};
+ f.onsubmit=ev=>{ev.preventDefault();const data=new FormData(f);const behaviors=data.getAll('behaviors'),note=String(data.get('note')||'').trim();if(!behaviors.length&&!note){f.querySelector('[data-family-status]').textContent='请先选择本环节的观察表现，或填写观察补充。';return}const scene=data.get('scene')==='其他'?(String(data.get('other')||'').trim()||'其他'):String(data.get('scene'));const record={id:'family-'+Date.now()+'-'+Math.floor(Math.random()*100000),childId:c.id,name:c.name,scene,date:String(data.get('date')),task:activeTask,steps:[activeTask],behaviors,note,book:String(data.get('book')||''),screen:String(data.get('screen')||''),state:String(data.get('state')||''),stamp:Date.now()};if(!tbFamilySave(record)){f.querySelector('[data-family-status]').textContent='保存失败，请检查浏览器存储空间。';return}draw();drawProgress();resetTaskFields();const index=c.steps.indexOf(activeTask);if(index>=0&&index<c.steps.length-1){selectTask(c.steps[index+1]);f.querySelector('[data-family-status]').textContent='“'+record.task+'”已保存，已进入“'+activeTask+'”。'}else{f.querySelector('[data-family-status]').textContent='“'+record.task+'”已保存，可查看观察大屏。'}};
+ drawBehaviors();draw();drawProgress();
+}
+
 function tbWorkPanel(host,title){
+ if(title==='家庭反馈信息'){tbFamilyFeedbackPanel(host);return true;}
  if(title==='发展评估档案'){
   const monthly=document.createElement('section'),history=document.createElement('details');
   const records=document.createElement('div');
